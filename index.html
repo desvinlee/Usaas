@@ -1,124 +1,311 @@
 <!DOCTYPE html>
-<html lang="en">
+<html data-bs-theme="light" lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Firebase Image Upload</title>
-  <link rel="stylesheet" href="./index.css" />
-  <script src="https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/11.1.0/firebase-storage.js"></script>
-
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Agency - Start Bootstrap Theme</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amiko&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="assets/css/css/sb-admin-2.min.css">
+    <link rel="stylesheet" href="assets/css/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
 </head>
 
-<body>
-  <div class="imageUpload">
-    <input type="file" class="inp" onchange="getImageData(event)" multiple />
-    <button onclick="selectImage()" class="selectImage">Select Images</button>
-    <div class="metaData"></div>
-    <div class="progressBar">
-      <div class="progress"></div>
+<body id="page-top">
+    <nav class="navbar navbar-expand-lg fixed-top" id="mainNav" style="background: var(--bs-body-bg);">
+        <div class="container"><a class="navbar-brand" href="#page-top"><img src="assets/img/Homepage/usaas_logo.svg" alt="..." width="60" height="32"></a><button data-bs-toggle="collapse" data-bs-target="#navbarResponsive" class="navbar-toggler" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span> Menu </span><i class="fas fa-bars ms-1"></i></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+                    <li class="nav-item"><a class="nav-link active" href="#services">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#portfolio">services</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#contact">why us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="login.html" style="color: #3bacfd;">Login</a></li>
+                    <li class="nav-item" style="border-style: none;"></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <header class="masthead" style="background: url(&quot;assets/img/Homepage/2022-03-10.webp&quot;) center;">
+        <div class="container">
+            <div class="masthead-subheading" style="margin-bottom: 0;"><span style="font-size: 23px;"><span style="font-style: normal !important; color: rgb(33, 37, 41);">To assist every international student during the registration process.</span></span></div>
+            <div class="text-uppercase masthead-heading" style="margin-bottom: 23px;"><span style="font-size: 37px;"><span style="color: rgb(33, 37, 41);">Simplifying International Student's Life</span></span></div><a class="btn btn-primary text-uppercase btn-xl" role="button" href="login.html">GET started</a>
+        </div>
+    </header>
+    <section class="page-section" id="services">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="text-uppercase section-heading">Services</h2>
+                <h3 class="text-muted section-subheading">Our core values focus on trust, support, and <br>delivering quality services to students</h3>
+            </div>
+            <div class="row text-center">
+                <div class="col-md-4"><span class="fa-stack fa-4x"><i class="fas fa-circle text-primary fa-stack-2x"></i><i class="fas fa-shopping-cart fa-stack-1x fa-inverse"></i></span>
+                    <h4 class="my-3">Transportation</h4>
+                    <p class="text-muted">Offer reliable transportation services for international students during the registration process</p>
+                </div>
+                <div class="col-md-4"><span class="fa-stack fa-4x"><i class="fas fa-circle text-primary fa-stack-2x"></i><i class="fas fa-laptop fa-stack-1x fa-inverse"></i></span>
+                    <h4 class="my-3">Registration</h4>
+                    <p class="text-muted">Assists &amp; guide international students with the entire registration process and ensure everything is completed accurately and efficiently.</p>
+                </div>
+                <div class="col-md-4"><span class="fa-stack fa-4x"><i class="fas fa-circle text-primary fa-stack-2x"></i><i class="fas fa-lock fa-stack-1x fa-inverse"></i></span>
+                    <h4 class="my-3">Translation</h4>
+                    <p class="text-muted">Provide translation services to help international students understand and complete necessary documentation in their preferred language.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="bg-light page-section" id="portfolio">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="text-uppercase section-heading">Why us ?</h2>
+                <h3 class="text-muted section-subheading">There are some core values of our side</h3>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 col-lg-4 mb-4">
+                    <div class="portfolio-item"><a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal1">
+                            <div class="portfolio-hover">
+                                <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                            </div><img class="img-fluid" src="assets/img/portfolio/student.jpg" alt="...">
+                        </a>
+                        <div class="portfolio-caption">
+                            <div class="portfolio-caption-heading"><span>50 +</span></div>
+                            <div class="text-muted portfolio-caption-subheading"><span>Every semester</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4 mb-4">
+                    <div class="portfolio-item"><a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal2">
+                            <div class="portfolio-hover">
+                                <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                            </div><img class="img-fluid" src="assets/img/portfolio/time.jpg" alt="...">
+                        </a>
+                        <div class="portfolio-caption">
+                            <div class="portfolio-caption-heading"><span>24/7</span></div>
+                            <div class="text-muted portfolio-caption-subheading"><span>Service Availability</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4 mb-4">
+                    <div class="portfolio-item"><a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal3">
+                            <div class="portfolio-hover">
+                                <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                            </div><img class="img-fluid" src="assets/img/portfolio/successrate.jpg" alt="...">
+                        </a>
+                        <div class="portfolio-caption">
+                            <div class="portfolio-caption-heading"><span>100%</span></div>
+                            <div class="text-muted portfolio-caption-subheading"><span>Success Rate</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="page-section" id="about">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="text-uppercase section-heading">About</h2>
+                <h3 class="text-muted section-subheading">Some History About us</h3>
+            </div>
+            <ul class="timeline">
+                <li>
+                    <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/1.jpg" alt="..."></div>
+                    <div class="timeline-panel">
+                        <div class="timeline-heading">
+                            <h4>Early 2022</h4>
+                            <h4 class="subheading">Our Humble Beginnings</h4>
+                        </div>
+                        <div class="timeline-body" style="text-align: justify;">
+                            <p class="text-muted">USAAS was founded to address the unique challenges faced by international students during their transition to a new academic environment. The system was envisioned as a one-stop platform to simplify registration, provide transportation, and offer translation assistance</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="timeline-inverted">
+                    <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/2.jpg" alt="..."></div>
+                    <div class="timeline-panel">
+                        <div class="timeline-heading">
+                            <h4>March 2023</h4>
+                            <h4 class="subheading">An Agency is Born</h4>
+                        </div>
+                        <div class="timeline-body">
+                            <p class="text-muted">In 2023, few China Student and I at UTM recognized the need for a platform dedicated to assisting international students.</p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/3.jpg" alt="..."></div>
+                    <div class="timeline-panel">
+                        <div class="timeline-heading">
+                            <h4>December 2023</h4>
+                            <h4 class="subheading">Transition to Full Service</h4>
+                        </div>
+                        <div class="timeline-body">
+                            <p class="text-muted" style="text-align: justify;">Since its launch, USAAS has grown rapidly, assisting over 200+ international students every semester. Key features such as e-hailing for transportation, in-app communication, and real-time updates were added, making it an indispensable tool for students."</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="timeline-inverted">
+                    <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/4.jpg" alt="..."></div>
+                    <div class="timeline-panel">
+                        <div class="timeline-heading">
+                            <h4>July 2024</h4>
+                            <h4 class="subheading">Phase Two Expansion</h4>
+                        </div>
+                        <div class="timeline-body">
+                            <p class="text-muted"><em>As USAAS continues to grow, its vision is to expand its services to other universities and provide comprehensive support for students worldwide. The goal remains to create a global network of assistance and support for students wherever they go.</em></p>
+                        </div>
+                    </div>
+                </li>
+                <li class="timeline-inverted">
+                    <div class="timeline-image">
+                        <h4> Be Part <br> Of Our <br> Story! </h4>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <section class="bg-light page-section" id="team">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="text-uppercase section-heading" style="margin-bottom: 35px;">Our Amazing Team</h2>
+            </div>
+            <div class="row">
+                <div class="col-xl-4 offset-xl-2 d-xl-flex align-items-xl-center">
+                    <div class="team-member">
+                        <h4 style="text-align: left;">Every international student's journey should be smoother and more interesting</h4>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-xl-4 offset-xl-0">
+                    <div class="team-member"><img class="rounded-circle mx-auto" src="assets/img/Homepage/LEE%20JUN%20KANG%20李焌慷.jpeg" alt="...">
+                        <h4>Desvin Lee</h4>
+                        <p class="text-muted">Founder of USAAS</p><a class="btn btn-dark btn-social mx-2" role="button" href="#!" aria-label="Larry Parker Twitter Profile"><i class="fab fa-twitter"></i></a><a class="btn btn-dark btn-social mx-2" role="button" href="#!" aria-label="Larry Parker Facebook Profile"><i class="fab fa-facebook-f"></i></a><a class="btn btn-dark btn-social mx-2" role="button" href="#!" aria-label="Larry Parker LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="page-section" id="contact">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="text-uppercase section-heading">Contact Us</h2>
+                <h3 class="text-muted section-subheading">Lorem ipsum dolor sit amet consectetur.</h3>
+            </div>
+            <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+                <div class="row align-items-stretch mb-5">
+                    <div class="col-md-6">
+                        <div class="form-group"><input class="form-control form-control" type="text" data-sb-validations="required" id="name" placeholder="Your Name *">
+                            <div class="invalid-feedback" data-sb-feedback="name:required"><span>A name is required.</span></div>
+                        </div>
+                        <div class="form-group"><input class="form-control form-control" type="email" data-sb-validations="required,email" id="email" placeholder="Your Email *">
+                            <div class="invalid-feedback" data-sb-feedback="email:required"><span>An email is required.</span></div>
+                            <div class="invalid-feedback" data-sb-feedback="email:email"><span>Email is not valid.</span></div>
+                        </div>
+                        <div class="form-group mb-md-0"><input class="form-control form-control" type="tel" data-sb-validations="required" id="phone" placeholder="Your Phone *">
+                            <div class="invalid-feedback" data-sb-feedback="phone:required"><span>A phone number is required.</span></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group form-group-textarea mb-md-0"><textarea class="form-control form-control" data-sb-validations="required" id="message" placeholder="Your Message *"></textarea>
+                            <div class="invalid-feedback" data-sb-feedback="message:required"><span>A message is required.</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-none" id="submitSuccessMessage">
+                    <div class="text-center text-white mb-3">
+                        <div class="fw-bolder"><span>Form submission successful!</span></div><span> To activate this form, sign up at </span><br><a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
+                    </div>
+                </div>
+                <div class="d-none" id="submitErrorMessage">
+                    <div class="text-center text-danger mb-3"><span>Error sending message!</span></div>
+                </div>
+                <div class="text-center"><button class="btn btn-primary text-uppercase btn-xl disabled" id="submitButton" type="submit">Send Message</button></div>
+            </form>
+        </div>
+    </section>
+    <footer class="footer py-4">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-4 text-lg-start"><span>Copyright © Desvin Lee 2024</span></div>
+                <div class="col-lg-4 my-3 my-lg-0"><a class="btn btn-dark btn-social mx-2" role="button" href="#!" aria-label="Twitter"><i class="fab fa-twitter"></i></a><a class="btn btn-dark btn-social mx-2" role="button" href="#!" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a><a class="btn btn-dark btn-social mx-2" role="button" href="#!" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a></div>
+                <div class="col-lg-4 text-lg-end"><a class="link-dark text-decoration-none me-3" href="#!">Privacy Policy</a><a class="link-dark text-decoration-none" href="#!">Terms of Use</a></div>
+            </div>
+        </div>
+    </footer>
+    <div class="modal fade portfolio-modal" role="dialog" tabindex="-1" id="portfolioModal1" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8">
+                            <div class="modal-body">
+                                <h2 class="text-uppercase">50+ <br>Student Every semester</h2><img class="img-fluid d-block mx-auto" alt="..." src="assets/img/portfolio/student.jpg">
+                                <p>Every starting semester will assist more that that student for registration process</p>
+                                <ul class="list-inline"></ul><button class="btn btn-primary text-uppercase btn-xl" data-bs-dismiss="modal" type="button"><i class="fas fa-xmark me-1"></i> Close Project </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <button onclick="uploadImage()" class="upload">Upload</button>
-    <span class="completeMsg"></span>
-    <span class="loading">Loading...</span>
-    <div class="images"></div>
-  </div>
-  <script>
-    const firebaseConfig = {
-      apiKey: "AIzaSyAifkBmMPwQLTqRu8nYFU1dqej2dlX33Bk",
-      authDomain: "usaas-4230f.firebaseapp.com",
-      databaseURL: "https://usaas-4230f-default-rtdb.asia-southeast1.firebasedatabase.app",
-      projectId: "usaas-4230f",
-      storageBucket: "usaas-4230f.firebasestorage.app",
-      messagingSenderId: "1057123876526",
-      appId: "1:1057123876526:web:fb4c3c0e6b2407295f773f",
-      measurementId: "G-NSW66N1VGP"
-    };
-
-    const app = firebase.initializeApp(firebaseConfig);
-
-    const storage = firebase.storage();
-
-    const inp = document.querySelector(".inp");
-    const progressbar = document.querySelector(".progress");
-    const img = document.querySelector(".img");
-    const body = document.querySelector("body");
-    const metaData = document.querySelector(".metaData");
-    const images = document.querySelector(".images");
-    const loading = document.querySelector(".loading");
-    const imageUpload = document.querySelector(".imageUpload");
-    const completeMsg = document.querySelector(".completeMsg");
-    let file;
-    let files;
-    let fileName;
-    let progress;
-    let uploadedFileName;
-    const selectImage = () => {
-      inp.click();
-    };
-    const getImageData = (e) => {
-      files = e.target.files;
-      for (let i = 0; i < files.length; i++) {
-        let imageData = document.createElement("span");
-        imageData.className = 'filedata';
-        imageData.style.display = 'block';
-        imageData.innerHTML = files[i].name;
-        metaData.appendChild(imageData);
-      }
-    };
-
-    const uploadImage = async () => {
-      for (let i = 0; i < files.length; i++) {
-        let url = await uploadProcess(files[i], Math.round(Math.random() * 9999) + files[i].name);
-        if (url) {
-          loading.style.display = 'none';
-          let image = document.createElement("img");
-          image.style.display = 'block';
-          image.setAttribute('src', url);
-          image.className = 'img';
-          images.appendChild(image);
-        }
-        if (i === files.length - 1) {
-          completeMsg.innerHTML = `${files.length} files uploaded successfully`;
-        }
-      }
-    };
-
-    const uploadProcess = (file, fileName) => {
-      return new Promise((resolve, reject) => {
-        const storageRef = storage.ref().child("myimages");
-        const folderRef = storageRef.child(fileName);
-        const uploadtask = folderRef.put(file);
-        uploadtask.on(
-          "state_changed",
-          (snapshot) => {
-            loading.style.display = 'block';
-            progress =
-              (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-            progress = Math.round(progress);
-            progressbar.style.width = progress + "%";
-            progressbar.innerHTML = progress + "%";
-            uploadedFileName = snapshot.ref.name;
-          },
-          (error) => {
-            reject(error);
-          },
-          () => {
-            storage
-              .ref("myimages")
-              .child(uploadedFileName)
-              .getDownloadURL()
-              .then((url) => {
-                console.log("URL", url);
-                resolve(url);
-              });
-          }
-        );
-      });
-    };
-  </script>
+    <div class="modal fade portfolio-modal" role="dialog" tabindex="-1" id="portfolioModal2" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8">
+                            <div class="modal-body">
+                                <h2 class="text-uppercase">24/7<br>Service Availability</h2><img class="img-fluid d-block mx-auto" alt="..." src="assets/img/portfolio/time.jpg">
+                                <p>Our support team is available 24 hours a day, 7 days a week, ensuring that help is always accessible whenever students need assistance</p>
+                                <ul class="list-inline"></ul><button class="btn btn-primary text-uppercase btn-xl" data-bs-dismiss="modal" type="button"><i class="fas fa-xmark me-1"></i> Close Project </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade portfolio-modal" role="dialog" tabindex="-1" id="portfolioModal3" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8">
+                            <div class="modal-body">
+                                <h2 class="text-uppercase">100%<br>Success Rate</h2><img class="img-fluid d-block mx-auto" alt="..." src="assets/img/portfolio/successrate.jpg">
+                                <p>We guarantee a smooth and successful registration process for every student</p><button class="btn btn-primary text-uppercase btn-xl" data-bs-dismiss="modal" type="button"><i class="fas fa-xmark me-1"></i> Close Project </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/vendor/jquery/jquery.min.js"></script>
+    <script src="assets/js/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="assets/js/js/sb-admin-2.min.js"></script>
+    <script src="assets/js/vendor/chart.js/Chart.min.js"></script>
+    <script src="assets/js/js/chart-area-demo.js"></script>
+    <script src="assets/js/js/chart-pie-demo.js"></script>
+    <script src="assets/js/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"></script>
+    <script src="assets/js/js/datatables-simple-demo.js"></script>
+    <script src="assets/js/js/Student_Document.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/js/Navigationbar.js"></script>
+    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    <script src="assets/js/js/Assistant_orderlist.js"></script>
+    <script src="assets/js/js/Student_createorderform.js"></script>
+    <script src="assets/js/js/Student&amp;Ass_Auth.js"></script>
+    <script src="assets/js/js/Student&amp;Ass_Register.js"></script>
 </body>
 
 </html>

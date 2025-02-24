@@ -20,6 +20,12 @@
 
 <body id="page-top">
     <div id="wrapper"><ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            
+
+          
+
+
             
             <hr class="sidebar-divider my-0">
 
@@ -260,6 +266,19 @@
                             </a>
                             
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Profile
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Settings
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Activity Log
+                                </a>
+                                <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
@@ -270,15 +289,17 @@
                     </ul>
                 </nav>
                 <div class="container-fluid">
+                    <div class="d-sm-flex justify-content-between align-items-center mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+                    </div>
                     <div class="row" style="margin-right: 0;">
                         <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-8 mb-4">
                             <div class="card shadow border-left-primary h-100 py-2">
-                                <div class="card-body" style="height: 45px;">
-                                    <div class="col-xl-9 offset-xl-5 mr-2" style="margin-left: -10px;">
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                            <ul class="list-unstyled">
-                                                <li style="font-size: 15px;"><a href="#hero" class="active"><span style="font-weight: normal !important; color: rgb(33, 37, 41);">Order List&nbsp;</span></a><a href="#hero" class="active" style="margin-left: 26px;"><span style="font-weight: normal !important;">Your Order</span></a></li>
-                                            </ul>
+                                <div class="card-body">
+                                    <div class="row align-items-center no-gutters">
+                                        <div class="col mr-2" style="margin-left: 15px;">
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><span>Upload Your Supporting Documents</span></div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><span style="font-size: 15px;"><span style="font-weight: normal !important;">Please uplad PDF of documents Below</span></span></div>
                                         </div>
                                     </div>
                                 </div>
@@ -289,84 +310,72 @@
                         <div class="col-lg-6 col-xl-12 mb-4">
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="text-primary m-0 font-weight-bold">Order up Coming</h6>
+                                    <h6 class="text-primary m-0 font-weight-bold">Required Documents</h6>
                                 </div>
                                 <div class="card-body">
-                                    <div>
-                                        <div class="table-responsive">
-                                            <table class="table">
-                                                <thead>
-                                                    <tr>
-                                                        <th style="width: 120px;">Date</th>
-                                                        <th style="width: 190px;">Name</th>
-                                                        <th style="width: 120px;">Services</th>
-                                                        <th style="width: 120px;"></th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody id="Assistantorderlist"></tbody>
-                                            </table>
-                                        </div>
+                                    <h4 class="small font-weight-bold">Student card<span class="float-right">Completed</span></h4>
+                                    <div class="progress mb-4">
+                                        <div class="bg-success progress-bar" role="progressbar" style="width: 100%;background: #0dcaf0;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <h4 class="small font-weight-bold">Driving license<span class="float-right">Pending</span></h4>
+                                    <div class="progress mb-4">
+                                        <div class="bg-warning progress-bar" role="progressbar" style="width:40%;" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <h4 class="small font-weight-bold">Car Insurance<span class="float-right">Pending</span></h4>
+                                    <div class="progress mb-4">
+                                        <div class="progress-bar" role="progressbar" style="width: 40%;background: #fce38a;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6 col-xl-12 mb-4">
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="text-primary m-0 font-weight-bold">Order</h6>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="card shadow mb-4">
+                                        <div class="card-header py-3">
+                                            <h6 class="text-primary m-0 font-weight-bold">Upload Documents here</h6>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-xl-6">
+                                                    <div style="margin-top: 5px;">
+                                                        <h6 style="text-align: center;">Student card</h6>
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div style="text-align: center;"><input type="file"></div>
+                                                </div>
+                                            </div>
+                                            <div class="row" style="margin-top: 10px;">
+                                                <div class="col-xl-6">
+                                                    <div style="margin-top: 5px;">
+                                                        <h6 style="text-align: center;">Driving license</h6>
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div style="text-align: center;"><input type="file"></div>
+                                                </div>
+                                            </div>
+                                            <div class="row" style="margin-top: 10px;">
+                                                <div class="col-xl-6">
+                                                    <div style="margin-top: 5px;">
+                                                        <h6 style="text-align: center;">Car Insurance</h6>
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div style="text-align: center;"><input type="file"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><a target="_blank" rel="nofollow" href="https://undraw.co/">Browse Illustrations on unDraw →</a>
+                                    <div class="card shadow mb-4">
+                                        <div class="card-header py-3">
+                                            <h6 class="text-primary m-0 font-weight-bold">Development Approach</h6>
+                                        </div>
+                                        <div class="card-body">
+                                            <p>SB Admin 2 makes extensive use of Bootstrap 4 utility classes in order to reduce CSS bloat and poor page performance. Custom CSS classes are used to create custom components and custom utility classes.</p>
+                                            <p class="mb-0">Before working with this theme, you should become familiar with the Bootstrap framework, especially the utility classes.</p>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="card-body"><table id="datatablesSimple">
-                                    <thead>
-                                        <tr>
-                                            <th>Start date</th>
-                                            <th>Assistant</th>
-                                            <th>status</th>
-                                            <th>Amount</th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Start date</th>
-                                            <th>Assistant</th>
-                                            <th>status</th>
-                                            <th>Amount</th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-                                        <tr>
-                                            <td>2024/04/25</td>
-                                            <td>Tiger Nixon</td>
-                                            <td>Pending</td>
-                                            <td>RM 100</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2011/07/25</td>
-                                            <td>Garrett Winters</td>
-                                            <td>Accepted</td>
-                                            <td>RM 200</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2009/01/12</td>
-                                            <td>Ashton Cox</td>
-                                            <td>Completed</td>
-                                            <td>RM 86</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2012/03/29</td>
-                                            <td>Cedric Kelly</td>
-                                            <td>Completed</td>
-                                            <td>RM 22</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2008/11/28</td>
-                                            <td>Airi Satou</td>
-                                            <td>Pending</td>
-                                            <td>RM 33</td>
-                                        </tr>
-                                    </tbody>
-                                </table></div>
                             </div>
                         </div>
                     </div>
@@ -381,19 +390,6 @@
             </footer>
         </div>
     </div><a class="scroll-to-top rounded" href="#page-top"><i class="fas fa-angle-up"></i></a>
-    <div class="modal fade" role="dialog" tabindex="-1" id="confirmation" style="text-align: center;">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Confirmation</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body"><i class="far fa-question-circle" style="font-size: 120px;"></i>
-                    <p class="text-center">Are you sure accept this order ?</p>
-                </div>
-                <div class="modal-footer"><button class="btn btn-primary" type="button" style="background: #3bacfd;border-color: #3bacfd;">comfirm</button><button class="btn btn-light" type="button" data-bs-dismiss="modal" style="background: #f38181;">cancel</button></div>
-            </div>
-        </div>
-    </div>
     <div class="modal fade" role="dialog" tabindex="-1" id="logoutModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">

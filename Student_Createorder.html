@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>SB Admin 2 - Dashboard</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amiko&amp;display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700">
@@ -17,284 +16,272 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
-
 </head>
 
 <body id="page-top">
-    <div id="wrapper">
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+    <div id="wrapper"><ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-            <hr class="sidebar-divider my-0">
+    <hr class="sidebar-divider my-0">
 
-            <div class="sidebar-heading">
-                <img width="100" height="80" src="assets/img/Homepage/usaas_logo.svg" />
+    <div class="sidebar-heading">
+        <img width="100" height="80" src="assets/img/Homepage/usaas_logo.svg" />
+    </div>
+
+    <li class="nav-item active">
+        <a class="nav-link" href="Student_Dashboard.html">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Student Dashboard</span></a>
+    </li>
+
+
+    <hr class="sidebar-divider">
+
+
+    <div class="sidebar-heading">
+        Interface
+    </div>
+
+
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
+            aria-controls="collapseTwo">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Order</span>
+        </a>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Order List:</h6>
+                <a class="collapse-item" href="Student_Createorder.html">Create Order</a>
+                <a class="collapse-item" href="Student_Orderlist.html">Check Order</a>
             </div>
-
-            <li class="nav-item active">
-                <a class="nav-link" href="Student_Dashboard.html">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Student Dashboard</span></a>
-            </li>
+        </div>
+    </li>
 
 
-            <hr class="sidebar-divider">
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="Student_Document.html" data-target="#collapseUtilities" aria-expanded="true"
+            aria-controls="collapseUtilities">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Document</span>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="Student_Wallet.html" data-target="#collapseWallet" aria-expanded="true"
+            aria-controls="collapseWallet">
+            <i class="fas fa-fw fa-folder"></i>
+            <span>Wallet</span>
+        </a>
+    </li>
 
 
-            <div class="sidebar-heading">
-                Interface
+    <hr class="sidebar-divider">
+
+
+    <div class="sidebar-heading">
+        Settings
+    </div>
+
+
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
+            aria-controls="collapsePages">
+            <i class="fas fa-fw fa-wrench "></i>
+            <span>Settings</span>
+        </a>
+        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Profile: </h6>
+                <a class="collapse-item" href="Student_Settings.html">Profile Settings</a>
+                <a class="collapse-item" href="Student_Settings.html">Forgot Password</a>
             </div>
+        </div>
+    </li>
 
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Order</span>
-                </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Order List:</h6>
-                        <a class="collapse-item" href="Student_Createorder.html">Create Order</a>
-                        <a class="collapse-item" href="Student_Orderlist.html">Check Order</a>
-                    </div>
-                </div>
-            </li>
+    <li class="nav-item">
+        <a class="nav-link" href="404.html">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Help & support</span></a>
+    </li>
 
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="Student_Document.html" data-target="#collapseUtilities"
-                    aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Document</span>
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="Student_Wallet.html" data-target="#collapseWallet"
-                    aria-expanded="true" aria-controls="collapseWallet">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Wallet</span>
-                </a>
-            </li>
+    <hr class="sidebar-divider d-none d-md-block">
 
 
-            <hr class="sidebar-divider">
+    <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+    </div>
 
 
-            <div class="sidebar-heading">
-                Settings
-            </div>
-
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                    aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-wrench "></i>
-                    <span>Settings</span>
-                </a>
-                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Profile: </h6>
-                        <a class="collapse-item" href="Student_Settings.html">Profile Settings</a>
-                        <a class="collapse-item" href="Student_Settings.html">Forgot Password</a>
-                    </div>
-                </div>
-            </li>
-
-
-            <li class="nav-item">
-                <a class="nav-link" href="404.html">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Help & support</span></a>
-            </li>
-
-
-            <hr class="sidebar-divider d-none d-md-block">
-
-
-            <div class="text-center d-none d-md-inline">
-                <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div>
-
-
-        </ul>
+</ul>
         <div class="d-flex flex-column" id="content-wrapper">
             <div id="content">
                 <nav class="bg-white shadow navbar navbar-expand navbar-light topbar mb-4 static-top">
-                    <div><button class="btn btn-link d-md-none rounded-circle mr-3" id="sidebarToggleTop"><i
-                                class="fas fa-bars"></i></button></div>
-                    <form
-                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                        <div class="input-group"><input class="bg-light border-0 form-control form-control small"
-                                type="text" aria-describedby="basic-addon2" aria-label="Search"
-                                placeholder="Search for...">
-                            <div class="input-group-text input-group-append"><button class="btn btn-primary"
-                                    type="button"><i class="fas fa-search fa-sm"></i></button></div>
+                    <div><button class="btn btn-link d-md-none rounded-circle mr-3" id="sidebarToggleTop"><i class="fas fa-bars"></i></button></div>
+                    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                        <div class="input-group"><input class="bg-light border-0 form-control form-control small" type="text" aria-describedby="basic-addon2" aria-label="Search" placeholder="Search for...">
+                            <div class="input-group-text input-group-append"><button class="btn btn-primary" type="button"><i class="fas fa-search fa-sm"></i></button></div>
                         </div>
-                    </form>
-                    <ul class="navbar-nav ml-auto">
+                    </form><ul class="navbar-nav ml-auto">
 
 
-                        <li class="nav-item dropdown no-arrow d-sm-none">
-                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-search fa-fw"></i>
-                            </a>
+    <li class="nav-item dropdown no-arrow d-sm-none">
+        <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-search fa-fw"></i>
+        </a>
 
-                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
-                                aria-labelledby="searchDropdown">
-                                <form class="form-inline mr-auto w-100 navbar-search">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control bg-light border-0 small"
-                                            placeholder="Search for..." aria-label="Search"
-                                            aria-describedby="basic-addon2">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-primary" type="button">
-                                                <i class="fas fa-search fa-sm"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </li>
+        <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
+            <form class="form-inline mr-auto w-100 navbar-search">
+                <div class="input-group">
+                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
+                        aria-label="Search" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="button">
+                            <i class="fas fa-search fa-sm"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </li>
 
 
-                        <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <div class="sidebar-heading">Inbox </div>
+    <li class="nav-item dropdown no-arrow mx-1">
+        <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            <div class="sidebar-heading">Inbox </div>
 
-                                <i class="fas fa-bell fa-fw"></i>
+            <i class="fas fa-bell fa-fw"></i>
 
-                                <span class="badge badge-danger badge-counter">3+</span>
-                            </a>
+            <span class="badge badge-danger badge-counter">3+</span>
+        </a>
 
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="alertsDropdown">
-                                <h6 class="dropdown-header">
-                                    Alerts Center
-                                </h6>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-primary">
-                                            <i class="fas fa-file-alt text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="small text-gray-500">December 12, 2019</div>
-                                        <span class="font-weight-bold">A new monthly report is ready to download!</span>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-success">
-                                            <i class="fas fa-donate text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="small text-gray-500">December 7, 2019</div>
-                                        $290.29 has been deposited into your account!
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-warning">
-                                            <i class="fas fa-exclamation-triangle text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="small text-gray-500">December 2, 2019</div>
-                                        Spending Alert: We've noticed unusually high spending for your account.
-                                    </div>
-                                </a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
-                            </div>
-                        </li>
-
-
-                        <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <div class="sidebar-heading">Message </div>
-                                <i class="fas fa-envelope fa-fw"></i>
-
-                                <span class="badge badge-danger badge-counter">7</span>
-                            </a>
-
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="messagesDropdown">
-                                <h6 class="dropdown-header">
-                                    Message Center
-                                </h6>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" alt="...">
-                                        <div class="status-indicator bg-success"></div>
-                                    </div>
-                                    <div class="font-weight-bold">
-                                        <div class="text-truncate">Hi there! I am wondering if you can help me with a
-                                            problem I've been having.</div>
-                                        <div class="small text-gray-500">Emily Fowler · 58m</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="assets/img/undraw_profile_2.svg" alt="...">
-                                        <div class="status-indicator"></div>
-                                    </div>
-                                    <div>
-                                        <div class="text-truncate">I have the photos that you ordered last month, how
-                                            would you like them sent to you?</div>
-                                        <div class="small text-gray-500">Jae Chun · 1d</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="assets/img/undraw_profile_3.svg" alt="...">
-                                        <div class="status-indicator bg-warning"></div>
-                                    </div>
-                                    <div>
-                                        <div class="text-truncate">Last month's report looks great, I am very happy with
-                                            the progress so far, keep up the good work!</div>
-                                        <div class="small text-gray-500">Morgan Alvarez · 2d</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
-                                            alt="...">
-                                        <div class="status-indicator bg-success"></div>
-                                    </div>
-                                    <div>
-                                        <div class="text-truncate">Am I a good boy? The reason I ask is because someone
-                                            told me that people say this to all dogs, even if they aren't good...</div>
-                                        <div class="small text-gray-500">Chicken the Dog · 2w</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
-                            </div>
-                        </li>
-
-                        <div class="topbar-divider d-none d-sm-block"></div>
+        <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+            aria-labelledby="alertsDropdown">
+            <h6 class="dropdown-header">
+                Alerts Center
+            </h6>
+            <a class="dropdown-item d-flex align-items-center" href="#">
+                <div class="mr-3">
+                    <div class="icon-circle bg-primary">
+                        <i class="fas fa-file-alt text-white"></i>
+                    </div>
+                </div>
+                <div>
+                    <div class="small text-gray-500">December 12, 2019</div>
+                    <span class="font-weight-bold">A new monthly report is ready to download!</span>
+                </div>
+            </a>
+            <a class="dropdown-item d-flex align-items-center" href="#">
+                <div class="mr-3">
+                    <div class="icon-circle bg-success">
+                        <i class="fas fa-donate text-white"></i>
+                    </div>
+                </div>
+                <div>
+                    <div class="small text-gray-500">December 7, 2019</div>
+                    $290.29 has been deposited into your account!
+                </div>
+            </a>
+            <a class="dropdown-item d-flex align-items-center" href="#">
+                <div class="mr-3">
+                    <div class="icon-circle bg-warning">
+                        <i class="fas fa-exclamation-triangle text-white"></i>
+                    </div>
+                </div>
+                <div>
+                    <div class="small text-gray-500">December 2, 2019</div>
+                    Spending Alert: We've noticed unusually high spending for your account.
+                </div>
+            </a>
+            <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+        </div>
+    </li>
 
 
-                        <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
-                                <img class="img-profile rounded-circle" src="assets/img/undraw_profile_2.svg">
-                            </a>
+    <li class="nav-item dropdown no-arrow mx-1">
+        <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            <div class="sidebar-heading">Message </div>
+            <i class="fas fa-envelope fa-fw"></i>
 
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Logout
-                                </a>
-                            </div>
-                        </li>
+            <span class="badge badge-danger badge-counter">7</span>
+        </a>
 
-                    </ul>
+        <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+            aria-labelledby="messagesDropdown">
+            <h6 class="dropdown-header">
+                Message Center
+            </h6>
+            <a class="dropdown-item d-flex align-items-center" href="#">
+                <div class="dropdown-list-image mr-3">
+                    <img class="rounded-circle" alt="...">
+                    <div class="status-indicator bg-success"></div>
+                </div>
+                <div class="font-weight-bold">
+                    <div class="text-truncate">Hi there! I am wondering if you can help me with a
+                        problem I've been having.</div>
+                    <div class="small text-gray-500">Emily Fowler · 58m</div>
+                </div>
+            </a>
+            <a class="dropdown-item d-flex align-items-center" href="#">
+                <div class="dropdown-list-image mr-3">
+                    <img class="rounded-circle" src="assets/img/undraw_profile_2.svg" alt="...">
+                    <div class="status-indicator"></div>
+                </div>
+                <div>
+                    <div class="text-truncate">I have the photos that you ordered last month, how
+                        would you like them sent to you?</div>
+                    <div class="small text-gray-500">Jae Chun · 1d</div>
+                </div>
+            </a>
+            <a class="dropdown-item d-flex align-items-center" href="#">
+                <div class="dropdown-list-image mr-3">
+                    <img class="rounded-circle" src="assets/img/undraw_profile_3.svg" alt="...">
+                    <div class="status-indicator bg-warning"></div>
+                </div>
+                <div>
+                    <div class="text-truncate">Last month's report looks great, I am very happy with
+                        the progress so far, keep up the good work!</div>
+                    <div class="small text-gray-500">Morgan Alvarez · 2d</div>
+                </div>
+            </a>
+            <a class="dropdown-item d-flex align-items-center" href="#">
+                <div class="dropdown-list-image mr-3">
+                    <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" alt="...">
+                    <div class="status-indicator bg-success"></div>
+                </div>
+                <div>
+                    <div class="text-truncate">Am I a good boy? The reason I ask is because someone
+                        told me that people say this to all dogs, even if they aren't good...</div>
+                    <div class="small text-gray-500">Chicken the Dog · 2w</div>
+                </div>
+            </a>
+            <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
+        </div>
+    </li>
+
+    <div class="topbar-divider d-none d-sm-block"></div>
+
+
+    <li class="nav-item dropdown no-arrow">
+        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+            <img class="img-profile rounded-circle" src="assets/img/undraw_profile_2.svg">
+        </a>
+
+        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                Logout
+            </a>
+        </div>
+    </li>
+
+</ul>
                 </nav>
                 <div class="container-fluid">
                     <div class="d-sm-flex justify-content-between align-items-center mb-4">
@@ -305,10 +292,8 @@
                             <div class="card shadow mb-4">
                                 <div class="card-body">
                                     <div class="row">
-                                        <div class="col-xl-2"><a href="Student_Orderlist.html" class="nav-link">Order
-                                                List</a></div>
-                                        <div class="col-xl-3"><a href="Student_Createorder.html" class="nav-link">Your
-                                                Order</a></div>
+                                        <div class="col-xl-2"><a href="Student_Orderlist.html" class="nav-link">Order List</a></div>
+                                        <div class="col-xl-3"><a href="Student_Createorder.html" class="nav-link">Your Order</a></div>
                                     </div>
                                 </div>
                             </div>
@@ -318,65 +303,48 @@
                         <div class="col-lg-6 col-xl-7 mb-4">
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h4 class="text-primary m-0 font-weight-bold">Order Details</h4><span
-                                        style="font-size: 15px;">Please fill the details below</span>
+                                    <h4 class="text-primary m-0 font-weight-bold">Order Details</h4><span style="font-size: 15px;">Please fill the details below</span>
                                 </div>
                                 <div class="card-body">
                                     <h5>Personal Details</h5>
-                                    <form id="orderForm">
+                                    <form id="orderdetails">
                                         <div>
                                             <div class="row">
                                                 <div class="col" style="margin-top: 10px;">
                                                     <div class="row">
-                                                        <div class="col"><span style="margin-right: 10px;">First
-                                                                Name</span></div>
-                                                    </div><input class="form-control form-control" type="text"
-                                                        id="first_name" placeholder="Given name" required=""
-                                                        style="margin-top: 10px;">
+                                                        <div class="col"><span style="margin-right: 10px;">First Name</span></div>
+                                                    </div><input class="form-control form-control" type="text" id="first_name" placeholder="Given name" required="" style="margin-top: 10px;">
                                                 </div>
                                                 <div class="col" style="margin-top: 10px;">
                                                     <div class="row">
-                                                        <div class="col"><span style="margin-right: 10px;">Last
-                                                                Name</span></div>
-                                                    </div><input class="form-control form-control" type="text"
-                                                        id="last_name" placeholder="Family name" required=""
-                                                        style="margin-top: 10px;">
+                                                        <div class="col"><span style="margin-right: 10px;">Last Name</span></div>
+                                                    </div><input class="form-control form-control" type="text" id="last_name" placeholder="Family name" required="" style="margin-top: 10px;">
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col" style="margin-top: 10px;">
                                                     <div class="row">
-                                                        <div class="col"><span
-                                                                style="margin-right: 10px;">Country</span></div>
-                                                    </div><input class="form-control form-control" type="text"
-                                                        id="country" name="name" placeholder="Malaysia" required=""
-                                                        style="margin-top: 10px;">
+                                                        <div class="col"><span style="margin-right: 10px;">Country</span></div>
+                                                    </div><input class="form-control form-control" type="text" id="country" name="name" placeholder="Malaysia" required="" style="margin-top: 10px;">
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-xl-6">
                                                     <div class="row">
-                                                        <div class="col"><span style="margin-right: 10px;">Quantity
-                                                                Registration</span></div>
-                                                    </div><input class="form-control form-control" type="number"
-                                                        id="quantity_input" style="margin-top: 10px;" min="1" value="1">
+                                                        <div class="col"><span style="margin-right: 10px;">Quantity Registration</span></div>
+                                                    </div><input class="form-control form-control" type="number" id="quantity_input" style="margin-top: 10px;" min="1" value="1">
                                                 </div>
                                                 <div class="col-xl-6 offset-xl-0">
                                                     <div class="row">
-                                                        <div class="col"><span style="margin-right: 10px;">Order
-                                                                Time</span></div>
-                                                    </div><input class="form-control form-control" id="order_time"
-                                                        type="date" style="margin-top: 10px;">
+                                                        <div class="col"><span style="margin-right: 10px;">Order Time</span></div>
+                                                    </div><input class="form-control form-control" id="order_time" type="date" style="margin-top: 10px;">
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col" style="margin-top: 10px;">
                                                     <div class="row">
-                                                        <div class="col"><span
-                                                                style="margin-right: 10px;">Faculty</span></div>
-                                                    </div><input class="form-control form-control" type="text"
-                                                        id="faculty_name" name="name" placeholder="Faculty of Computing"
-                                                        required="" style="margin-top: 10px;">
+                                                        <div class="col"><span style="margin-right: 10px;">Faculty</span></div>
+                                                    </div><input class="form-control form-control" type="text" id="faculty_name" name="name" placeholder="Faculty of Computing" required="" style="margin-top: 10px;">
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -384,26 +352,15 @@
                                                     <div class="row">
                                                         <div class="col" style="margin-top: 10px;">
                                                             <div class="row">
-                                                                <div class="col"><span style="margin-right: 10px;">Phone
-                                                                        Number</span></div>
-                                                            </div><input class="form-control form-control" type="text"
-                                                                id="phone_number" name="name" placeholder="0123456789"
-                                                                required="" style="margin-top: 10px;">
+                                                                <div class="col"><span style="margin-right: 10px;">Phone Number</span></div>
+                                                            </div><input class="form-control form-control" type="text" id="phone_number" name="name" placeholder="0123456789" required="" style="margin-top: 10px;">
                                                         </div>
                                                         <div class="col" style="margin-top: 10px;">
                                                             <div class="row">
-                                                                <div class="col"><span
-                                                                        style="margin-right: 10px;">Assistant
-                                                                        Gender</span></div>
+                                                                <div class="col"><span style="margin-right: 10px;">Assistant Gender</span></div>
                                                             </div>
-                                                            <div class="dropdown"><button
-                                                                    class="btn btn-primary dropdown-toggle form-control"
-                                                                    aria-expanded="false" data-bs-toggle="dropdown"
-                                                                    type="button"
-                                                                    style="background: var(--bs-body-bg);color: var(--bs-body-color);margin-top: 10px;border-color: #dee2e6;">Gender</button>
-                                                                <div class="dropdown-menu"><span
-                                                                        class="dropdown-item-text">Male</span><span
-                                                                        class="dropdown-item-text">Female</span></div>
+                                                            <div class="dropdown"><button class="btn btn-primary dropdown-toggle form-control" aria-expanded="false" data-bs-toggle="dropdown" type="button" style="background: var(--bs-body-bg);color: var(--bs-body-color);margin-top: 10px;border-color: #dee2e6;">Gender</button>
+                                                                <div class="dropdown-menu"><span class="dropdown-item-text">Male</span><span class="dropdown-item-text">Female</span></div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -414,11 +371,8 @@
                                     <div class="row">
                                         <div class="col-xl-12" style="margin-top: 10px;">
                                             <div class="row">
-                                                <div class="col"><span style="margin-right: 10px;">Special
-                                                        Request</span></div>
-                                            </div><input type="text" class="form-control" name="name"
-                                                placeholder="comment" required=""
-                                                style="margin-top: 10px;height: 200px;">
+                                                <div class="col"><span style="margin-right: 10px;">Special Request</span></div>
+                                            </div><input type="text" class="form-control" name="name" placeholder="comment" required="" style="margin-top: 10px;height: 200px;">
                                         </div>
                                     </div>
                                 </div>
@@ -456,14 +410,11 @@
                                             <tbody>
                                                 <tr>
                                                     <td style="border-bottom-color: var(--bs-body-bg);">Sub Total</td>
-                                                    <td
-                                                        style="border-bottom-color: var(--bs-table-bg);text-align: center;">
-                                                        <span>RM&nbsp;</span><span id="subtotal_price">0</span></td>
+                                                    <td style="border-bottom-color: var(--bs-table-bg);text-align: center;"><span>RM&nbsp;</span><span id="subtotal_price">0</span></td>
                                                 </tr>
                                                 <tr>
                                                     <td><strong>Total</strong></td>
-                                                    <td style="text-align: center;font-weight: bold;">
-                                                        <span>RM&nbsp;</span><span id="total_price">0</span></td>
+                                                    <td style="text-align: center;font-weight: bold;"><span>RM&nbsp;</span><span id="total_price">0</span></td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -472,14 +423,7 @@
                             </div>
                             <div class="row" style="text-align: center;">
                                 <div class="col">
-                                    <div class="btn-group" role="group" style="text-align: center;">
-                                        <button class="btn btn-primary" id="submit_button" type="button"
-                                            style="border-top-right-radius: 6px;border-bottom-right-radius: 6px;background: #3bacfd;"><span
-                                                style="color: rgb(33, 37, 41);">Confirm</span></button>
-                                        <button class="btn btn-primary" id="cancel" type="button"
-                                            style="margin-left: 28px;border-top-left-radius: 6px;border-bottom-left-radius: 6px;background: #f38181;width: 85px;"><span
-                                                style="color: rgb(33, 37, 41);">Cancel</span></button>
-                                    </div>
+                                    <div class="btn-group" role="group" style="text-align: center;"><button class="btn btn-primary" id="confirm_button" type="button" style="border-top-right-radius: 6px;border-bottom-right-radius: 6px;background: #3bacfd;"><span style="color: rgb(33, 37, 41);">Confirm</span></button><button class="btn btn-primary" type="button" style="margin-left: 28px;border-top-left-radius: 6px;border-bottom-left-radius: 6px;background: #f38181;width: 85px;"><span style="color: rgb(33, 37, 41);">Cancel</span></button></div>
                                 </div>
                             </div>
                         </div>
@@ -495,19 +439,14 @@
             </footer>
         </div>
     </div><a class="scroll-to-top rounded" href="#page-top"><i class="fas fa-angle-up"></i></a>
-    <div class="modal fade" role="dialog" tabindex="-1" id="logoutModal" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" role="dialog" tabindex="-1" id="logoutModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5><button aria-label="Close"
-                        class="close" data-dismiss="modal" type="button"><span aria-hidden="true">×</span></button>
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5><button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">×</span></button>
                 </div>
-                <div class="modal-body"><span>Select "Logout" below if you are ready to end your current session.</span>
-                </div>
-                <div class="modal-footer"><button class="btn btn-secondary" data-dismiss="modal"
-                        type="button">Cancel</button><a class="btn btn-primary" role="button"
-                        href="login.html">Logout</a></div>
+                <div class="modal-body"><span>Select "Logout" below if you are ready to end your current session.</span></div>
+                <div class="modal-footer"><button class="btn btn-secondary" data-dismiss="modal" type="button">Cancel</button><a class="btn btn-primary" role="button" href="login.html">Logout</a></div>
             </div>
         </div>
     </div>
@@ -516,79 +455,21 @@
     <script src="assets/js/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/vendor/jquery-easing/jquery.easing.min.js"></script>
     <script src="assets/js/js/sb-admin-2.min.js"></script>
+    <script src="assets/js/vendor/chart.js/Chart.min.js"></script>
+    <script src="assets/js/js/chart-area-demo.js"></script>
+    <script src="assets/js/js/chart-pie-demo.js"></script>
     <script src="assets/js/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"></script>
     <script src="assets/js/js/datatables-simple-demo.js"></script>
+    <script src="assets/js/js/Student_Document.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/js/Navigationbar.js"></script>
-    
-    <script type="module" src="assets/js/js/Student_createorderform.js">
-        //can copy this config for others js
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-app.js";
-        import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-database.js";
-
-        const firebaseConfig = {
-            apiKey: "AIzaSyAifkBmMPwQLTqRu8nYFU1dqej2dlX33Bk",
-            authDomain: "usaas-4230f.firebaseapp.com",
-            databaseURL: "https://usaas-4230f-default-rtdb.asia-southeast1.firebasedatabase.app",
-            projectId: "usaas-4230f",
-            storageBucket: "usaas-4230f.firebasestorage.app",
-            messagingSenderId: "1057123876526",
-            appId: "1:1057123876526:web:fb4c3c0e6b2407295f773f",
-            measurementId: "G-NSW66N1VGP"
-        };
-
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const db = getDatabase(app);
-
-        //copy until here
-
-        let FnameInp = document.getElementById('first_name');
-        let LnameInp = document.getElementById('last_name');
-        let faculty = document.getElementById('faculty_name');
-        let PhoneInp = document.getElementById('phone_number');
-
-        let submit_button = document.getElementById('submit_button');
-
-        //Data send to firebase
-        function AddData() {
-            const studentId = PhoneInp.value; // Using phone as the unique key
-
-            set(ref(db, 'StudentSet/' + studentId), {
-                nameofstudent: { firstname: FnameInp.value, lastname: LnameInp.value },
-                faculty: { facultyname: faculty.value },
-                phone: studentId,
-                status: "Pending",
-                assistant: { name: "", phone: "" }
-
-            })
-                .then(() => {
-                    alert("Data Added Successfully");
-                })
-                .catch((error) => {
-                    alert("Unsuccessful");
-                    console.log(error);
-                })
-        }
-
-        submit_button.addEventListener('click', AddData);
-
-
-        //quantity retrived by student input
-        document.addEventListener('DOMContentLoaded', function () {
-            document.getElementById('quantity_input').addEventListener('input', function () {
-                const quantity = document.getElementById('quantity_input').value;
-                const price = 100 * quantity;
-
-                document.getElementById('total_quantity').textContent = quantity;
-                document.getElementById('subtotal_price').textContent = price;
-                document.getElementById('total_price').textContent = price;
-
-            });
-        });
-    </script>
-
+    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    <script src="assets/js/js/Assistant_orderlist.js"></script>
+    <script src="assets/js/js/Student_createorderform.js"></script>
+    <script src="assets/js/js/Student&amp;Ass_Auth.js"></script>
+    <script src="assets/js/js/Student&amp;Ass_Register.js"></script>
 </body>
 
 </html>

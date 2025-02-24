@@ -1,46 +1,4 @@
-//can copy this config for others js
-
-
-      // Display Orders in Assistant Page
-      function displayAssistantOrders() {
-        const ordersRef = database.ref("orders");
-        ordersRef.on("value", (snapshot) => {
-          const tableBody = document.getElementById("assistantOrders");
-          tableBody.innerHTML = "";
-          snapshot.forEach((childSnapshot) => {
-            const order = childSnapshot.val();
-            const orderId = childSnapshot.key;
-            if (order.status === "Pending") {
-              const row = document.createElement("tr");
-              row.innerHTML = `
-                  <td>${order.studentName}</td>
-                  <td>${order.orderTime}</td>
-                  <td>${order.phoneNumber}</td>
-                  <td>${order.status}</td>
-                  <td><button onclick="acceptOrder('${orderId}')">Accept</button></td>
-              `;
-              tableBody.appendChild(row);
-            }
-          });
-        });
-      }
-
-      // Accept Order Function
-      function acceptOrder(orderId) {
-        const orderRef = database.ref("orders/" + orderId);
-        orderRef.update({ status: "Accepted" }).then(() => {
-          alert("Order Accepted!");
-        });
-      }
-
-      // Load Orders on Page Load
-      document.addEventListener("DOMContentLoaded", displayAssistantOrders);
-
-
-      loadOrders(); // Load when page opens
-
-
-/** Data send to Assistant page original if got anything undo until here
+// Data send to Assistant page
 document.addEventListener('DOMContentLoaded', function () {
 displayOrders();
 });
@@ -77,4 +35,3 @@ function acceptOrder(button) {
     const row = button.parentElement.parentElement;
     row.cells[2].textContent = 'Accepted';
   }
-**/

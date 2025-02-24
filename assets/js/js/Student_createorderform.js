@@ -1,13 +1,22 @@
+//quantity retrived by student input
+document.addEventListener('DOMContentLoaded', function () {
+  document.getElementById('quantity_input').addEventListener('input', function () {
+    const quantity = document.getElementById('quantity_input').value;
+    const price = 100 * quantity;
+
+    document.getElementById('total_quantity').textContent = quantity;
+    document.getElementById('subtotal_price').textContent = price;
+    document.getElementById('total_price').textContent = price;
+
+  });
+});
 
 
 
-//Data display in Assistant page
 
-
-
-
-/** original start from here below, undo until here 
 //delete button clear the data
+
+
 
 
 /*
@@ -26,7 +35,7 @@ function acceptOrder(index) {
   localStorage.setItem('studentorders', JSON.stringify(studentorders));
   displayOrders(); // Refresh the assistant page
 }
-
+*/
 
 
 // Data send to student page
@@ -79,4 +88,3 @@ document.getElementById('confirm_button').addEventListener('click', function () 
   alert('Order submitted successfully!');
 });
 
-**/

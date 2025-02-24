@@ -59,7 +59,7 @@
 
 
     <li class="nav-item">
-        <a class="nav-link collapsed" href="Student_Document.html" data-target="#collapseUtilities" aria-expanded="true"
+        <a class="nav-link collapsed" href="Student-Document.html" data-target="#collapseUtilities" aria-expanded="true"
             aria-controls="collapseUtilities">
             <i class="fas fa-fw fa-table"></i>
             <span>Document</span>
@@ -67,7 +67,7 @@
     </li>
 
     <li class="nav-item">
-        <a class="nav-link collapsed" href="Student_Wallet.html" data-target="#collapseWallet" aria-expanded="true"
+        <a class="nav-link collapsed" href="Student-Wallet.html" data-target="#collapseWallet" aria-expanded="true"
             aria-controls="collapseWallet">
             <i class="fas fa-fw fa-folder"></i>
             <span>Wallet</span>
@@ -285,19 +285,95 @@
                 </nav>
                 <div class="container-fluid">
                     <div class="d-sm-flex justify-content-between align-items-center mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Document</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Profile Settings</h1>
                     </div>
-                    <div class="row" style="margin-right: 0;">
-                        <div class="col">
+                    <div class="row">
+                        <div class="col-xl-5">
                             <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="text-primary m-0 font-weight-bold"><span style="color: var(--bs-heading-color); background-color: rgb(248, 249, 252);">Personal Information</span></h6>
+                                </div>
                                 <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-auto"><i class="fas fa-bars fa-2x text-gray-300"></i></div>
-                                        <div class="col mr-2" style="margin-left: 15px;">
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><span><strong>Upload Your Supporting Documents</strong></span></div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800" style="margin-top: 5px;"><span style="font-size: 15px;"><span style="font-weight: normal !important;">Please uplad PDF of documents Below</span></span></div>
+                                    <div class="text-center">
+                                        <div class="row">
+                                            <div class="col"><img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 15rem;height: 120px;" src="assets/img/undraw_profile_1.svg" alt="..." width="352" height="97"></div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xl-12 mr-2" style="margin-top: 16px;">
+                                                <div class="text-uppercase text-warning text-xs font-weight-bold mb-1"></div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800"><span style="font-size: 16px;"><span style="font-weight: normal !important; color: rgb(146, 149, 167);">JPG or PNG no larger than 5 MB</span></span></div>
+                                            </div>
                                         </div>
                                     </div>
+                                    <div style="text-align: center;margin-top: 20px;"><input type="file"><input class="btn btn-primary" type="submit" name="testing"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="text-primary m-0 font-weight-bold"><span style="color: var(--bs-heading-color); background-color: rgb(248, 249, 252);">Personal Information</span></h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="text-center"></div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="row">
+                                                <div class="col"><span style="margin-right: 10px;">First Name</span></div>
+                                            </div><input type="text" name="name" placeholder="Your Name" required="" class="form-control">
+                                        </div>
+                                        <div class="col-xl-6">
+                                            <div class="row">
+                                                <div class="col"><span style="margin-right: 10px;">Last Name</span></div>
+                                            </div><input type="text" name="name" placeholder="Your Name" required="" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="row">
+                                                        <div class="col"><span style="margin-right: 10px;">Phone Number</span></div>
+                                                    </div><input type="text" name="name" placeholder="Your Name" required="" class="form-control">
+                                                </div>
+                                                <div class="col-xl-6">
+                                                    <div class="row">
+                                                        <div class="col"><span style="margin-right: 10px;">Date of Birth</span></div>
+                                                    </div><input type="text" name="name" placeholder="Your Name" required="" class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <div class="row">
+                                                                <div class="col"><span style="margin-right: 10px;">Phone Number</span></div>
+                                                            </div><input type="text" name="name" placeholder="Your Name" required="" class="form-control">
+                                                        </div>
+                                                        <div class="col-xl-6">
+                                                            <div class="row">
+                                                                <div class="col"><span style="margin-right: 10px;">Email Address</span></div>
+                                                            </div><input type="text" name="name" placeholder="Your Name" required="" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xl-12">
+                                            <div class="row">
+                                                <div class="col"><span style="margin-right: 10px;">Country&nbsp;</span></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col"><input type="text" class="form-control" name="name" placeholder="Your Country" required="" style="margin-top: 10px;"></div>
+                                            </div>
+                                        </div>
+                                    </div><button class="btn btn-primary" type="submit">Save</button>
                                 </div>
                             </div>
                         </div>
@@ -306,61 +382,24 @@
                         <div class="col-lg-6 col-xl-12 mb-4">
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="text-primary m-0 font-weight-bold">Required Documents</h6>
+                                    <h6 class="text-primary m-0 font-weight-bold">Change Password</h6>
                                 </div>
-                                <div class="card-body">
-                                    <h4 class="small font-weight-bold">Passport&nbsp;<span class="float-right">Completed</span></h4>
-                                    <div class="progress mb-4">
-                                        <div class="bg-success progress-bar" role="progressbar" style="width:100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <h4 class="small font-weight-bold">E-arrival<span class="float-right">Pending</span></h4>
-                                    <div class="progress mb-4">
-                                        <div class="bg-warning progress-bar" role="progressbar" style="width:100%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <h4 class="small font-weight-bold">Visa<span class="float-right">Pending</span></h4>
-                                    <div class="progress mb-4">
-                                        <div class="progress-bar bg-warning" role="progressbar" style="width:100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <div class="card shadow mb-4">
-                                        <div class="card-header py-3">
-                                            <h6 class="text-primary m-0 font-weight-bold">Upload Documents here</h6>
-                                        </div>
-                                        <div class="card-body">
+                                <div class="card-body"><button class="btn btn-primary" type="button" style="background: #f38181;border-color: var(--bs-body-bg);"><i class="fas fa-key fa-sm"></i></button><span>Ensure your password contain at least 1 Uppercase</span>
+                                    <div class="row">
+                                        <div class="col-xl-6">
                                             <div class="row">
-                                                <div class="col-xl-6">
-                                                    <div style="margin-top: 5px;">
-                                                        <h6 style="text-align: center;">Passport</h6>
+                                                <div class="col"><span style="margin-right: 10px;">Current Password</span></div>
+                                            </div><input type="password" name="name" placeholder="Your Name" required="" class="form-control">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="row">
+                                                        <div class="col"><span style="margin-right: 10px;">New Password</span></div>
                                                     </div>
                                                 </div>
-                                                <div class="col">
-                                                    <div style="text-align: center;"><input type="file" id="FileInput" class="form-control"></div>
-                                                </div>
-                                            </div>
-                                            <div class="row" style="margin-top: 10px;">
-                                                <div class="col-xl-6">
-                                                    <div style="margin-top: 5px;">
-                                                        <h6 style="text-align: center;">E-arrival</h6>
-                                                    </div>
-                                                </div>
-                                                <div class="col">
-                                                    <div style="text-align: center;"><input type="file" id="FileInput2" class="form-control"></div>
-                                                </div>
-                                            </div>
-                                            <div class="row" style="margin-top: 10px;">
-                                                <div class="col-xl-6">
-                                                    <div style="margin-top: 5px;">
-                                                        <h6 style="text-align: center;">Visa</h6>
-                                                    </div>
-                                                </div>
-                                                <div class="col">
-                                                    <div style="text-align: center;"><input type="file" id="FileInput3" class="form-control"></div>
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-6 offset-xl-6" style="text-align: left;margin-top: 10px;"><button class="btn btn-primary" id="SubmitButton" type="button">Save</button></div>
+                                            </div><input type="password" name="name" placeholder="Your Name" required="" class="form-control">
+                                            <div class="row">
+                                                <div class="col"><span style="margin-right: 10px;">Confirm Password</span><input type="password" name="name" placeholder="Your Name" required="" class="form-control"></div>
+                                            </div><button class="btn btn-primary" type="submit">save</button>
                                         </div>
                                     </div>
                                 </div>
