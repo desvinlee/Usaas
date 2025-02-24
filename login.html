@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register & Login</title>
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amiko&amp;display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
+  <script type="module" src="firebaseauth.js"></script>
+</head>
+
+<body>
+
+  <body style="background: url(&quot;assets/img/Homepage/background.jpg&quot;) center;">
+
+    <div class="container" id="signup" style="display:none;">
+      <section class="py-4 py-xl-5">
+        <div class="container" style="height:633.422px;">
+          <div class="bg-dark border-0 border-dark border rounded overflow-hidden">
+            <div class="row g-0"
+              style="height: 623.422px;background: #ffffff;font-family: Amiko, sans-serif;font-weight: bold;">
+              <div class="col-md-6" style="height:554.422px;background:var(--bs-body-bg);">
+                <div class="text-white p-4 p-md-5">
+                  <h2 class="fw-bold text-white mb-3"><span style="color:rgb(0, 0, 0);">Create An Account</span></h2>
+                  <p class="mb-4" style="color: rgb(33,37,41);">Let’s get started with your new account</p>
+                </div>
+
+                <form method="post" action="">
+                  <div style="margin-left:50px;">
+                    <div id="signUpMessage" class="messageDiv" style="display:none;"></div>
+
+                    <div class="row">
+                      <div class="col">
+                        <h5>Name</h5>
+                        <input type="text" id="fName" class="form-control" placeholder="Your_username"
+                          style="width:300px;">
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col" style="margin-top:20px;">
+                        <h5>Email Address</h5>
+                        <input type="email" id="rEmail" class="form-control" placeholder="usaas@graduate.utm.my"
+                          style="width:300px;">
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col" style="margin-top:20px;">
+                        <h5>Password</h5>
+                        <input class="form-control" type="password" id="rPassword"
+                          placeholder="“8+character” + “1 Upper case”" style="width:300px;">
+                      </div>
+                    </div>
+
+                    <button class="btn btn-primary" id="submitSignUp"
+                      style="margin-top:20px;width:189px;box-shadow:5px 5px 2px rgb(113,112,112);">Create
+                      Account</button>
+
+                  </div>
+                </form>
+
+                <div style="margin-left:50px;">
+                  <p class="text-start" style="padding-top:45px;">Already have an account ?&nbsp;<button
+                      class="btn btn-primary" id="signInButton">LogIn</button></p>
+                </div>
+
+
+              </div>
+              <div class="col-md-6 order-first order-md-last" style="min-height:250px;"><img
+                  class="w-100 h-100 fit-cover" src="assets/img/Homepage/login&signup.jpg" style="padding-top:0px;">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <div class="container" id="signIn">
+      <section class="py-4 py-xl-5">
+        <div class="container" style="height:633.422px;">
+          <div class="bg-dark border-0 border-dark border rounded overflow-hidden">
+            <div class="row g-0"
+              style="height: 623.422px;background: #ffffff;font-family: Amiko, sans-serif;font-weight: bold;">
+              <div class="col-md-6" style="height:554.422px;background:var(--bs-body-bg);">
+                <div class="text-white p-4 p-md-5">
+                  <h2 class="fw-bold text-white mb-3"><span style="color:rgb(0, 0, 0);">Login Your Account</span></h2>
+                  <p class="mb-4" style="color: rgb(0,0,0);">Let’s get started with your account</p>
+                </div>
+
+                <form method="post" action="">
+                  <div style="margin-left:50px;">
+                    <div id="signInMessage" class="messageDiv" style="display:none;"></div>
+
+                    <div class="row">
+                      <div class="col">
+                        <h5>Email Address</h5>
+                        <input type="email" id="email" class="form-control" placeholder="Email" style="width:300px;">
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col">
+                        <h5>Password</h5>
+                        <input type="password" id="password" class="form-control" placeholder="Password" required
+                          style="width:300px;">
+                      </div>
+                    </div>
+                    <p class="recover">
+                      <a href="homepage.html">Recover Password</a>
+                    </p>
+                    <button class="btn btn-primary" id="submitSignIn"
+                      style="margin-top:20px;width:189px;box-shadow:5px 5px 2px rgb(113,112,112);">Sign In</button>
+                  </div>
+
+                </form>
+
+                <div style="margin-left:50px;">
+                  <p class="text-start" id="signUpButton" style="padding-top:45px;">Don't have an account ?&nbsp;<button
+                      class="btn btn-primary" id="signUpButton">Sign Up</button></p>
+                </div>
+
+
+              </div>
+              <div class="col-md-6 order-first order-md-last" style="min-height:250px;"><img
+                  class="w-100 h-100 fit-cover" src="assets/img/Homepage/login&signup.jpg" style="padding-top:0px;">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </body>
+  <script>
+    const signUpButton = document.getElementById('signUpButton');
+    const signInButton = document.getElementById('signInButton');
+    const signInForm = document.getElementById('signIn');
+    const signUpForm = document.getElementById('signup');
+
+    signUpButton.addEventListener('click', function () {
+      signInForm.style.display = "none";
+      signUpForm.style.display = "block";
+    })
+    signInButton.addEventListener('click', function () {
+      signInForm.style.display = "block";
+      signUpForm.style.display = "none";
+    })
+  </script>
+</body>
+
+</html>
