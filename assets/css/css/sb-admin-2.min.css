@@ -6236,13 +6236,16 @@ a.close.disabled {
 }
 
 .modal-backdrop {
+  --bs-backdrop-zindex: 1050;
+  --bs-backdrop-bg: #555555; /* Darker gray */
+  --bs-backdrop-opacity: 0.7; /* Less transparent */
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 1040;
+  z-index: var(--bs-backdrop-zindex);
   width: 100vw;
   height: 100vh;
-  background-color: #000;
+  background-color: var(--bs-backdrop-bg);
 }
 
 .modal-backdrop.fade {
@@ -6250,7 +6253,17 @@ a.close.disabled {
 }
 
 .modal-backdrop.show {
-  opacity: .5;
+  opacity: .8;
+}
+
+#deleteConfirmationModal + .modal-backdrop.fade.show,
+#deleteConfirmationModal ~ .modal-backdrop.fade.show {
+    background-color: rgba(0, 0, 0, 0.5) !important; /* Standard semi-transparent black */
+}
+
+#confirmRetrieveModal + .modal-backdrop.fade.show,
+#confirmRetrieveModal ~ .modal-backdrop.fade.show {
+    background-color: rgba(0, 0, 0, 0.5) !important; /* Standard semi-transparent black */
 }
 
 .modal-header {
@@ -6885,7 +6898,7 @@ a.close.disabled {
 }
 
 .bg-primary {
-  background-color: #4e73df!important;
+  background-color: #34495e !important;
 }
 
 a.bg-primary:focus, a.bg-primary:hover, button.bg-primary:focus, button.bg-primary:hover {
@@ -6893,7 +6906,7 @@ a.bg-primary:focus, a.bg-primary:hover, button.bg-primary:focus, button.bg-prima
 }
 
 .bg-secondary {
-  background-color: #858796!important;
+  background-color: #1e372b !important;
 }
 
 a.bg-secondary:focus, a.bg-secondary:hover, button.bg-secondary:focus, button.bg-secondary:hover {
@@ -11452,9 +11465,11 @@ a:focus {
 
 .bg-gradient-primary {
   background-color: #246CBF;
-  background-image: linear-gradient(180deg,#4e73df 10%, #212b36 100%);
+  background-image: linear-gradient(270deg, #1c7ded 80%, #5f93cb 10%, );
   background-size: cover;
 }
+
+
 
 .bg-gradient-secondary {
   background-color: #858796;
@@ -11997,6 +12012,11 @@ a:focus {
   display: none;
 }
 
+.sidebar.bg-gradient-secondary {
+  background-color: #34495e !important; /* A slightly lighter dark blue/gray - Dim Gray */
+  background-image: none !important;
+}
+
 .sidebar .sidebar-brand {
   height: 4.375rem;
   text-decoration: none;
@@ -12026,6 +12046,12 @@ a:focus {
   padding: 0 1rem;
   font-weight: 800;
   font-size: .65rem;
+}
+
+.sidebar-heading > img {
+  width: 80px;
+  height: 70px;
+  /* You can add other styles here if needed, like margin, etc. */
 }
 
 .sidebar .sidebar-card {
@@ -12766,3 +12792,12 @@ body.sidebar-toggled footer.sticky-footer {
   width: 100%;
 }
 
+@import url('https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i');
+@import url('https://fonts.googleapis.com/css2?family=Amiko&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400,700');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400,100,300,700');
+@import url('https://use.fontawesome.com/releases/v5.12.0/css/all.css');
+
+@import url('https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css');
+@import url('https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css');

@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html data-bs-theme="light" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Assistant Wallet</title>
+
+    <link rel="stylesheet" href="assets/css/css/sb-admin-2.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
+</head>
+
+<body id="page-top">
+    <div id="wrapper">
+
+        <!--sidebar copy start from here the whole ul class-->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <hr class="sidebar-divider my-0">
+
+            <div class="sidebar-heading">
+                <img width="100" height="80" src="assets/img/Homepage/usaas_logo.svg" />
+            </div>
+
+            <li class="nav-item active">
+                <a class="nav-link" href="Assistant_Dashboard.html">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Assistant Dashboard</span></a>
+            </li>
+
+            <hr class="sidebar-divider">
+
+
+            <div class="sidebar-heading">
+                Interface
+            </div>
+
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="Assistant_Orderlist.html" data-target="#collapseTwo" aria-expanded="true"
+                    aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Order List</span>
+                </a>
+            </li>
+
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="Assistant_Document.html" data-target="#collapseUtilities"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Document</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="Assistant_Wallet.html" data-target="#collapseWallet"
+                    aria-expanded="true" aria-controls="collapseWallet">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Wallet</span>
+                </a>
+            </li>
+
+
+            <hr class="sidebar-divider">
+
+
+            <div class="sidebar-heading">
+                Settings
+            </div>
+
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="Assistant_Settings.html" data-toggle="collapse"
+                    data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+                    <i class="fas fa-fw fa-wrench "></i>
+                    <span>Settings</span>
+                </a>
+                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Profile: </h6>
+                        <a class="collapse-item" href="Assistant_Settings.html">Profile Settings</a>
+                        <a class="collapse-item" href="Assistant_Settings.html">Forgot Password</a>
+                    </div>
+                </div>
+            </li>
+
+
+            <li class="nav-item">
+                <a class="nav-link" href="404.html">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Help & support</span></a>
+            </li>
+
+
+            <hr class="sidebar-divider d-none d-md-block">
+
+
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+
+
+        </ul>
+
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content">
+
+                <!-- Topbar copy start from here the whole nav class-->
+                <nav class="bg-white shadow navbar navbar-expand navbar-light topbar mb-4 static-top">
+                    <div><button class="btn btn-link d-md-none rounded-circle mr-3" id="sidebarToggleTop"><i
+                                class="fas fa-bars"></i></button></div>
+                    <form
+                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                        <div class="input-group"><input class="bg-light border-0 form-control form-control small"
+                                type="text" aria-describedby="basic-addon2" aria-label="Search"
+                                placeholder="Search for...">
+                            <div class="input-group-text input-group-append"><button class="btn btn-primary"
+                                    type="button"><i class="fas fa-search fa-sm"></i></button></div>
+                        </div>
+                    </form>
+                    <ul class="navbar-nav ml-auto">
+
+
+                        <li class="nav-item dropdown no-arrow d-sm-none">
+                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-search fa-fw"></i>
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                                aria-labelledby="searchDropdown">
+                                <form class="form-inline mr-auto w-100 navbar-search">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control bg-light border-0 small"
+                                            placeholder="Search for..." aria-label="Search"
+                                            aria-describedby="basic-addon2">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary" type="button">
+                                                <i class="fas fa-search fa-sm"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </li>
+
+
+
+                        <li class="nav-item dropdown no-arrow mx-1">
+                            <a class="nav-link dropdown-toggle" id="messagesDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <div class="sidebar-heading">Message </div>
+                                <i class="fas fa-envelope fa-fw"></i>
+
+                            </a>
+                        </li>
+
+                        <div class="topbar-divider d-none d-sm-block"></div>
+
+
+                        <!--Edit username Here-->
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <img class="img-profile rounded-circle" src="assets/img/undraw_profile_2.svg">
+                                <strong><span id="loggedUserFName"
+                                        class="mr-2 d-none d-lg-inline text-gray-600 small"></span></strong>
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown">
+                                <a class="dropdown-item" id="logout" data-toggle="modal" data-target="#logoutModal">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Logout
+                                </a>
+                            </div>
+                        </li>
+
+                    </ul>
+                </nav>
+
+                <div class="container-fluid">
+                    <div class="d-sm-flex justify-content-between align-items-center mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">Wallet</h1>
+                    </div>
+                    <div class="row" style="margin-right: 0;">
+                        <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-8 mb-4">
+                            <div class="card shadow border-left-primary h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row align-items-center no-gutters">
+                                        <div class="col mr-2" style="margin-left: 15px;">
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="wallet_balance">
+                                                <span>RM 0.0</span>
+                                            </div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><span
+                                                    style="font-size: 15px;"><span
+                                                        style="font-weight: normal !important;">View balance
+                                                        details</span></span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div>
+                                <div class="row" style="margin-top: initial;margin-left: 40px;">
+                                    <div class="col-xl-12"><button class="btn btn-primary" type="button"
+                                            style="width: 150px;background: #5ab382;">Withdrawal</button></div>
+                                </div>
+                                <div class="row" style="margin-top: 15px;margin-left: 40px;">
+                                    <div class="col"><button class="btn btn-primary" type="button"
+                                            onclick="window.location.href='Student_Deposit.html'"
+                                            style="width: 150px;background: #f38181;">Deposit</button></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="card shadow mb-4">
+                                        <div class="card-header py-3">
+                                            <h6 class="text-primary m-0 font-weight-bold">Transaction</h6>
+                                        </div>
+                                        <div class="card-body">
+                                            <table id="datatablesSimple">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Start date</th>
+                                                        <th>Assistant</th>
+                                                        <th>Type</th>
+                                                        <th>Amount</th>
+                                                    </tr>
+                                                </thead>
+                                                <tfoot>
+                                                    <tr>
+                                                        <th>Start date</th>
+                                                        <th>Assistant</th>
+                                                        <th>Type</th>
+                                                        <th>Amount</th>
+                                                    </tr>
+                                                </tfoot>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>2024/04/25</td>
+                                                        <td>Tiger Nixon</td>
+                                                        <td>Debit</td>
+                                                        <td>RM 100</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>2011/07/25</td>
+                                                        <td>Garrett Winters</td>
+                                                        <td>Debit</td>
+                                                        <td>RM 100</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <footer class="bg-white sticky-footer">
+                <div class="container-fluid px-4">
+                    <div class="text-left my-auto copyright justify-content-between small">
+                        <span style="font-family: Amiko, sans-serif;">Copyright © Desvin Lee 2024</span>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div><a class="scroll-to-top rounded" href="#page-top"><i class="fas fa-angle-up"></i></a>
+    <div class="modal fade" role="dialog" tabindex="-1" id="logoutModal" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5><button aria-label="Close"
+                        class="close" data-dismiss="modal" type="button"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="modal-body"><span>Select "Logout" below if you are ready to end your current session.</span>
+                </div>
+                <div class="modal-footer"><button class="btn btn-secondary" data-dismiss="modal"
+                        type="button">Cancel</button><a class="btn btn-primary" role="button"
+                        href="login.html">Logout</a></div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/vendor/jquery/jquery.min.js"></script>
+    <script src="assets/js/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="assets/js/js/sb-admin-2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"></script>
+    <script src="assets/js/js/datatables-simple-demo.js"></script>
+    <script src="assets/js/js/Navigationbar.js"></script>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
+        import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore.js";
+        import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-database.js";
+        import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
+
+        // ✅ Firebase Config
+        const firebaseConfig = {
+            apiKey: "AIzaSyAifkBmMPwQLTqRu8nYFU1dqej2dlX33Bk",
+            authDomain: "usaas-4230f.firebaseapp.com",
+            databaseURL: "https://usaas-4230f-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "usaas-4230f",
+            storageBucket: "usaas-4230f.firebasestorage.app",
+            messagingSenderId: "1057123876526",
+            appId: "1:1057123876526:web:fb4c3c0e6b2407295f773f",
+            measurementId: "G-NSW66N1VGP"
+        };
+
+        // ✅ Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const rtdb = getDatabase(app);
+        const auth = getAuth(app);
+
+        // ✅ Load wallet balance from Realtime Database
+        function loadWalletBalance(phoneNumber) {
+            if (!phoneNumber) {
+                console.error("Phone number is missing!");
+                alert("Phone number is missing!");
+                return;
+            }
+
+            console.log(`Loading wallet balance for phone number: ${phoneNumber}`);
+
+            const walletRef = ref(rtdb, `StudentWallet/${phoneNumber}`);
+            onValue(walletRef, (snapshot) => {
+                const balance = snapshot.val()?.balance || 0;
+                console.log(`Retrieved balance: ${balance}`);
+
+                // ✅ Ensure the element exists before updating
+                const walletBalanceElem = document.getElementById('wallet_balance');
+                if (walletBalanceElem) {
+                    walletBalanceElem.textContent = `RM ${balance.toFixed(2)}`;
+                } else {
+                    console.error("Element with ID 'wallet_balance' not found!");
+                }
+            }, (error) => {
+                console.error("Error loading wallet balance:", error);
+                alert("Failed to load wallet balance.");
+            });
+        }
+
+        // ✅ Load phone number from Firestore based on logged-in user ID
+        function loadPhoneNumber(userId) {
+            console.log(`Fetching phone number for user ID: ${userId}`);
+
+            const userDocRef = doc(db, "users", userId);
+            getDoc(userDocRef).then((docSnap) => {
+                if (docSnap.exists()) {
+                    console.log(`Document data:`, docSnap.data());
+
+                    const phoneNumber = docSnap.data()?.phoneNumber;
+                    if (phoneNumber) {
+                        console.log(`Retrieved phone number from Firestore: ${phoneNumber}`);
+                        loadWalletBalance(phoneNumber);
+                    } else {
+                        console.error("Phone number is missing from Firestore document!");
+                        alert("Phone number is missing from Firestore document!");
+                    }
+                } else {
+                    console.error("No document found with the provided user ID.");
+                    alert("No user data found!");
+                }
+            }).catch((error) => {
+                console.error("Error fetching user data:", error);
+                alert("Failed to fetch user data.");
+            });
+        }
+
+        // ✅ Listen for auth state change and load wallet
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                console.log(`User logged in: ${user.uid}`);
+                loadPhoneNumber(user.uid);
+            } else {
+                console.error("User not logged in");
+                alert("Please log in to view wallet balance.");
+            }
+        });
+
+
+        onAuthStateChanged(auth, (user) => {
+            const loggedInUserId = localStorage.getItem('loggedInUserId');
+            if (loggedInUserId) {
+                console.log(user);
+                const docRef = doc(db, "users", loggedInUserId);
+                getDoc(docRef)
+                    .then((docSnap) => {
+                        if (docSnap.exists()) {
+                            const userData = docSnap.data();
+                            document.getElementById('loggedUserFName').innerText = userData.firstName;
+
+                        }
+                        else {
+                            console.log("no document found matching id")
+                        }
+                    })
+                    .catch((error) => {
+                        console.log("Error getting document");
+                    })
+            }
+        })
+
+    </script>
+</body>
+
+</html>

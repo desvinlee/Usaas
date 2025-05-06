@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Student Dashboard</title>
+    <title>Admin Dashboard</title>
     <link rel="stylesheet" href="assets/css/css/sb-admin-2.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css">
@@ -14,19 +14,20 @@
 
 <body id="page-top">
     <div id="wrapper">
-
+        
+        <!-- Sidebar copy from here-->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <hr class="sidebar-divider my-0">
 
             <div class="sidebar-heading">
-                <img width="80" height="70" src="assets/img/Homepage/usaas_logo.svg" />
+                <img width="100" height="80" src="assets/img/Homepage/usaas_logo.svg" />
             </div>
 
             <li class="nav-item active">
-                <a class="nav-link" href="Student_Dashboard.html">
+                <a class="nav-link" href="Admin_Dashboard.html">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Student Dashboard</span></a>
+                    <span>Admin Dashboard</span></a>
             </li>
 
 
@@ -39,37 +40,29 @@
 
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
+                <a class="nav-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
+                    aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Order</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Order List:</h6>
-                        <a class="collapse-item" href="Student_Createorder.html">Create Order</a>
-                        <a class="collapse-item" href="Student_Orderlist.html">Check Order</a>
+                        <h6 class="collapse-header">Order:</h6>
+                        <a class="collapse-item" href="Admin_ViewStudentorder.html">Student Order</a>
+                        <a class="collapse-item" href="Admin_ViewAssistantorder.html">Assistant Order</a>
+                        <a class="collapse-item" href="Admin_Report.html">Report list</a>
                     </div>
                 </div>
             </li>
 
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="Student_Document.html" data-target="#collapseUtilities"
+                <a class="nav-link collapsed" href="Admin_Viewdocument.html" data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Document</span>
                 </a>
             </li>
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="Student_Wallet.html" data-target="#collapseWallet"
-                    aria-expanded="true" aria-controls="collapseWallet">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Wallet</span>
-                </a>
-            </li>
-
 
             <hr class="sidebar-divider">
 
@@ -88,11 +81,12 @@
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Profile: </h6>
-                        <a class="collapse-item" href="Student_Settings.html">Profile Settings</a>
-                        <a class="collapse-item" href="Student_Settings.html">Forgot Password</a>
+                        <a class="collapse-item" href="Admin_Settings.html">Profile Settings</a>
+                        <a class="collapse-item" href="Admin_Settings.html">Forgot Password</a>
                     </div>
                 </div>
             </li>
+
 
             <li class="nav-item">
                 <a class="nav-link" href="404.html">
@@ -110,6 +104,7 @@
 
 
         </ul>
+
         <div class="d-flex flex-column" id="content-wrapper">
             <div id="content">
 
@@ -131,56 +126,14 @@
                         </div>
                     </form>
 
-                    
                     <ul class="navbar-nav ml-auto">
 
-                        <!--Message Bar-->
                         <li class="nav-item dropdown no-arrow mx-1">
-                            <a id="messagesDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" id="messagesDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <div class="sidebar-heading">Message </div>
                                 <i class="fas fa-envelope fa-fw"></i>
-                                    <span class="badge badge-danger badge-counter">7</span>
                             </a>
-
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="messagesDropdown">
-                                <h6 class="dropdown-header">
-                                    Message Center
-                                </h6>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3"><img class="rounded-circle" 
-                                        src="assets/img/undraw_profile_1.svg" alt="..." />
-                                        <div class="status-indicator bg-success"></div>
-                                    </div>
-                                    <div>
-                                        <div class="text-truncate">I had accept your order</div>
-                                        <div class="small text-gray-500">Assistant Ashton</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3"><img class="rounded-circle"
-                                            src="assets/img/undraw_profile_2.svg" alt="..." />
-                                        <div class="status-indicator"></div>
-                                    </div>
-                                    <div>
-                                        <div class="text-truncate">Your order had completed</div>
-                                        <div class="small text-gray-500">Airi Satou · 1d</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3"><img class="rounded-circle"
-                                            src="assets/img/undraw_profile_3.svg" alt="..." />
-                                        <div class="status-indicator bg-warning"></div>
-                                    </div>
-                                    <div>
-                                        <div class="text-truncate">alright, All done, your document had approved</div>
-                                        <div class="small text-gray-500">Cedric Kelly · 2d</div>
-                                    </div>
-                                </a>
-
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
-                            </div>
                         </li>
 
                         <div class="topbar-divider d-none d-sm-block"></div>
@@ -220,8 +173,7 @@
                                             <div class="text-uppercase text-primary text-xs font-weight-bold mb-1"><span
                                                     style="--bs-success: #95e1d3;--bs-success-rgb: 149,225,211;">Including
                                                     translation &amp; transportation</span></div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><span>Try your First
-                                                    Asssistant Registration</span></div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><span>Try your First Asssistant Registration</span></div>
                                         </div>
                                         <div class="col d-xl-flex justify-content-xl-end align-items-xl-center"
                                             style="text-align: right;"><a
@@ -276,7 +228,7 @@
                             </div>
 
                         </div>
-
+                        
                         <div class="col-lg-6 mb-4">
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
@@ -302,15 +254,11 @@
                                         <h6 class="text-primary m-0 font-weight-bold">Development Approach</h6>
                                     </div>
                                     <div class="card-body">
-                                        <p>USAAS (UTM Student Assistance Application System) is an innovative platform
-                                            designed to connect students with academic assistants,
-                                            providing seamless support for their learning needs. With USAAS, students
-                                            can easily create orders for assistance, track their requests in real time,
+                                        <p>USAAS (UTM Student Assistance Application System) is an innovative platform designed to connect students with academic assistants, 
+                                            providing seamless support for their learning needs. With USAAS, students can easily create orders for assistance, track their requests in real time, 
                                             and manage payments securely through an integrated wallet system. </p>
-                                        <p class="mb-0">Our goal is to enhance the academic experience by ensuring
-                                            smooth communication, efficient order management,
-                                            and reliable payment processing, making registration process more accessible
-                                            and stress-free.</p>
+                                        <p class="mb-0">Our goal is to enhance the academic experience by ensuring smooth communication, efficient order management, 
+                                            and reliable payment processing, making registration process more accessible and stress-free.</p>
                                     </div>
                                 </div>
                             </div>

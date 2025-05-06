@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html data-bs-theme="light" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Student Deposit</title>
+
+    <link rel="stylesheet" href="assets/css/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/css/sb-admin-2.min.css">
+    <link rel="stylesheet" href="assets/css/deposit.css">
+</head>
+
+<body id="page-top">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 mb-lg-0 mb-3">
+                <div class="card p-3">
+                    <div class="img-box">
+                        <img src="https://www.freepnglogos.com/uploads/mastercard-png/file-mastercard-logo-svg-wikimedia-commons-4.png"
+                            alt="">
+                    </div>
+                    <div class="number">
+                        <label class="fw-bold" for="">**** 8888</label>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-between">
+                        <small><span class="fw-bold">Expiry date:</span><span>08/08</span></small>
+                        <small><span class="fw-bold">Name:</span><span>Testing</span></small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 mb-lg-0 mb-3">
+                <div class="card p-3">
+                    <div class="img-box">
+                        <img src="https://www.freepnglogos.com/uploads/visa-logo-download-png-21.png" alt="">
+                    </div>
+                    <div class="number">
+                        <label class="fw-bold">**** 8888</label>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-between">
+                        <small><span class="fw-bold">Expiry date:</span><span>08/08</span></small>
+                        <small><span class="fw-bold">Name:</span><span>Testing</span></small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 mt-4">
+                <div class="card p-3">
+                    <p class="mb-0 fw-bold h4">Payment Methods</p>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="card p-3">
+
+                    <div class="card-body border p-0">
+                        <p>
+                            <a class="btn btn-primary p-2 w-100 h-100 d-flex align-items-center justify-content-between"
+                                data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="true"
+                                aria-controls="collapseExample">
+                                <span class="fw-bold">Credit Card</span>
+                                <span class="">
+                                    <span class="fab fa-cc-amex"></span>
+                                    <span class="fab fa-cc-mastercard"></span>
+                                    <span class="fab fa-cc-discover"></span>
+                                </span>
+                            </a>
+                        </p>
+                        <div class="collapse show p-3 pt-0" id="collapseExample">
+                            <div class="row">
+                                <div class="col-lg-5 mb-lg-0 mb-3">
+                                    <p class="h4 mb-2">Summary</p>
+                                    <p class="mb-2">
+                                        <span class="fw-bold">Product:</span>
+                                        <span class="c-green">Student Registration</span>
+                                    </p>
+                                    <p class="mb-3">
+                                        <span class="fw-bold">Amount to Deposit:</span>
+                                        <span class="c-green"><input class="form-control" type="number"
+                                                id="depositAmount" min="1" placeholder="Enter amount"></span>
+                                    </p>
+
+                                    <p class="mb-3">This is the Payment page for Student deposit</p>
+                                </div>
+
+                                <div class="col-lg-7">
+                                    <form action="" class="form">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="form__div">
+                                                    <input type="text" id="phone_number" class="form-control"
+                                                        placeholder=" ">
+                                                    <label for="" class="form__label">Phone Number</label>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-12">
+                                                <div class="form__div">
+                                                    <input type="text" class="form-control" placeholder=" ">
+                                                    <label for="" class="form__label">Card Number</label>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-6">
+                                                <div class="form__div">
+                                                    <input type="text" class="form-control" placeholder=" ">
+                                                    <label for="" class="form__label">MM / yy</label>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-6">
+                                                <div class="form__div">
+                                                    <input type="password" class="form-control" placeholder=" ">
+                                                    <label for="" class="form__label">cvv code</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form__div">
+                                                    <input type="text" class="form-control" placeholder=" ">
+                                                    <label for="" class="form__label">name on the card</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="btn btn-primary w-100">Submit</div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="btn btn-primary payment" onclick="makePayment()">
+                    Make Payment
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="btn btn-primary payment bg-danger" onclick="cancelPayment()">
+                    Cancel
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"></script>>
+
+
+    <script type="module">
+
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
+        import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore.js";
+        import { getDatabase, ref, get, set } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-database.js";
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAifkBmMPwQLTqRu8nYFU1dqej2dlX33Bk",
+            authDomain: "usaas-4230f.firebaseapp.com",
+            databaseURL: "https://usaas-4230f-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "usaas-4230f",
+            storageBucket: "usaas-4230f.firebasestorage.app",
+            messagingSenderId: "1057123876526",
+            appId: "1:1057123876526:web:fb4c3c0e6b2407295f773f",
+            measurementId: "G-NSW66N1VGP"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const rtdb = getDatabase(app);
+        const auth = getAuth(app);
+
+        // ✅ Store phone number globally after login
+        let studentPhoneNumber = null;
+
+        // ✅ Load phone number from Firestore
+        async function loadPhoneNumber(userId) {
+            console.log(`Fetching phone number for user ID: ${userId}`);
+            const userDocRef = doc(db, "users", userId);
+
+            try {
+                const docSnap = await getDoc(userDocRef);
+                if (docSnap.exists()) {
+                    studentPhoneNumber = docSnap.data()?.phoneNumber;
+                    console.log(`Retrieved phone number: ${studentPhoneNumber}`);
+                } else {
+                    console.error("No user document found");
+                    alert("User data not found!");
+                }
+            } catch (error) {
+                console.error("Error fetching user data:", error);
+                alert("Failed to fetch user data.");
+            }
+        }
+
+        // ✅ Handle cancel payment
+        window.cancelPayment = function () {
+            alert("Cancel payment");
+            window.location.href = 'student_wallet.html';
+        };
+
+        // ✅ Handle deposit
+        window.makePayment = async function () {
+            if (!studentPhoneNumber) {
+                alert("Phone number is missing or not linked to your account!");
+                return;
+            }
+
+            const depositAmount = parseFloat(document.getElementById('depositAmount').value);
+
+            if (!depositAmount || depositAmount <= 0) {
+                alert("Please enter a valid deposit amount!");
+                return;
+            }
+
+            // ✅ Reference using stored phone number (not input)
+            const walletRef = ref(rtdb, 'StudentWallet/' + studentPhoneNumber);
+
+            try {
+                const snapshot = await get(walletRef);
+                if (snapshot.exists()) {
+                    const currentBalance = snapshot.val().balance || 0;
+                    const newBalance = currentBalance + depositAmount;
+
+                    // ✅ Update the new balance in Firebase
+                    await set(walletRef, { balance: newBalance });
+                    alert(`Deposit successful! New balance: RM ${newBalance.toFixed(2)}`);
+
+                    // ✅ Redirect to wallet page
+                    window.location.href = 'student_wallet.html';
+                } else {
+                    alert("Wallet data not found. Please try again.");
+                }
+            } catch (error) {
+                console.error("Error updating balance:", error);
+                alert("Failed to process deposit.");
+            }
+        };
+
+        // ✅ Listen for auth state change
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                console.log(`User logged in: ${user.uid}`);
+                loadPhoneNumber(user.uid);
+            } else {
+                console.error("User not logged in");
+                alert("Please log in to access the wallet.");
+            }
+        });
+
+        async function fetchPhoneNumber(userId) {
+            const userDocRef = doc(db, 'users', userId);
+
+            try {
+                const docSnap = await getDoc(userDocRef);
+                if (docSnap.exists()) {
+                    const studentPhoneNumber = docSnap.data().phonenumber;
+
+                    console.log(`Fetching phone number for user ID: ${userId}`); // ✅ Check the user ID
+                    console.log(`Retrieved phone number: ${studentPhoneNumber}`); // ✅ Confirm if phone number is retrieved
+                    console.log("Document data:", docSnap.data()); // ✅ Log the whole document for debugging
+
+                    if (!studentPhoneNumber) {
+                        console.error("Phone number is missing or not linked to user!");
+                        return null;
+                    }
+
+                    return studentPhoneNumber;
+                } else {
+                    console.error("No user document found!");
+                    return null;
+                }
+            } catch (error) {
+                console.error("Error fetching phone number:", error);
+                return null;
+            }
+        }
+
+
+
+
+    </script>
+</body>
+
+</html>

@@ -1,20 +1,12 @@
 <!DOCTYPE html>
-<html data-bs-theme="light" lang="en"
-    style="--bs-success: #95e1d3;--bs-success-rgb: 149,225,211;--bs-warning: #fce38a;--bs-warning-rgb: 252,227,138;--bs-danger: #F38181;--bs-danger-rgb: 243,129,129;--bs-primary: #3BACFD;--bs-primary-rgb: 59,172,253;--bs-body-bg:  ;">
+<html data-bs-theme="light" lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Assistant Order</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amiko&amp;display=swap">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
     <link rel="stylesheet" href="assets/css/css/sb-admin-2.min.css">
-    <link rel="stylesheet" href="assets/css/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
@@ -22,13 +14,18 @@
 
 <body id="page-top">
     <div id="wrapper">
+
+        <!--sidebar copy start from here the whole ul class-->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <hr class="sidebar-divider my-0">
 
+            <div class="sidebar-heading">
+                <img width="100" height="80" src="assets/img/Homepage/usaas_logo.svg" />
+            </div>
 
             <li class="nav-item active">
-                <a class="nav-link" href="Student_Dashboard.html">
+                <a class="nav-link" href="Assistant_Dashboard.html">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Assistant Dashboard</span></a>
             </li>
@@ -43,23 +40,16 @@
 
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                <a class="nav-link collapsed" href="Assistant_Orderlist.html" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Order</span>
+                    <span>Order List</span>
                 </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Order List:</h6>
-                        <a class="collapse-item" href="buttons.html">Create Order</a>
-                        <a class="collapse-item" href="cards.html">Check Order</a>
-                    </div>
-                </div>
             </li>
 
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="Student-Document.html" data-target="#collapseUtilities"
+                <a class="nav-link collapsed" href="Assistant_Document.html" data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Document</span>
@@ -67,7 +57,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="Student-Wallet.html" data-target="#collapseWallet"
+                <a class="nav-link collapsed" href="Assistant_Wallet.html" data-target="#collapseWallet"
                     aria-expanded="true" aria-controls="collapseWallet">
                     <i class="fas fa-fw fa-folder"></i>
                     <span>Wallet</span>
@@ -84,16 +74,16 @@
 
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                    aria-expanded="true" aria-controls="collapsePages">
+                <a class="nav-link collapsed" href="Assistant_Settings.html" data-toggle="collapse"
+                    data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
                     <i class="fas fa-fw fa-wrench "></i>
                     <span>Settings</span>
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Profile: </h6>
-                        <a class="collapse-item" href="404.html">Profile Settings</a>
-                        <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
+                        <a class="collapse-item" href="Assistant_Settings.html">Profile Settings</a>
+                        <a class="collapse-item" href="Assistant_Settings.html">Forgot Password</a>
                     </div>
                 </div>
             </li>
@@ -115,12 +105,18 @@
 
 
         </ul>
+
         <div class="d-flex flex-column" id="content-wrapper">
             <div id="content">
+
+                <!--top nagivation bar include display username copy from here-->
                 <nav class="bg-white shadow navbar navbar-expand navbar-light topbar mb-4 static-top">
-                    <div><img width="100" height="80" src="assets/img/Homepage/usaas_logo.svg"
-                            style="margin-left: 10px;"><button class="btn btn-link d-md-none rounded-circle mr-3"
-                            id="sidebarToggleTop"><i class="fas fa-bars"></i></button></div>
+                    <div>
+                        <button class="btn btn-link d-md-none rounded-circle mr-3" id="sidebarToggleTop"><i
+                                class="fas fa-bars"></i></button>
+                    </div>
+
+                    <!--Search Bar-->
                     <form
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group"><input class="bg-light border-0 form-control form-control small"
@@ -130,92 +126,15 @@
                                     type="button"><i class="fas fa-search fa-sm"></i></button></div>
                         </div>
                     </form>
+
                     <ul class="navbar-nav ml-auto">
 
-
-                        <li class="nav-item dropdown no-arrow d-sm-none">
-                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-search fa-fw"></i>
-                            </a>
-
-                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
-                                aria-labelledby="searchDropdown">
-                                <form class="form-inline mr-auto w-100 navbar-search">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control bg-light border-0 small"
-                                            placeholder="Search for..." aria-label="Search"
-                                            aria-describedby="basic-addon2">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-primary" type="button">
-                                                <i class="fas fa-search fa-sm"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </li>
-
-
+                        <!--message-->
                         <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <div class="sidebar-heading">Inbox </div>
-
-                                <i class="fas fa-bell fa-fw"></i>
-
-                                <span class="badge badge-danger badge-counter">3+</span>
-                            </a>
-
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="alertsDropdown">
-                                <h6 class="dropdown-header">
-                                    Alerts Center
-                                </h6>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-primary">
-                                            <i class="fas fa-file-alt text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="small text-gray-500">December 12, 2019</div>
-                                        <span class="font-weight-bold">A new monthly report is ready to download!</span>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-success">
-                                            <i class="fas fa-donate text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="small text-gray-500">December 7, 2019</div>
-                                        $290.29 has been deposited into your account!
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-warning">
-                                            <i class="fas fa-exclamation-triangle text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="small text-gray-500">December 2, 2019</div>
-                                        Spending Alert: We've noticed unusually high spending for your account.
-                                    </div>
-                                </a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
-                            </div>
-                        </li>
-
-
-                        <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
+                            <a id="messagesDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <div class="sidebar-heading">Message </div>
                                 <i class="fas fa-envelope fa-fw"></i>
-
                                 <span class="badge badge-danger badge-counter">7</span>
                             </a>
 
@@ -224,97 +143,75 @@
                                 <h6 class="dropdown-header">
                                     Message Center
                                 </h6>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" alt="...">
+                                <a class="dropdown-item d-flex align-items-center" id=messagesDropdownfirst href="#">
+                                    <div class="dropdown-list-image mr-3"><img class="rounded-circle"
+                                            src="assets/img/undraw_profile_1.svg" alt="..." />
                                         <div class="status-indicator bg-success"></div>
                                     </div>
-                                    <div class="font-weight-bold">
-                                        <div class="text-truncate">Hi there! I am wondering if you can help me with a
-                                            problem I've been having.</div>
-                                        <div class="small text-gray-500">Emily Fowler · 58m</div>
+                                    <div>
+                                        <div class="text-truncate">I had accept your order</div>
+                                        <div class="small text-gray-500">Assistant Ashton</div>
                                     </div>
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="assets/img/undraw_profile_2.svg" alt="...">
+                                    <div class="dropdown-list-image mr-3"><img class="rounded-circle"
+                                            src="assets/img/undraw_profile_2.svg" alt="..." />
                                         <div class="status-indicator"></div>
                                     </div>
                                     <div>
-                                        <div class="text-truncate">I have the photos that you ordered last month, how
-                                            would you like them sent to you?</div>
-                                        <div class="small text-gray-500">Jae Chun · 1d</div>
+                                        <div class="text-truncate">Your order had completed</div>
+                                        <div class="small text-gray-500">Airi Satou · 1d</div>
                                     </div>
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="assets/img/undraw_profile_3.svg" alt="...">
+                                    <div class="dropdown-list-image mr-3"><img class="rounded-circle"
+                                            src="assets/img/undraw_profile_3.svg" alt="..." />
                                         <div class="status-indicator bg-warning"></div>
                                     </div>
                                     <div>
-                                        <div class="text-truncate">Last month's report looks great, I am very happy with
-                                            the progress so far, keep up the good work!</div>
-                                        <div class="small text-gray-500">Morgan Alvarez · 2d</div>
+                                        <div class="text-truncate">alright, All done, your document had approved</div>
+                                        <div class="small text-gray-500">Cedric Kelly · 2d</div>
                                     </div>
                                 </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
-                                            alt="...">
-                                        <div class="status-indicator bg-success"></div>
-                                    </div>
-                                    <div>
-                                        <div class="text-truncate">Am I a good boy? The reason I ask is because someone
-                                            told me that people say this to all dogs, even if they aren't good...</div>
-                                        <div class="small text-gray-500">Chicken the Dog · 2w</div>
-                                    </div>
-                                </a>
+
                                 <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
                             </div>
                         </li>
 
-                        <div class="topbar-divider d-none d-sm-block"></div>
-
-
-                        <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                        <li class="nav-item dropdown no-arrow mx-1">
+                            <a class="nav-link dropdown-toggle" id="messagesDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                                <div class="sidebar-heading">Message </div>
+                                <i class="fas fa-envelope fa-fw"></i>
+                            </a>
+                        </li>
+
+                        <div class="topbar-divider d-none d-sm-block"></div>
+                        <!--Edit username Here-->
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" id="userDropdown" role="button" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
                                 <img class="img-profile rounded-circle" src="assets/img/undraw_profile_2.svg">
+                                <strong><span id="loggedUserFName"
+                                        class="mr-2 d-none d-lg-inline text-gray-600 small"></span></strong>
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                <a class="dropdown-item" id="logout" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>
                             </div>
                         </li>
-
                     </ul>
                 </nav>
+
                 <div class="container-fluid">
-                    <div class="row" style="margin-right: 0;">
-                        <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-8 mb-4">
-                            <div class="card shadow border-left-primary h-100 py-2">
-                                <div class="card-body" style="height: 45px;">
-                                    <div class="col-xl-9 offset-xl-5 mr-2" style="margin-left: -10px;">
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                            <ul class="list-unstyled">
-                                                <li style="font-size: 15px;"><a href="#hero" class="active"><span
-                                                            style="font-weight: normal !important; color: rgb(33, 37, 41);">Order
-                                                            List&nbsp;</span></a><a href="#hero" class="active"
-                                                        style="margin-left: 26px;"><span
-                                                            style="font-weight: normal !important;">Your
-                                                            Order</span></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="d-sm-flex justify-content-between align-items-center mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">Your Order</h1>
                     </div>
+
                     <div class="row">
                         <div class="col-lg-6 col-xl-12 mb-4">
                             <div class="card shadow mb-4">
@@ -327,11 +224,10 @@
                                             <table class="table">
                                                 <thead>
                                                     <tr>
-                                                        <th style="width: 120px;">name</th>
-                                                        <th style="width: 190px;">faculty</th>
-                                                        <th style="width: 120px;">Phone</th>
-                                                        <th style="width: 120px;">status</th>
-                                                        <th style="width: 120px;">Button</th>
+                                                        <th style="width: 190px;">Order Time</th>
+                                                        <th style="width: 190px;">Student Details</th>
+                                                        <th style="width: 190px;">status</th>
+                                                        <th style="width: 190px;">Action</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody id="assistantOrders"></tbody>
@@ -405,15 +301,20 @@
                     </div>
                 </div>
             </div>
+
             <footer class="bg-white sticky-footer">
-                <div class="container my-auto">
-                    <div class="text-center my-auto copyright">
-                        <h6 style="text-align: center;font-family: Amiko, sans-serif;">Copyright © Desvin Lee 2024</h6>
+                <div class="container-fluid px-4">
+                    <div class="text-left my-auto copyright justify-content-between small">
+                        <span style="font-family: Amiko, sans-serif;">Copyright © Desvin Lee 2024</span>
                     </div>
                 </div>
             </footer>
         </div>
-    </div><a class="scroll-to-top rounded" href="#page-top"><i class="fas fa-angle-up"></i></a>
+    </div>
+
+    <a class="scroll-to-top rounded" href="#page-top"><i class="fas fa-angle-up"></i></a>
+
+    <!-- Accept confirmation Modal-->
     <div class="modal fade" role="dialog" tabindex="-1" id="confirmation" style="text-align: center;">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -424,12 +325,61 @@
                 <div class="modal-body"><i class="far fa-question-circle" style="font-size: 120px;"></i>
                     <p class="text-center">Are you sure accept this order ?</p>
                 </div>
-                <div class="modal-footer"><button class="btn btn-primary" type="button"
-                        style="background: #3bacfd;border-color: #3bacfd;">comfirm</button><button class="btn btn-light"
-                        type="button" data-bs-dismiss="modal" style="background: #f38181;">cancel</button></div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" type="button" id="confirmAcceptButton"
+                        style="background: #3bacfd;border-color: #3bacfd;">comfirm</button>
+                    <button class="btn btn-light" type="button" data-bs-dismiss="modal"
+                        style="background: #f38181;">cancel</button>
+                </div>
             </div>
         </div>
     </div>
+
+    <!-- retrieve Confirmation Modal -->
+    <div class="modal fade" role="dialog" tabindex="-1" id="confirmRetrieveModal" style="text-align: center;">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Confirmation</h4><button class="btn-close" type="button" aria-label="Close"
+                        data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body"><i class="far fa-question-circle" style="font-size: 120px;"></i>
+                    <p class="text-center"> Are you sure you want to retrieve this order? Once retrieved, the student
+                        will see its status change
+                        back to Pending.</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" type="button" id="confirmRetrieveButton"
+                        style="background: #3bacfd;border-color: #3bacfd;">Retrieve</button>
+                    <button class="btn btn-light" type="button" data-bs-dismiss="modal"
+                        style="background: #f38181;">cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="chatModal" class="card position-absolute bottom-0 end-0"
+        style="width: 30rem; margin-right: 60px; display: none;">
+        <div class="card-header bg-primary d-flex justify-content-between align-items-center" style="cursor: pointer;">
+            <small class="text-white">Chat box</small>
+            <button id="closeButton" class="btn btn-danger btn-sm" type="button" onclick="CloseChat()"> X
+            </button>
+        </div>
+        <div class="card-body" id="chatBox" style="height: 25rem; overflow-y: auto;">
+        </div>
+        <div class="row p-2">
+            <div class="col">
+                <input id="chatInput" class="form-control" type="text" placeholder="Type a message">
+            </div>
+            <div class="col-auto">
+                <button id="sendBtn" class="btn btn-primary" type="button" onclick="sendMessage()">
+                    <i class="far fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
     <div class="modal fade" role="dialog" tabindex="-1" id="logoutModal" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -446,12 +396,14 @@
             </div>
         </div>
     </div>
+
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/vendor/jquery/jquery.min.js"></script>
     <script src="assets/js/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/vendor/jquery-easing/jquery.easing.min.js"></script>
     <script src="assets/js/js/sb-admin-2.min.js"></script>
-    <script src="assets/js/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"></script>
     <script src="assets/js/js/datatables-simple-demo.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
@@ -460,7 +412,9 @@
     <script type="module">
         //src="assets/js/js/Assistant_orderlist.js"
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-app.js";
-
+        import { getDatabase, ref, child, onValue, get, set, update, remove, push } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-database.js";
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-auth.js"
+        import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-firestore.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyAifkBmMPwQLTqRu8nYFU1dqej2dlX33Bk",
@@ -475,39 +429,99 @@
 
         // Initialize Firebase
         const app = initializeApp(firebaseConfig);
-        import { getDatabase, ref, child, onValue, get, set, update, remove } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-database.js";
         const db = getDatabase(app);
+        const auth = getAuth(app);
+        const rtdb = getDatabase(app);
+        const firestore = getFirestore(app);
 
-        //copy until here
-
-        const assistantName = "John Doe";  // Replace with actual assistant name (e.g., from authentication)
-        const assistantPhone = "9876543210";
-
-        //get data from firebase
         let studentlist = [];
         let tbody = document.getElementById('assistantOrders');
 
-        const SelectAllDataOnce = () => {
-            const dbRef = ref(db);
-            get(child(dbRef, 'StudentSet')).then((snapshot) => {
-                studentlist = [];
-                snapshot.forEach(student => {
-                    studentlist.push(student.val());
-                });
-                AddAllRecords();
-            })
-        }
+        let orderToRetrieveId = null;
 
-        const SelectAllDataRealtime = () => {
-            const dbRef = ref(db, 'StudentSet');
-            onValue(dbRef, (snapshot) => {
-                studentlist = [];
-                snapshot.forEach(student => {
-                    studentlist.push(student.val());
-                });
-                AddAllRecords();
-            })
-        }
+        const setSelectedOrderToRetrieve = (orderId) => {
+            orderToRetrieveId = orderId;
+            console.log("Setting order ID to retrieve:", orderToRetrieveId);
+        };
+
+        onAuthStateChanged(auth, async (user) => {
+            if (!user) {
+                console.log("Assistant not logged in");
+                window.location.href = "login.html";
+            }
+
+            try {
+                const uid = user.uid;
+                const userDoc = await getDoc(doc(firestore, "users", uid));
+
+                if (!userDoc.exists()) {
+                    console.error("User doc not found");
+                    return;
+                }
+
+                const userData = userDoc.data();
+                const assistantPhone = userData.phoneNumber;
+                console.log(" Assistant Phone:", assistantPhone);
+
+                const snapshot = await get(ref(rtdb, "StudentOrders"));
+
+                if (!snapshot.exists()) {
+                    console.log("No orders found.");
+                    return;
+                }
+
+                const allOrders = snapshot.val();
+                const ordersToDisplay = [];
+
+                for (const studentPhone in allOrders) {
+                    const orderList = allOrders[studentPhone];
+                    for (const orderId in orderList) {
+                        const order = orderList[orderId];
+                        order.id = orderId;         // Include order ID
+                        order.phone = studentPhone; // Attach phone for reference
+
+                        if (order.status === "Pending" || order.status === "Accepted") {
+                            ordersToDisplay.push(order);
+                        }
+                    }
+                }
+
+                AddAllRecords(ordersToDisplay); // Use your existing function here
+
+            } catch (error) {
+                console.error(" Error loading assistant orders:", error);
+            }
+        });
+
+        const loadAssistantOrders = async () => {
+            try {
+                const allOrdersRef = ref(db, "StudentOrders");
+                const snapshot = await get(allOrdersRef);
+
+                if (snapshot.exists()) {
+                    const data = snapshot.val();
+                    const allOrders = [];
+
+                    // Iterate over all phone numbers and push their orders
+                    for (const phone in data) {
+                        const ordersByPhone = data[phone];
+                        for (const orderId in ordersByPhone) {
+                            const order = ordersByPhone[orderId];
+                            order.id = orderId; // store orderId for accept/retrieve use
+                            order.phone = phone; // store phone for accept/retrieve use
+                            allOrders.push(order);
+                        }
+                    }
+
+                    AddAllRecords(allOrders); // render into assistantOrders table
+                    console.log("✅ Assistant order list loaded.");
+                } else {
+                    console.log("No orders found.");
+                }
+            } catch (error) {
+                console.error("❌ Error loading assistant orders:", error);
+            }
+        };
 
 
         const AddSingleRecord = (student) => {
@@ -516,53 +530,339 @@
             let td2 = document.createElement('td');
             let td3 = document.createElement('td');
             let td4 = document.createElement('td');
-            let td5 = document.createElement('td');
+
+            td1.innerHTML = student.orderTime || "Unknown";
+            td2.innerHTML = `${student.nameofstudent?.firstname || "Unknown"} ${student.nameofstudent?.lastname || "Unknown"} 
+        <br>${student.faculty?.facultyname || "Unknown"}
+        <br>RM ${student.price || "Unknown"}
+        <br><strong>${student.phone || "No Phone"}`;
 
 
-            td1.innerHTML = student.faculty?.facultyname || "Unknown";
-            td2.innerHTML = `${student.nameofstudent?.firstname || "Unknown"} ${student.nameofstudent?.lastname || "Unknown"}`;
-            td3.innerHTML = student.phone || "No Phone";
-            td4.innerHTML = student.status || "Pending";
+            let statusColor;
+            if (student.status === "Accepted") {
+                statusColor = "#0ee535"; // Green
+            } else if (student.status === "Completed") {
+                statusColor = "#95E1D3"; // Light Blue/Green
+            } else if (student.status === "Pending") {
+                statusColor = "#fce38a";
+            } else {
+                statusColor = "000000"; // Default color (e.g., for "Pending" or other unknown statuses)
+            }
 
-            let acceptButton = document.createElement('button');
-            acceptButton.innerHTML = "Accept Order";
-            acceptButton.onclick = () => AcceptOrder(student.phone);
+            td3.innerHTML = `<i class="far fa-stop-circle" style="color: ${statusColor}; vertical-align: middle;">
+                    </i> ${student.status || "Pending"}`;
 
-            td5.appendChild(acceptButton);
-            trow.append(td1, td2, td3, td4, td5);
+            if (student.status === "Pending") {
+                let acceptButton = document.createElement('button');
+                acceptButton.className = "btn btn-primary";
+                acceptButton.type = "button";
+                acceptButton.style = "margin-top: 10px; border-radius: 6px; background: #95E1D3; color: black;";
+                acceptButton.innerHTML = '<i class="fas fa-check"></i> Accept';
+                acceptButton.setAttribute("data-bs-toggle", "modal");
+                acceptButton.setAttribute("data-bs-target", "#confirmation"); // Target the confirmation modal
+                acceptButton.onclick = () => setSelectedOrderToAccept(student.phone, student.id); // Store order details
+                td4.appendChild(acceptButton);
+            }
+            if (student.status === "Accepted") {
+                let retrieveButton = document.createElement('button');
+                retrieveButton.className = "btn btn-primary";
+                retrieveButton.type = "button";
+                retrieveButton.style = "border-radius: 6px; background: #3bacfd; color: white; margin-top: 10px;";
+                retrieveButton.innerHTML = '<i class="fas fa-handshake"></i> Retrieve';
+                retrieveButton.setAttribute("data-bs-toggle", "modal");
+                retrieveButton.setAttribute("data-bs-target", "#confirmRetrieveModal");
+                retrieveButton.dataset.orderId = student.id;
+                retrieveButton.dataset.studentPhone = student.phone;
+                retrieveButton.onclick = () => {
+                    setSelectedOrderToRetrieve(student.id);
+                };
+                td4.appendChild(retrieveButton);
+            }
+
+            trow.append(td1, td2, td3, td4);
             tbody.append(trow);
+        };
 
-        }
+        document.addEventListener('DOMContentLoaded', () => {
+            const confirmRetrieveButton = document.getElementById('confirmRetrieveButton'); // Replace with the actual ID of your modal's confirm button
+            if (confirmRetrieveButton) {
+                confirmRetrieveButton.addEventListener('click', retrieveOrder);
 
-        const AddAllRecords = () => {
+            } else {retrieveModal
+                console.error("Confirm retrieve button not found in the DOM.");
+            }
+        });
+
+        const AddAllRecords = (orders) => {
             tbody.innerHTML = "";
-            studentlist.forEach(student => {
-                AddSingleRecord(student);
-            })
+            if (orders) {
+                orders.forEach(student => {
+                    AddSingleRecord(student);
+                });
+            }
+        };
+
+        let orderToAccept = {
+            studentPhone: null,
+            orderId: null
+        };
+
+        const setSelectedOrderToAccept = (phone, id) => {
+            orderToAccept.studentPhone = phone;
+            orderToAccept.orderId = id;
+            console.log("Setting order to accept:", orderToAccept);
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const confirmAcceptButton = document.getElementById('confirmAcceptButton');
+            if (confirmAcceptButton) {
+                confirmAcceptButton.addEventListener('click', () => {
+                    if (orderToAccept.studentPhone && orderToAccept.orderId) {
+                        AcceptOrder(orderToAccept.studentPhone, orderToAccept.orderId);
+                        // Optionally, you can manually hide the modal here if data-bs-dismiss isn't working reliably
+                        const confirmationModal = bootstrap.Modal.getInstance(document.getElementById('confirmation'));
+                        if (confirmationModal) {
+                            confirmationModal.hide();
+                        }
+                        // Reset the stored order details after accepting (optional, depending on your flow)
+                        orderToAccept.studentPhone = null;
+                        orderToAccept.orderId = null;
+                    } else {
+                        console.error("No order selected to accept.");
+                        alert("Please select an order to accept.");
+                    }
+                });
+            } else {
+                console.error("Confirm accept button not found in the DOM.");
+            }
+        });
+
+        const AcceptOrder = (studentPhone, orderId) => { // Accept phone number and order ID
+            const user = auth.currentUser;
+            if (!user) {
+                console.error("No assistant logged in");
+                return;
+            }
+
+            const assistantUid = user.uid;
+
+            getDoc(doc(firestore, "users", assistantUid)).then((docSnap) => {
+                if (docSnap.exists()) {
+                    const assistantData = docSnap.data();
+
+                    update(ref(db, `StudentOrders/${studentPhone}/${orderId}`), { // Use StudentOrders and phone number
+                        status: "Accepted",
+                        assistant: {
+                            name: assistantData.firstName || "Unknown Assistant",
+                            phone: assistantData.phoneNumber || "Unknown Phone"
+                        }
+                    }).then(() => {
+                        alert("Order Accepted!");
+                        window.location.reload();
+                    }).catch((error) => {
+                        console.error("Error updating status:", error);
+                    });
+                } else {
+                    console.error("Assistant details not found in Firestore");
+                }
+            }).catch((error) => {
+                console.error("Error fetching assistant details:", error);
+            });
+        };
+
+        const retrieveOrder = () => {
+            console.log("retrieveOrder called.");
+            console.log("Current user:", auth.currentUser); // Log auth state
+
+            if (!orderToRetrieveId) {
+                console.error("No order ID selected for retrieval.");
+                alert("No order selected to retrieve.");
+                return;
+            }
+            const user = auth.currentUser;
+
+            getDoc(doc(firestore, "users", user.uid)).then((docSnap) => {
+                const currentAssistantPhoneNumber = docSnap.data()?.phoneNumber;
+                const assistantName = docSnap.data()?.firstName + " " + docSnap.data()?.lastName;
+
+                if (!currentAssistantPhoneNumber) {
+                    console.error("Assistant phone number not found in Firestore for user:", user.uid);
+                    alert("Error retrieving order.");
+                    return;
+                }
+
+                // Retrieve the phone number and order ID from the selected order
+                get(ref(db, `StudentOrders`)).then((snapshot) => {
+                    let studentPhoneNumber = null;
+                    snapshot.forEach((studentPhoneSnapshot) => {
+                        const orders = studentPhoneSnapshot.val();
+                        if (orders && orders[orderToRetrieveId]) {
+                            studentPhoneNumber = studentPhoneSnapshot.key;
+                        }
+                    });
+                    if (!studentPhoneNumber) {
+                        console.error("Student phone number not found for order ID:", orderToRetrieveId);
+                        alert("Error retrieving order.");
+                        return;
+                    }
+
+                    const orderRef = ref(db, `StudentOrders/${studentPhoneNumber}/${orderToRetrieveId}`);
+                    return update(orderRef, {
+                        status: "Pending",
+                        assistant: null,
+                    });
+                })
+                    .then(() => {
+                        alert("Order retrieved successfully!");
+                        window.location.reload();
+                        orderToRetrieveId = null;
+                        const retrieveModal = bootstrap.Modal.getInstance(document.getElementById('confirmRetrieveModal'));
+                        if (retrieveModal) {
+                            retrieveModal.hide();
+                        }
+                    })
+                    .catch((error) => {
+                        console.error("Error retrieving order:", error);
+                        alert("Failed to retrieve order.");
+                    });
+
+            });
+        };
+
+
+
+
+        //chat function start from here
+
+        let currentChatID = null;
+
+        document.getElementById("messagesDropdownfirst").addEventListener("click", function () {
+            const chatID = "chatID123"; // Replace with the correct chat ID logic
+            OpenChat(chatID);
+        });
+
+        function OpenChat(chatID) {
+            console.log("Chat Opened with ID:", chatID);
+            currentChatID = chatID;
+
+            const chatModal = document.getElementById("chatModal");
+            if (chatModal) {
+                chatModal.style.display = "block";
+                loadMessages(chatID);
+            } else {
+                console.error("Chat modal not found!");
+            }
         }
 
-        // Accept order function
-        function AcceptOrder(studentId) {
-            const assistantName = "John Doe"; // Replace with actual assistant name
-            const assistantPhone = "987654321"; // Replace with actual assistant phone
+        function loadMessages(chatID) {
+            if (!chatID) return;
 
-            update(ref(db, `StudentSet/${studentId}`), {
-                status: "Accepted",
-                assistant: {
-                    name: assistantName,
-                    phone: assistantPhone
-                }
-            })
+            const chatRef = ref(db, "chats/" + chatID + "/messages"); // ✅ Correct ref syntax
+
+            onValue(chatRef, (snapshot) => {
+                const messages = snapshot.val();
+                displayMessages(messages); // ✅ Call display function
+            });
+        }
+
+        let currentUserRole = "assistant";
+
+        function displayMessages(messages) {
+            const chatBox = document.getElementById("chatBox");
+            if (!chatBox) {
+                console.error("Chat box not found!");
+                return;
+            }
+
+            chatBox.innerHTML = ""; // ✅ Clear old messages to prevent duplicates
+
+            if (messages) {
+                //  Convert Firebase object to sorted array (by timestamp)
+                const sortedMessages = Object.values(messages).sort((a, b) => a.timestamp - b.timestamp);
+
+                sortedMessages.forEach(msg => {
+                    const messageElement = document.createElement("p");
+
+                    const isOwner = msg.sender === currentUserRole; // "student" or "assistant"
+                    const bgColor = isOwner ? "bg-success" : "bg-primary"; // Green for own, Blue for received
+                    const textAlign = isOwner ? "text-end" : "text-start"; // Align right for own, left for received
+
+                    messageElement.className = `${textAlign} mb-2`;
+                    messageElement.innerHTML = `<small class="${bgColor} p-3 text-white rounded-1 d-inline-block">${msg.text}</small>`;
+
+                    chatBox.appendChild(messageElement); // ✅ Append correctly
+                });
+            }
+
+            chatBox.scrollTop = chatBox.scrollHeight; // ✅ Auto-scroll to latest message
+        };
+
+        window.CloseChat = function () {
+            let chatModal = document.getElementById("chatModal");
+            if (chatModal) {
+                chatModal.style.display = "none"; // Hide modal
+            }
+        };
+
+        window.sendMessage = function () {
+            let chatInput = document.getElementById("chatInput");
+            let messageText = chatInput.value.trim();
+
+            if (!messageText) return; // Prevent sending empty messages
+
+            let newMessage = {
+                sender: "assistant", // Modify this dynamically if needed
+                text: messageText,
+                timestamp: Date.now()
+            };
+
+            // ✅ Push message to Firebase
+            const chatRef = ref(db, "chats/" + currentChatID + "/messages");
+            push(chatRef, newMessage)
                 .then(() => {
-                    alert("Order Accepted!");
+                    console.log("Message sent to Firebase!");
+                    chatInput.value = ""; // Clear input after sending
                 })
                 .catch((error) => {
-                    console.error("Error updating status:", error);
+                    console.error("Error sending message:", error);
                 });
-        }
+        };
+
+        window.handleKeyPress = function (event) {
+            if (event.key === "Enter") {
+                sendMessage();
+            }
+        };
+
+        document.addEventListener("DOMContentLoaded", function () {
+            let chatInput = document.getElementById("chatInput");
+            if (chatInput) {
+                chatInput.addEventListener("keypress", function (event) {
+                    if (event.key === "Enter") {
+                        sendMessage(); // ✅ Calls sendMessage when Enter is pressed
+                    }
+                });
+            } else {
+                console.error("Error: chatInput field not found!");
+            }
+
+            const confirmRetrieveButton = document.getElementById('confirmRetrieveButton');
+            if (confirmRetrieveButton) {
+                confirmRetrieveButton.addEventListener('click', retrieveOrder);
+            }
+
+        });
+
+        tbody.addEventListener('click', (event) => {
+            if (event.target.classList.contains('retrieve-btn')) {
+                const orderId = event.target.dataset.orderId;
+                setSelectedOrderToRetrieve(orderId);
+                const retrieveModal = new bootstrap.Modal(document.getElementById('confirmRetrieveModal'));
+                retrieveModal.show();
+            }
+        });
 
 
-        window.addEventListener('load', SelectAllDataOnce);
     </script>
 </body>
 

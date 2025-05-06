@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
-  <script type="module" src="firebaseauth.js"></script>
+
 </head>
 
 <body>
@@ -25,11 +25,29 @@
         <div class="container" style="height:633.422px;">
           <div class="bg-dark border-0 border-dark border rounded overflow-hidden">
             <div class="row g-0"
-              style="height: 623.422px;background: #ffffff;font-family: Amiko, sans-serif;font-weight: bold;">
+              style="height: 750px;background: #ffffff;font-family: Amiko, sans-serif;font-weight: bold;">
               <div class="col-md-6" style="height:554.422px;background:var(--bs-body-bg);">
-                <div class="text-white p-4 p-md-5">
+                <div class="text-white p-2 p-md-5">
                   <h2 class="fw-bold text-white mb-3"><span style="color:rgb(0, 0, 0);">Create An Account</span></h2>
                   <p class="mb-4" style="color: rgb(33,37,41);">Let’s get started with your new account</p>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="form-check" style="color: rgb(0,0,0);">
+                        <input class="form-check-input" type="radio" name="type" value="student" id="studentRadio">
+                        <label class="form-check-label" for="studentRadio">
+                          Student
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-check" style="color: rgb(0,0,0);">
+                        <input class="form-check-input" type="radio" name="type" value="assistant" id="assistantRadio">
+                        <label class="form-check-label" for="assistantRadio">
+                          Assistant
+                        </label>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
                 <form method="post" action="">
@@ -52,11 +70,24 @@
                       </div>
                     </div>
 
+
+                    <div class="row" style="margin-top: 20px;">
+                      <div class="col-auto">
+                        <h5>Password</h5>
+                        <input id="passwordInputSignup" class="form-control" type="password" placeholder="“8+character” + “1 Upper case”" style="width: 300px;" />
+                      </div>
+                      <div class="col d-flex align-items-end">
+                        <i class="fas fa-eye" id="togglePasswordSignup" style="cursor: pointer; font-size: 20px; margin-bottom: 8px;"></i>
+                      </div>
+                    </div>
+
+
+
                     <div class="row">
                       <div class="col" style="margin-top:20px;">
-                        <h5>Password</h5>
-                        <input class="form-control" type="password" id="rPassword"
-                          placeholder="“8+character” + “1 Upper case”" style="width:300px;">
+                        <h5>Phone Number</h5>
+                        <input type="text" id="phone_number" class="form-control" placeholder="0123456789"
+                          style="width:300px;">
                       </div>
                     </div>
 
@@ -71,6 +102,7 @@
                   <p class="text-start" style="padding-top:45px;">Already have an account ?&nbsp;<button
                       class="btn btn-primary" id="signInButton">LogIn</button></p>
                 </div>
+
 
 
               </div>
@@ -89,11 +121,12 @@
         <div class="container" style="height:633.422px;">
           <div class="bg-dark border-0 border-dark border rounded overflow-hidden">
             <div class="row g-0"
-              style="height: 623.422px;background: #ffffff;font-family: Amiko, sans-serif;font-weight: bold;">
+              style="height: 750px;background: #ffffff;font-family: Amiko, sans-serif;font-weight: bold;">
               <div class="col-md-6" style="height:554.422px;background:var(--bs-body-bg);">
                 <div class="text-white p-4 p-md-5">
                   <h2 class="fw-bold text-white mb-3"><span style="color:rgb(0, 0, 0);">Login Your Account</span></h2>
                   <p class="mb-4" style="color: rgb(0,0,0);">Let’s get started with your account</p>
+
                 </div>
 
                 <form method="post" action="">
@@ -107,16 +140,21 @@
                       </div>
                     </div>
 
-                    <div class="row">
-                      <div class="col">
+                    <div class="row" style="margin-top: 20px;">
+                      <div class="col-auto">
                         <h5>Password</h5>
-                        <input type="password" id="password" class="form-control" placeholder="Password" required
-                          style="width:300px;">
+                        <input id="passwordInputLogin" class="form-control" type="password" placeholder="“8+character” + “1 Upper case”" style="width: 300px;" />
+                      </div>
+                      <div class="col d-flex align-items-end">
+                        <i class="fas fa-eye" id="togglePasswordLogin" style="cursor: pointer; font-size: 20px; margin-bottom: 8px;"></i>
                       </div>
                     </div>
+
+
                     <p class="recover">
                       <a href="homepage.html">Recover Password</a>
                     </p>
+
                     <button class="btn btn-primary" id="submitSignIn"
                       style="margin-top:20px;width:189px;box-shadow:5px 5px 2px rgb(113,112,112);">Sign In</button>
                   </div>
@@ -139,7 +177,220 @@
       </section>
     </div>
   </body>
-  <script>
+
+  <script type="module">
+
+    // Import the functions you need from the SDKs you need
+    // ✅ Import Firebase Libraries
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
+    import { getFirestore, setDoc, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore.js";
+    import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-database.js";
+
+    // ✅ Firebase Config
+    const firebaseConfig = {
+      apiKey: "AIzaSyAifkBmMPwQLTqRu8nYFU1dqej2dlX33Bk",
+      authDomain: "usaas-4230f.firebaseapp.com",
+      databaseURL: "https://usaas-4230f-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "usaas-4230f",
+      storageBucket: "usaas-4230f.firebasestorage.app",
+      messagingSenderId: "1057123876526",
+      appId: "1:1057123876526:web:fb4c3c0e6b2407295f773f",
+      measurementId: "G-NSW66N1VGP"
+    };
+
+    // ✅ Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+    const rtdb = getDatabase(app);
+
+    // ✅ Show Message Function
+    function showMessage(message, divId) {
+      const messageDiv = document.getElementById(divId);
+      messageDiv.style.display = "block";
+      messageDiv.innerHTML = message;
+      messageDiv.style.opacity = 1;
+      setTimeout(() => {
+        messageDiv.style.opacity = 0;
+      }, 2000);
+    }
+
+
+    // Expose createAdmin to the global scope
+    window.createAdmin = async function () {
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      try {
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
+
+        await setDoc(doc(firestore, "Admin", Admin.uid), {
+          email: "email",
+          username: "Admin"
+        });
+
+        alert("✅ Admin created successfully!");
+      } catch (error) {
+        alert("❌ Error: " + error.message);
+        console.error(error);
+      }
+    };
+
+
+    // SIGNUP FUNCTION
+    document.getElementById('submitSignUp').addEventListener('click', async (event) => {
+      event.preventDefault();
+
+      const email = document.getElementById('rEmail').value.trim();
+      const password = document.getElementById('rPassword').value.trim();
+      const firstName = document.getElementById('fName').value.trim();
+      const phoneNumber = document.getElementById('phone_number').value.trim();
+      const type = document.querySelector('input[name="type"]:checked');
+
+      if (!email || !password || !firstName || !phoneNumber) {
+        showMessage("Please fill in all fields.", "signUpMessage");
+        return;
+      }
+
+      if (password.length < 8) {
+        showMessage("Password must be at least 8 characters long.", "signUpMessage");
+        return;
+      }
+
+      const uppercaseRegex = /[A-Z]/;
+      if (!uppercaseRegex.test(password)) {
+        showMessage("Password must contain at least one uppercase letter.", "signUpMessage");
+        return;
+      }
+
+      //include at least one number 
+      /*
+      const numberRegex = /[0-9]/;
+      if (!numberRegex.test(password)) {
+          showMessage("Password must contain at least one number.", "signUpMessage");
+          return;
+      }*/
+
+      if (type) {
+        const selectedValue = type.value;
+        console.log("Selected Assistance Type:", selectedValue);
+
+        try {
+          // ✅ Create user in Firebase Auth
+          const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+          const user = userCredential.user;
+
+          // ✅ Save to Firestore
+          await setDoc(doc(db, "users", user.uid), {
+            email: email,
+            firstName: firstName,
+            phoneNumber: phoneNumber,
+            type: selectedValue // Use the selected value here
+          });
+          console.log("User saved to Firestore");
+
+          // ✅ Save to Realtime Database (initialize balance to 0)
+          await set(ref(rtdb, `StudentWallet/${phoneNumber}`), {
+            balance: 0
+          });
+
+          await set(ref(rtdb, `UserPhoneLink/${user.uid}`), {
+            phoneNumber: phoneNumber, type: selectedValue
+          });
+
+          console.log("Phone number saved to Realtime Database");
+
+          alert("Account Created Successfully", "signUpMessage");
+
+          // ✅ Redirect after signup
+          setTimeout(() => {
+            window.location.href = "login.html";
+          }, 500);
+
+        } catch (error) {
+          console.error("Error signing up:", error);
+          if (error.code === "auth/email-already-in-use") {
+            showMessage("Email address already exists!", "signUpMessage");
+          } else {
+            showMessage("Failed to create account. Try again.", "signUpMessage");
+          }
+        }
+      } else {
+        // No option was selected
+        alert("Please select whether a local student will assist you.");
+
+      }
+    });
+
+
+    // LOGIN FUNCTION
+    document.getElementById('submitSignIn').addEventListener('click', async (event) => {
+      event.preventDefault();
+
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('passwordInputLogin').value.trim();
+
+      if (!email || !password) {
+        showMessage("Please enter email and password.", "signInMessage");
+        return;
+      }
+
+      try {
+        // ✅ Sign in with Firebase Auth
+        const userCredential = await signInWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
+        alert("Login successful");
+
+        // ✅ Store logged in user ID in localStorage (optional, but can be useful)
+        localStorage.setItem("loggedInUserId", user.uid);
+
+        // ✅ Retrieve user data from Firestore to determine the user type
+        const userDoc = await getDoc(doc(db, "users", user.uid));
+        let redirectURL = null; // Initialize redirectURL
+
+        if (userDoc.exists()) {
+          const userData = userDoc.data();
+          const userType = userData.type;
+
+          if (userType === 'student') {
+            redirectURL = "Student_Dashboard.html";
+          } else if (userType === 'assistant') {
+            redirectURL = "Assistant_Dashboard.html";
+          } else {
+            console.warn("User type not found or unexpected in 'users':", userData);
+            redirectURL = "login.html"; // Default redirect
+          }
+        } else {
+          // Check if admin
+          const adminDoc = await getDoc(doc(db, "admin", user.uid));
+          if (adminDoc.exists()) {
+            redirectURL = "Admin_Dashboard.html";
+            console.log("Admin logged in, redirecting to Admin panel.");
+          } else {
+            console.warn("User not found in 'users' or 'admins'. Redirecting to login.");
+            redirectURL = "login.html";
+          }
+        }
+
+        // ✅ Redirect if a URL is determined
+        if (redirectURL) {
+          setTimeout(() => {
+            window.location.href = redirectURL;
+          }, 500);
+        }
+
+      } catch (error) {
+        console.error("Error logging in:", error);
+        if (error.code === "auth/invalid-credential") {
+          alert("Incorrect email or password.", "signInMessage");
+        } else {
+          alert("Login failed: " + error.message, "signInMessage"); // More informative error
+        }
+      }
+    });
+
     const signUpButton = document.getElementById('signUpButton');
     const signInButton = document.getElementById('signInButton');
     const signInForm = document.getElementById('signIn');
@@ -153,6 +404,24 @@
       signInForm.style.display = "block";
       signUpForm.style.display = "none";
     })
+
+    const togglePasswordLogin = document.getElementById('togglePasswordLogin');
+    const passwordInputLogin = document.getElementById('passwordInputLogin');
+
+    togglePasswordLogin.addEventListener('click', () => {
+      const type = passwordInputLogin.getAttribute('type') === 'password' ? 'text' : 'password';
+      passwordInputLogin.setAttribute('type', type);
+      togglePasswordLogin.classList.toggle('fa-eye-slash');
+    });
+
+    const togglePasswordSignup = document.getElementById('togglePasswordSignup');
+    const passwordInputSignup = document.getElementById('passwordInputSignup');
+
+    togglePasswordSignup.addEventListener('click', () => {
+      const type = passwordInputSignup.getAttribute('type') === 'password' ? 'text' : 'password';
+      passwordInputSignup.setAttribute('type', type);
+      togglePasswordSignup.classList.toggle('fa-eye-slash');
+    });
   </script>
 </body>
 
