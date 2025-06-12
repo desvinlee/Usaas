@@ -49,7 +49,7 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Order List:</h6>
-                        <a class="collapse-item" href="Admin_Vieworder.html">Order List</a>
+                        <a class="collapse-item" href="Admin_ViewOrder.html">Order List</a>
                         <a class="collapse-item" href="Admin_Report.html">Report List</a>
                     </div>
                 </div>
@@ -162,427 +162,74 @@
 
                 <div class="container-fluid">
                     <div class="d-sm-flex justify-content-between align-items-center mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Document</h1><a class="btn btn-primary btn-sm shadow-sm d-none d-sm-inline-block" role="button" href="Admin_Report.html"><i class="fas fa-download text-white-50 fa-sm"></i> Generate Report</a>
+                        <h1 class="h3 mb-0 text-gray-800">Document List</h1>
                     </div>
-                    <div class="row">
-                        <div class="col-xl-6">
-                            <div class="card shadow mb-4">
-                                <div class="card-body"><a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="true" aria-controls="collapseLayouts">International Student&nbsp;</a><a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="true" aria-controls="collapseLayouts">Assistant</a></div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-xl-3 offset-xl-0 mb-4">
-                            <div class="card shadow border-left-warning h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row align-items-center no-gutters">
-                                        <div class="col mr-2">
-                                            <div class="text-uppercase text-warning text-xs font-weight-bold mb-1"><span>international Pending Documents</span></div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><span>18</span></div>
-                                        </div>
-                                        <div class="col-auto"><i class="fas fa-clipboard-list fa-2x text-gray-300"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-xl-3 offset-xl-0 mb-4">
-                            <div class="card shadow border-left-success h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row align-items-center no-gutters">
-                                        <div class="col mr-2">
-                                            <div class="text-uppercase text-success text-xs font-weight-bold mb-1"><span>Assistant Pending Documents</span></div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><span>23</span></div>
-                                        </div>
-                                        <div class="col-auto"><i class="fas fa-calendar fa-2x text-gray-300"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6 col-xl-12 mb-4">
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="text-primary m-0 font-weight-bold">Assistant Document</h6>
-                                </div>
-                                <div class="card-body"><table id="datatablesSimple">
-    <thead>
-        <tr>
-            <th>Order date</th>
-            <th>Name</th>
-            <th>Status</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tfoot>
-        <tr>
-            <th>Order date</th>
-            <th>Name</th>
-            <th>Status</th>
-            <th></th>
-        </tr>
-    </tfoot>
 
-    <tbody>
-        <tr>
-            <td>2011/04/25</td>
-            <td>
-                <div>
-                    <a class="nav-link collapsed" data-toggle="collapse" data-target="#collapseLayoutsorder"
-                        aria-expanded="true" aria-controls="collapseLayouts">Colleen Hurst</a>
-                </div>
-                <div id="collapseLayoutsorder" class="collapse" aria-labelledby="headingOne">
-                    <nav class="sb-sidenav-menu-nested nav">
-                        <h6 style="margin-top: 20px;">
-                            <span style="font-weight: normal !important;">Student card</span><br />
-                            <span style="font-weight: normal !important;">Driving license</span><br />
-                            <span style="font-weight: normal !important;">Car insurance</span>
-                        </h6>
-                    </nav>
-                </div>
-            </td>
-
-            <td>Pending</td>
-            <td>
-                <div class="row">
-                    <div class="col">
-                        <button class="btn btn-primary" type="button"
-                            style="background: #95e1d3;color: rgb(33,37,41);border-radius: 10px;border-color: var(--bs-table-striped-color);width: 100px;"
-                            data-bs-target="#confirmation" data-bs-toggle="modal">
-                            <strong>Approved</strong>
-                        </button>
-                    </div>
-                </div>
-            </td>
-        </tr>
-        <tr>
-
-            <td>2011/07/25</td>
-            <td>
-                <div>
-                    <a class="nav-link collapsed" data-toggle="collapse" data-target="#collapseLayoutsorder1"
-                        aria-expanded="true" aria-controls="collapseLayouts">Garrett Winters</a>
-                </div>
-
-                <div>
-                    <div id="collapseLayoutsorder1" class="collapse" aria-labelledby="headingOne">
-                        <nav class="sb-sidenav-menu-nested nav">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <h6 style="margin-top: 20px;margin-left: 10px;"><span
-                                        style="font-weight: normal !important;">Student card</span><br /><span
-                                        style="font-weight: normal !important;">Driving license</span><br /><span
-                                        style="font-weight: normal !important;">Car insurance</span></h6>
-                            </nav>
-                    </div>
-            </td>
-            <td>Pending</td>
-            <td>
-                <div class="row">
-                    <div class="col">
-                        <button class="btn btn-primary" type="button"
-                            style="background: #95e1d3;color: rgb(33,37,41);border-radius: 10px;border-color: var(--bs-table-striped-color);width: 100px;"
-                            data-bs-target="#confirmation" data-bs-toggle="modal">
-                            <strong>Approved</strong>
-                        </button>
-                    </div>
-                </div>
-            </td>
-        </tr>
-
-        <tr>
-            <td>2009/01/12</td>
-            <td>
-                <div>
-                    <a class="nav-link collapsed" data-toggle="collapse" data-target="#collapseLayoutsorder1"
-                        aria-expanded="true" aria-controls="collapseLayouts">Ashton Cox</a>
-                </div>
-
-                <div>
-                    <div id="collapseLayoutsorder1" class="collapse" aria-labelledby="headingOne">
-                        <nav class="sb-sidenav-menu-nested nav">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <h6 style="margin-top: 20px;margin-left: 10px;"><span
-                                        style="font-weight: normal !important;">Finland </span><br /><span
-                                        style="font-weight: normal !important;">Faculty of Civil</span><br /><span
-                                        style="font-weight: normal !important;">Female</span></h6>
-                            </nav>
-                    </div>
-                </td>
-            <td>Pending</td>
-            <td>
-                <div class="row">
-                    <div class="col">
-                        <button class="btn btn-primary" type="button"
-                            style="background: #95e1d3;color: rgb(33,37,41);border-radius: 10px;border-color: var(--bs-table-striped-color);width: 100px;"
-                            data-bs-target="#confirmation" data-bs-toggle="modal">
-                            <strong>Approved</strong>
-                        </button>
-                    </div>
-                </div>
-            </td>
-        </tr>
-
-        <tr>
-            <td>2012/03/29</td>
-            <td>
-                <div>
-                    <a class="nav-link collapsed" data-toggle="collapse" data-target="#collapseLayoutsorder1"
-                        aria-expanded="true" aria-controls="collapseLayouts">Cedric Kelly</a>
-                </div>
-
-                <div>
-                    <div id="collapseLayoutsorder1" class="collapse" aria-labelledby="headingOne">
-                        <nav class="sb-sidenav-menu-nested nav">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <h6 style="margin-top: 20px;margin-left: 10px;"><span
-                                        style="font-weight: normal !important;">Bangladash </span><br /><span
-                                        style="font-weight: normal !important;">Faculty of Civil</span><br /><span
-                                        style="font-weight: normal !important;">Female</span></h6>
-                            </nav>
-                    </div>
-                </td>
-            <td>Pending</td>
-            <td>
-                <div class="row">
-                    <div class="col">
-                        <button class="btn btn-primary" type="button"
-                            style="background: #95e1d3;color: rgb(33,37,41);border-radius: 10px;border-color: var(--bs-table-striped-color);width: 100px;"
-                            data-bs-target="#confirmation" data-bs-toggle="modal">
-                            <strong>Approved</strong>
-                        </button>
-                    </div>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>2012/12/02</td>
-            <td>
-                <div>
-                    <a class="nav-link collapsed" data-toggle="collapse" data-target="#collapseLayoutsorder"
-                        aria-expanded="true" aria-controls="collapseLayouts">Brielle Williamson</a>
-                </div>
-                
-                <div id="collapseLayoutsorder" class="collapse" aria-labelledby="headingOne">
-                    <nav class="sb-sidenav-menu-nested nav">
-                        <h6 style="margin-top: 20px;">
-                            <span style="font-weight: normal !important;">Indonesia</span><br />
-                            <span style="font-weight: normal !important;">Faculty of Science</span><br />
-                            <span style="font-weight: normal !important;">Male</span>
-                        </h6>
-                    </nav>
-                </div>
-                </td>
-            <td>Pending</td>
-            <td>
-                <div class="row">
-                    <div class="col">
-                        <button class="btn btn-primary" type="button"
-                            style="background: #95e1d3;color: rgb(33,37,41);border-radius: 10px;border-color: var(--bs-table-striped-color);width: 100px;"
-                            data-bs-target="#confirmation" data-bs-toggle="modal">
-                            <strong>Approved</strong>
-                        </button>
-                    </div>
-                </div>
-            </td>
-        </tr>
-    </tbody>
-</table></div>
-                            </div>
-                        </div>
+                    <div class="row" style="margin-right: 0;">
                         <div class="col">
-                            <div class="row">
-                                <div class="col-lg-6 col-xl-12 mb-4">
-                                    <div class="card shadow mb-4">
-                                        <div class="card-header py-3">
-                                            <h6 class="text-primary m-0 font-weight-bold">International Student Document</h6>
-                                        </div>
-                                        <div class="card-body"><table id="datatablesSimple">
-    <thead>
-        <tr>
-            <th>Order date</th>
-            <th>Name</th>
-            <th>Status</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tfoot>
-        <tr>
-            <th>Order date</th>
-            <th>Name</th>
-            <th>Status</th>
-            <th></th>
-        </tr>
-    </tfoot>
-
-    <tbody>
-        <tr>
-            <td>2011/04/25</td>
-            <td>
-                <div>
-                    <a class="nav-link collapsed" data-toggle="collapse" data-target="#collapseLayoutsorder"
-                        aria-expanded="true" aria-controls="collapseLayouts">Colleen Hurst</a>
-                </div>
-                <div id="collapseLayoutsorder" class="collapse" aria-labelledby="headingOne">
-                    <nav class="sb-sidenav-menu-nested nav">
-                        <h6 style="margin-top: 20px;">
-                            <span style="font-weight: normal !important;">Student card</span><br />
-                            <span style="font-weight: normal !important;">Driving license</span><br />
-                            <span style="font-weight: normal !important;">Car insurance</span>
-                        </h6>
-                    </nav>
-                </div>
-            </td>
-
-            <td>Pending</td>
-            <td>
-                <div class="row">
-                    <div class="col">
-                        <button class="btn btn-primary" type="button"
-                            style="background: #95e1d3;color: rgb(33,37,41);border-radius: 10px;border-color: var(--bs-table-striped-color);width: 100px;"
-                            data-bs-target="#confirmation" data-bs-toggle="modal">
-                            <strong>Approved</strong>
-                        </button>
-                    </div>
-                </div>
-            </td>
-        </tr>
-        <tr>
-
-            <td>2011/07/25</td>
-            <td>
-                <div>
-                    <a class="nav-link collapsed" data-toggle="collapse" data-target="#collapseLayoutsorder1"
-                        aria-expanded="true" aria-controls="collapseLayouts">Garrett Winters</a>
-                </div>
-
-                <div>
-                    <div id="collapseLayoutsorder1" class="collapse" aria-labelledby="headingOne">
-                        <nav class="sb-sidenav-menu-nested nav">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <h6 style="margin-top: 20px;margin-left: 10px;"><span
-                                        style="font-weight: normal !important;">Student card</span><br /><span
-                                        style="font-weight: normal !important;">Driving license</span><br /><span
-                                        style="font-weight: normal !important;">Car insurance</span></h6>
-                            </nav>
-                    </div>
-            </td>
-            <td>Pending</td>
-            <td>
-                <div class="row">
-                    <div class="col">
-                        <button class="btn btn-primary" type="button"
-                            style="background: #95e1d3;color: rgb(33,37,41);border-radius: 10px;border-color: var(--bs-table-striped-color);width: 100px;"
-                            data-bs-target="#confirmation" data-bs-toggle="modal">
-                            <strong>Approved</strong>
-                        </button>
-                    </div>
-                </div>
-            </td>
-        </tr>
-
-        <tr>
-            <td>2009/01/12</td>
-            <td>
-                <div>
-                    <a class="nav-link collapsed" data-toggle="collapse" data-target="#collapseLayoutsorder1"
-                        aria-expanded="true" aria-controls="collapseLayouts">Ashton Cox</a>
-                </div>
-
-                <div>
-                    <div id="collapseLayoutsorder1" class="collapse" aria-labelledby="headingOne">
-                        <nav class="sb-sidenav-menu-nested nav">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <h6 style="margin-top: 20px;margin-left: 10px;"><span
-                                        style="font-weight: normal !important;">Finland </span><br /><span
-                                        style="font-weight: normal !important;">Faculty of Civil</span><br /><span
-                                        style="font-weight: normal !important;">Female</span></h6>
-                            </nav>
-                    </div>
-                </td>
-            <td>Pending</td>
-            <td>
-                <div class="row">
-                    <div class="col">
-                        <button class="btn btn-primary" type="button"
-                            style="background: #95e1d3;color: rgb(33,37,41);border-radius: 10px;border-color: var(--bs-table-striped-color);width: 100px;"
-                            data-bs-target="#confirmation" data-bs-toggle="modal">
-                            <strong>Approved</strong>
-                        </button>
-                    </div>
-                </div>
-            </td>
-        </tr>
-
-        <tr>
-            <td>2012/03/29</td>
-            <td>
-                <div>
-                    <a class="nav-link collapsed" data-toggle="collapse" data-target="#collapseLayoutsorder1"
-                        aria-expanded="true" aria-controls="collapseLayouts">Cedric Kelly</a>
-                </div>
-
-                <div>
-                    <div id="collapseLayoutsorder1" class="collapse" aria-labelledby="headingOne">
-                        <nav class="sb-sidenav-menu-nested nav">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <h6 style="margin-top: 20px;margin-left: 10px;"><span
-                                        style="font-weight: normal !important;">Bangladash </span><br /><span
-                                        style="font-weight: normal !important;">Faculty of Civil</span><br /><span
-                                        style="font-weight: normal !important;">Female</span></h6>
-                            </nav>
-                    </div>
-                </td>
-            <td>Pending</td>
-            <td>
-                <div class="row">
-                    <div class="col">
-                        <button class="btn btn-primary" type="button"
-                            style="background: #95e1d3;color: rgb(33,37,41);border-radius: 10px;border-color: var(--bs-table-striped-color);width: 100px;"
-                            data-bs-target="#confirmation" data-bs-toggle="modal">
-                            <strong>Approved</strong>
-                        </button>
-                    </div>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>2012/12/02</td>
-            <td>
-                <div>
-                    <a class="nav-link collapsed" data-toggle="collapse" data-target="#collapseLayoutsorder"
-                        aria-expanded="true" aria-controls="collapseLayouts">Brielle Williamson</a>
-                </div>
-                
-                <div id="collapseLayoutsorder" class="collapse" aria-labelledby="headingOne">
-                    <nav class="sb-sidenav-menu-nested nav">
-                        <h6 style="margin-top: 20px;">
-                            <span style="font-weight: normal !important;">Indonesia</span><br />
-                            <span style="font-weight: normal !important;">Faculty of Science</span><br />
-                            <span style="font-weight: normal !important;">Male</span>
-                        </h6>
-                    </nav>
-                </div>
-                </td>
-            <td>Pending</td>
-            <td>
-                <div class="row">
-                    <div class="col">
-                        <button class="btn btn-primary" type="button"
-                            style="background: #95e1d3;color: rgb(33,37,41);border-radius: 10px;border-color: var(--bs-table-striped-color);width: 100px;"
-                            data-bs-target="#confirmation" data-bs-toggle="modal">
-                            <strong>Approved</strong>
-                        </button>
-                    </div>
-                </div>
-            </td>
-        </tr>
-    </tbody>
-</table></div>
+                            <div class="card shadow mb-4">
+                                <div class="card-body text-left">
+                                    <h5>Select Type</h5>
+                                    <div class="d-grid gap-3 d-md-flex justify-content-md-left"
+                                        style="margin-top: 20px">
+                                        <button id="studentBtn" class="btn btn-secondary">Student Page</button>
+                                        <button id="assistantBtn" class="btn btn-secondary">Assistant Page</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+
+                    <div class="row">
+                        <div class="col-lg-12 mb-4">
+                            <div class="card shadow border-left-primary">
+                                <div class="card-header py-3 d-flex justify-content-between align-items-center">
+                                    <h6 class="m-0 font-weight-bold text-primary">Admin: View All Student Documents
+                                    </h6>
+                                    <span class="badge badge-info">Live Data</span>
+                                </div>
+
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-hover align-middle text-center">
+                                            <thead class="thead-light">
+                                                <tr>
+                                                    <th>Name</th>
+                                                    <th>Document</th>
+                                                    <th>Submit Time</th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody id="adminStudentDocs"></tbody>
+                                        </table>
+                                    </div>
+
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-hover align-middle text-center"
+                                            style="display: none;">
+                                            <thead class="thead-light">
+                                                <tr>
+                                                    <th>Name</th>
+                                                    <th>Document</th>
+                                                    <th>Submit Time</th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody id="adminAssistantDocs"></tbody>
+                                        </table>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
                 </div>
             </div>
+
             <footer class="bg-white sticky-footer">
                 <div class="container-fluid px-4">
                     <div class="text-left my-auto copyright justify-content-between small">
@@ -590,39 +237,284 @@
                     </div>
                 </div>
             </footer>
+
         </div>
-    </div><a class="scroll-to-top rounded" href="#page-top"><i class="fas fa-angle-up"></i></a>
-    <div class="modal fade" role="dialog" tabindex="-1" id="logoutModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+    </div>
+    </div>
+
+    <a class="scroll-to-top rounded" href="#page-top"><i class="fas fa-angle-up"></i></a>
+
+    <div class="modal fade" role="dialog" tabindex="-1" id="logoutModal" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5><button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">×</span></button>
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5><button aria-label="Close"
+                        class="close" data-dismiss="modal" type="button"><span aria-hidden="true">×</span></button>
                 </div>
-                <div class="modal-body"><span>Select "Logout" below if you are ready to end your current session.</span></div>
-                <div class="modal-footer"><button class="btn btn-secondary" data-dismiss="modal" type="button">Cancel</button><a class="btn btn-primary" role="button" href="login.html">Logout</a></div>
+                <div class="modal-body"><span>Select "Logout" below if you are ready to end your current session.</span>
+                </div>
+                <div class="modal-footer"><button class="btn btn-secondary" data-dismiss="modal"
+                        type="button">Cancel</button><a class="btn btn-primary" role="button"
+                        href="login.html">Logout</a></div>
             </div>
         </div>
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/vendor/jquery/jquery.min.js"></script>
     <script src="assets/js/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/vendor/jquery-easing/jquery.easing.min.js"></script>
     <script src="assets/js/js/sb-admin-2.min.js"></script>
-    <script src="assets/js/vendor/chart.js/Chart.min.js"></script>
-    <script src="assets/js/js/chart-area-demo.js"></script>
-    <script src="assets/js/js/chart-pie-demo.js"></script>
-    <script src="assets/js/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"></script>
     <script src="assets/js/js/datatables-simple-demo.js"></script>
-    <script src="assets/js/js/Student_Document.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/js/Navigationbar.js"></script>
-    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-    <script src="assets/js/js/Assistant_orderlist.js"></script>
-    <script src="assets/js/js/Student_createorderform.js"></script>
-    <script src="assets/js/js/Student&amp;Ass_Auth.js"></script>
-    <script src="assets/js/js/Student&amp;Ass_Register.js"></script>
+
+    <script type="module">
+
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-app.js";
+        import { getDatabase, onValue, push, update, set, remove, get } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-database.js";
+        import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-auth.js";
+        import { getFirestore, collection, query, where, getDocs, doc, setDoc } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-firestore.js";
+        import { getStorage, ref, listAll, getDownloadURL } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-storage.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAifkBmMPwQLTqRu8nYFU1dqej2dlX33Bk",
+            authDomain: "usaas-4230f.firebaseapp.com",
+            databaseURL: "https://usaas-4230f-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "usaas-4230f",
+            storageBucket: "usaas-4230f.firebasestorage.app",
+            messagingSenderId: "1057123876526",
+            appId: "1:1057123876526:web:fb4c3c0e6b2407295f773f",
+            measurementId: "G-NSW66N1VGP"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore();
+        const storage = getStorage();
+
+
+
+        async function loadStudentDocumentsForAdmin() {
+            const tbody = document.getElementById("adminStudentDocs");
+            tbody.innerHTML = "";
+
+            try {
+                // 1. Get all student users
+                const usersRef = collection(db, "users");
+                const studentQuery = query(usersRef, where("type", "==", "student"));
+                const snapshot = await getDocs(studentQuery);
+
+                if (snapshot.empty) {
+                    tbody.innerHTML = "<tr><td colspan='5'>No students found.</td></tr>";
+                    return;
+                }
+
+                // 2. For each student, check uploaded files and prepare data
+                for (const docSnap of snapshot.docs) {
+                    const userData = docSnap.data();
+                    const uid = docSnap.id;
+
+                    // Convert submitTime to readable format
+                    let formattedSubmitTime = "Unknown";
+                    if (userData.submitTime && userData.submitTime.toDate) {
+                        formattedSubmitTime = userData.submitTime.toDate().toLocaleString();
+                    }
+
+                    const studentDoc = {
+                        uid: uid,
+                        firstName: userData.firstName || "Unknown",
+                        lastName: userData.lastName || "",
+                        phone: userData.phoneNumber || "Unknown",
+                        submitTime: formattedSubmitTime
+                    };
+
+                    // 3. Check file availability
+                    const fileTypes = ['passport', 'visa', 'earrival'];
+                    for (const label of fileTypes) {
+                        const folderRef = ref(storage, `student_files/${uid}/${label}`);
+                        try {
+                            const fileList = await listAll(folderRef);
+                            if (fileList.items.length > 0) {
+                                const url = await getDownloadURL(fileList.items[0]);
+                                studentDoc[label] = url;
+                            } else {
+                                studentDoc[label] = null;
+                            }
+                        } catch (err) {
+                            studentDoc[label] = null; // Possibly missing folder
+                        }
+                    }
+
+                    // 4. Render each student row with file links and submit time
+                    AddSingleStudentDocument(studentDoc);
+                }
+
+            } catch (error) {
+                console.error("Error loading student documents:", error);
+                tbody.innerHTML = "<tr><td colspan='5'>Error loading data</td></tr>";
+            }
+        }
+
+        const displayStudentDocuments = (documentsObject, studentUID) => {
+            const tbody = document.getElementById("adminStudentDocs");
+            tbody.innerHTML = ""; // Clear previous content
+
+            const fullDocument = {
+                ...documentsObject,
+                uid: studentUID
+            };
+
+            AddSingleStudentDocument(fullDocument);
+        };
+
+
+        const AddSingleStudentDocument = (studentDoc) => {
+            const trow = document.createElement('tr');
+            const td1 = document.createElement('td'); // Submit Time
+            const td2 = document.createElement('td'); // Student Info
+            const td3 = document.createElement('td'); // Files
+            //  const td4 = document.createElement('td'); // Action
+
+            td3.innerText = studentDoc.submitTime || "Unknown";
+
+            td1.innerHTML = `
+        ${studentDoc.firstName} ${studentDoc.lastName}<br>
+        <strong>${studentDoc.phone}</strong>
+    `;
+
+            td2.innerHTML = ['passport', 'visa', 'earrival'].map(label => {
+                if (studentDoc[label]) {
+                    return `<strong>${label}:</strong> <a href="${studentDoc[label]}" target="_blank">View</a><br>`;
+                } else {
+                    return `<strong>${label}:</strong> <span class="text-warning">Pending</span><br>`;
+                }
+            }).join("");
+
+            // td4.innerHTML = `<button class="btn btn-sm btn-info" onclick="alert('Viewing ${studentDoc.uid}')">Details</button>`;
+
+            trow.append(td1, td2, td3);
+            document.getElementById("adminStudentDocs").appendChild(trow);
+        };
+
+        loadStudentDocumentsForAdmin();
+
+        async function loadAssistantDocumentsForAdmin() {
+            const tbody = document.getElementById("adminAssistantDocs");
+            tbody.innerHTML = "";
+
+            try {
+                const usersRef = collection(db, "users");
+                const assistantQuery = query(usersRef, where("type", "==", "assistant"));
+                const snapshot = await getDocs(assistantQuery);
+
+                if (snapshot.empty) {
+                    tbody.innerHTML = "<tr><td colspan='5'>No assistants found.</td></tr>";
+                    return;
+                }
+
+                for (const docSnap of snapshot.docs) {
+                    const userData = docSnap.data();
+                    const uid = docSnap.id;
+
+                    let formattedSubmitTime = "Unknown";
+                    if (userData.submitTime && userData.submitTime.toDate) {
+                        formattedSubmitTime = userData.submitTime.toDate().toLocaleString();
+                    }
+
+                    const assistantDoc = {
+                        uid: uid,
+                        firstName: userData.firstName || "Unknown",
+                        lastName: userData.lastName || "",
+                        phone: userData.phoneNumber || "Unknown",
+                        submitTime: formattedSubmitTime
+                    };
+
+                    const fileTypes = ['passport', 'visa', 'earrival'];
+                    for (const label of fileTypes) {
+                        const folderRef = ref(storage, `assistant_files/${uid}/${label}`);
+                        try {
+                            const fileList = await listAll(folderRef);
+                            if (fileList.items.length > 0) {
+                                const url = await getDownloadURL(fileList.items[0]);
+                                assistantDoc[label] = url;
+                            } else {
+                                assistantDoc[label] = null;
+                            }
+                        } catch (err) {
+                            assistantDoc[label] = null;
+                        }
+                    }
+
+                    AddSingleAssistantDocument(assistantDoc);
+                }
+
+            } catch (error) {
+                console.error("Error loading assistant documents:", error);
+                tbody.innerHTML = "<tr><td colspan='5'>Error loading data</td></tr>";
+            }
+        }
+
+        const displayAssistantDocuments = (documentsObject, assistantUID) => {
+            const tbody = document.getElementById("adminAssistantDocs");
+            tbody.innerHTML = "";
+
+            const fullDocument = {
+                ...documentsObject,
+                uid: assistantUID
+            };
+
+            AddSingleAssistantDocument(fullDocument);
+        };
+
+        const AddSingleAssistantDocument = (assistantDoc) => {
+            const trow = document.createElement('tr');
+
+            const td1 = document.createElement('td'); // Assistant Info
+            const td2 = document.createElement('td'); // Files
+            const td3 = document.createElement('td'); // Submit Time
+
+            td1.innerHTML = `
+        ${assistantDoc.firstName} ${assistantDoc.lastName}<br>
+        <strong>${assistantDoc.phone}</strong>
+    `;
+
+            td2.innerHTML = ['passport', 'visa', 'earrival'].map(label => {
+                if (assistantDoc[label]) {
+                    return `<strong>${label}:</strong> <a href="${assistantDoc[label]}" target="_blank">View</a><br>`;
+                } else {
+                    return `<strong>${label}:</strong> <span class="text-warning">Pending</span><br>`;
+                }
+            }).join("");
+
+            td3.innerText = assistantDoc.submitTime || "Unknown";
+
+            trow.append(td1, td2, td3);
+            document.getElementById("adminAssistantDocs").appendChild(trow);
+        };
+
+        loadAssistantDocumentsForAdmin();
+
+
+
+        document.getElementById("studentBtn").addEventListener("click", () => {
+            document.querySelectorAll("table")[0].style.display = "table"; // Student table
+            document.querySelectorAll("table")[1].style.display = "none";  // Assistant table
+            loadStudentDocumentsForAdmin(); // Load student data
+        });
+
+        document.getElementById("assistantBtn").addEventListener("click", () => {
+            document.querySelectorAll("table")[0].style.display = "none";  // Student table
+            document.querySelectorAll("table")[1].style.display = "table"; // Assistant table
+            loadAssistantDocumentsForAdmin(); // Load assistant data
+        });
+
+
+    </script>
 </body>
 
 </html>

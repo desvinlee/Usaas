@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Student-wallet</title>
+    <title>Student Create Order</title>
     <link rel="stylesheet" href="assets/css/css/sb-admin-2.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css">
@@ -95,7 +95,7 @@
 
 
             <li class="nav-item">
-                <a class="nav-link" href="Student_Support.html">
+                <a class="nav-link" href="404.html">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Help & support</span></a>
             </li>
@@ -144,8 +144,8 @@
                         <div class="topbar-divider d-none d-sm-block"></div>
                         <!--Edit username Here-->
                         <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" id="userDropdown" role="button" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <img class="img-profile rounded-circle" src="assets/img/undraw_profile_2.svg">
                                 <strong><span id="loggedUserFName"
                                         class="mr-2 d-none d-lg-inline text-gray-600 small"></span></strong>
@@ -163,91 +163,24 @@
                 </nav>
 
                 <div class="container-fluid">
+
+                    <!-- center Main content -->
                     <div class="d-sm-flex justify-content-between align-items-center mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Wallet</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Help & Support</h1>
                     </div>
-                    <div class="row" style="margin-right: 0;">
-                        <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-8 mb-4">
-                            <div class="card shadow border-left-primary h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row align-items-center no-gutters">
-                                        <div class="col mr-2" style="margin-left: 15px;">
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="wallet_balance">
-                                                <span>RM 0.0</span>
-                                            </div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><span
-                                                    style="font-size: 15px;"><span
-                                                        style="font-weight: normal !important;">View balance
-                                                        details</span></span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div>
-                                <div class="row" style="margin-top: initial;margin-left: 40px;">
-                                    <div class="col-xl-12"><button class="btn btn-primary" type="button"
-                                            style="width: 150px;background: #5ab382;">Withdrawal</button></div>
-                                </div>
-                                <div class="row" style="margin-top: 15px;margin-left: 40px;">
-                                    <div class="col"><button class="btn btn-primary" type="button"
-                                            onclick="window.location.href='Student_Deposit.html'"
-                                            style="width: 150px;background: #f38181;">Deposit</button></div>
-                                </div>
-                            </div>
-                        </div>
+
+                    <div class="mb-3">
+                        <label for="feedbackMessage" class="form-label">Describe your issue:</label>
+                        <textarea id="feedbackMessage" class="form-control" rows="6"
+                            placeholder="Describe the issue in detail..."></textarea>
                     </div>
-                    <div class="row">
-                        <div class="col">
-                            <div class="row">
-                                <div class="col">
-                                    <div class="card shadow mb-4">
-                                        <div class="card-header py-3">
-                                            <h6 class="text-primary m-0 font-weight-bold">Transaction</h6>
-                                        </div>
-                                        <div class="card-body">
-                                            <table id="datatablesSimple">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Start date</th>
-                                                        <th>Assistant</th>
-                                                        <th>Type</th>
-                                                        <th>Amount</th>
-                                                    </tr>
-                                                </thead>
-                                                <tfoot>
-                                                    <tr>
-                                                        <th>Start date</th>
-                                                        <th>Assistant</th>
-                                                        <th>Type</th>
-                                                        <th>Amount</th>
-                                                    </tr>
-                                                </tfoot>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>2024/04/25</td>
-                                                        <td>Tiger Nixon</td>
-                                                        <td>Debit</td>
-                                                        <td>RM 100</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>2011/07/25</td>
-                                                        <td>Garrett Winters</td>
-                                                        <td>Debit</td>
-                                                        <td>RM 100</td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
+                    <button id="sendFeedbackBtn" class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i> Send Report
+                    </button>
+
                 </div>
             </div>
-
             <footer class="bg-white sticky-footer">
                 <div class="container-fluid px-4">
                     <div class="text-left my-auto copyright justify-content-between small">
@@ -256,7 +189,10 @@
                 </div>
             </footer>
         </div>
-    </div><a class="scroll-to-top rounded" href="#page-top"><i class="fas fa-angle-up"></i></a>
+    </div>
+
+    <a class="scroll-to-top rounded" href="#page-top"><i class="fas fa-angle-up"></i></a>
+
     <div class="modal fade" role="dialog" tabindex="-1" id="logoutModal" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -273,6 +209,27 @@
             </div>
         </div>
     </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div class="modal fade" id="confirmOrderModal" tabindex="-1" aria-labelledby="confirmOrderModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmOrderModalLabel">Confirm Your Order</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="confirmationDetails">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary " id="confirmSubmitOrder">Confirm</button>
+                    <button type="button" class="btn btn-secondary bg-danger" data-bs-dismiss="modal">Edit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/vendor/jquery/jquery.min.js"></script>
     <script src="assets/js/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -283,12 +240,13 @@
     <script src="assets/js/js/Navigationbar.js"></script>
 
     <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
-        import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore.js";
-        import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-database.js";
-        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
 
-        // ✅ Firebase Config
+
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-app.js";
+        import { getFirestore, doc, getDoc, addDoc, collection } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-firestore.js";
+        import { getDatabase, ref, get, set, push } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-database.js";
+        import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-auth.js";
+
         const firebaseConfig = {
             apiKey: "AIzaSyAifkBmMPwQLTqRu8nYFU1dqej2dlX33Bk",
             authDomain: "usaas-4230f.firebaseapp.com",
@@ -300,123 +258,101 @@
             measurementId: "G-NSW66N1VGP"
         };
 
-        // ✅ Initialize Firebase
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
         const rtdb = getDatabase(app);
         const auth = getAuth(app);
 
-
         let inactivityTimer;
 
-        // ✅ Load wallet balance from Realtime Database
-        function loadWalletBalance(phoneNumber) {
-            if (!phoneNumber) {
-                console.error("Phone number is missing!");
-                alert("Phone number is missing!");
-                return;
-            }
-
-            console.log(`Loading wallet balance for phone number: ${phoneNumber}`);
-
-            const walletRef = ref(rtdb, `StudentWallet/${phoneNumber}`);
-            onValue(walletRef, (snapshot) => {
-                const balance = snapshot.val()?.balance || 0;
-                console.log(`Retrieved balance: ${balance}`);
-
-                // ✅ Ensure the element exists before updating
-                const walletBalanceElem = document.getElementById('wallet_balance');
-                if (walletBalanceElem) {
-                    walletBalanceElem.textContent = `RM ${balance.toFixed(2)}`;
-                } else {
-                    console.error("Element with ID 'wallet_balance' not found!");
-                }
-            }, (error) => {
-                console.error("Error loading wallet balance:", error);
-                alert("Failed to load wallet balance.");
-            });
-        }
-
-        // ✅ Load phone number from Firestore based on logged-in user ID
-        function loadPhoneNumber(userId) {
-            console.log(`Fetching phone number for user ID: ${userId}`);
-
-            const userDocRef = doc(db, "users", userId);
-            getDoc(userDocRef).then((docSnap) => {
-                if (docSnap.exists()) {
-                    console.log(`Document data:`, docSnap.data());
-
-                    const phoneNumber = docSnap.data()?.phoneNumber;
-                    if (phoneNumber) {
-                        console.log(`Retrieved phone number from Firestore: ${phoneNumber}`);
-                        loadWalletBalance(phoneNumber);
-                    } else {
-                        console.error("Phone number is missing from Firestore document!");
-                        alert("Phone number is missing from Firestore document!");
-                    }
-                } else {
-                    console.error("No document found with the provided user ID.");
-                    alert("No user data found!");
-                }
-            }).catch((error) => {
-                console.error("Error fetching user data:", error);
-                alert("Failed to fetch user data.");
-            });
-        }
-
+        // ✅ Auto-logout after 30 mins of inactivity
         function startInactivityTimer() {
             clearTimeout(inactivityTimer);
             inactivityTimer = setTimeout(() => {
-                signOut(auth)
-                    .then(() => {
-                        alert("Session expired due to inactivity.");
-                        localStorage.removeItem("loggedInUserId");
-                        window.location.href = "login.html";
+                signOut(auth).then(() => {
+                    alert("You have been logged out due to 30 minutes of inactivity.");
+                    localStorage.removeItem("loggedInUserId"); // Clear session
+                    window.location.href = "login.html"; // Redirect to login
+                });
+            }, 30 * 60 * 1000); // 30 mins
+        }
+
+        // ✅ Reset timer on any activity
+        function resetTimerOnActivity() {
+            ["mousemove", "keypress", "click", "scroll"].forEach((event) => {
+                window.addEventListener(event, startInactivityTimer);
+            });
+        }
+
+        // ✅ Auth state + display first name + start timer
+        onAuthStateChanged(auth, (user) => {
+            const loggedInUserId = localStorage.getItem('loggedInUserId');
+
+            if (user && loggedInUserId) {
+                console.log("User logged in:", user);
+
+                // Display first name
+                const docRef = doc(db, "users", loggedInUserId);
+                getDoc(docRef)
+                    .then((docSnap) => {
+                        if (docSnap.exists()) {
+                            const userData = docSnap.data();
+                            document.getElementById('loggedUserFName').innerText = userData.firstName || "User";
+                        } else {
+                            console.log("No document found for this user ID.");
+                        }
                     })
                     .catch((error) => {
-                        console.error("Logout failed:", error);
+                        console.error("Error getting document:", error);
                     });
-            }, 30 * 60 * 1000); // 30 minutes
-        }
 
-        // ⏱️ Reset inactivity timer on user interaction
-        function setupActivityListeners() {
-            ["click", "mousemove", "keypress", "scroll"].forEach(event =>
-                window.addEventListener(event, startInactivityTimer)
-            );
-        }
-
-        onAuthStateChanged(auth, async (user) => {
-            if (user) {
-                try {
-                    console.log(`User logged in: ${user.uid}`);
-
-                    startInactivityTimer();
-                    setupActivityListeners();
-
-                    await loadPhoneNumber(user.uid);
-
-                    const loggedInUserId = localStorage.getItem("loggedInUserId");
-                    if (loggedInUserId) {
-                        const userDoc = await getDoc(doc(db, "users", loggedInUserId));
-                        if (userDoc.exists()) {
-                            const userData = userDoc.data();
-                            document.getElementById("loggedUserFName").innerText = userData.firstName || "User";
-                        } else {
-                            console.warn("No document found matching loggedInUserId.");
-                        }
-                    }
-                } catch (error) {
-                    console.error("Error during user data retrieval:", error);
-                }
+                // Start inactivity logic
+                startInactivityTimer();
+                resetTimerOnActivity();
             } else {
-                alert("Please log in to view wallet balance.");
+                console.log("User not authenticated.");
                 window.location.href = "login.html";
             }
         });
 
+        document.addEventListener("DOMContentLoaded", () => {
+            const sendBtn = document.getElementById("sendFeedbackBtn");
+
+            sendBtn.addEventListener("click", () => {
+                const message = document.getElementById("feedbackMessage").value.trim();
+                const auth = getAuth();
+                const user = auth.currentUser;
+
+                if (!message) {
+                    alert("Please enter a message before sending.");
+                    return;
+                }
+
+                if (!user) {
+                    alert("You must be logged in to send feedback.");
+                    return;
+                }
+
+                const db = getDatabase();
+                const feedbackRef = push(ref(db, "FeedbackReports"));
+                set(feedbackRef, {
+                    message: message,
+                    timestamp: new Date().toISOString(),
+                    studentEmail: user.email || "Unknown",
+                    studentUID: user.uid
+                }).then(() => {
+                    alert("Feedback sent successfully!");
+                    document.getElementById("feedbackMessage").value = ""; // Clear after submit
+                }).catch((error) => {
+                    console.error("Error sending feedback:", error);
+                    alert("Failed to send feedback. Please try again.");
+                });
+            });
+        });
+
 
     </script>
+
 </body>
 
 </html>

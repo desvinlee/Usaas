@@ -90,7 +90,7 @@
 
 
             <li class="nav-item">
-                <a class="nav-link" href="404.html">
+                <a class="nav-link" href="Assistant_Support.html">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Help & support</span></a>
             </li>
@@ -176,14 +176,6 @@
 
                                 <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
                             </div>
-                        </li>
-
-                        <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" id="messagesDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <div class="sidebar-heading">Message </div>
-                                <i class="fas fa-envelope fa-fw"></i>
-                            </a>
                         </li>
 
                         <div class="topbar-divider d-none d-sm-block"></div>
@@ -335,8 +327,8 @@
         </div>
     </div>
 
-    <!-- retrieve Confirmation Modal -->
-    <div class="modal fade" role="dialog" tabindex="-1" id="confirmRetrieveModal" style="text-align: center;">
+    <!-- Undo Confirmation Modal -->
+    <div class="modal fade" role="dialog" tabindex="-1" id="confirmUndoModal" style="text-align: center;">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -344,13 +336,13 @@
                         data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body"><i class="far fa-question-circle" style="font-size: 120px;"></i>
-                    <p class="text-center"> Are you sure you want to retrieve this order? Once retrieved, the student
+                    <p class="text-center"> Are you sure you want to Undo this order? Once Undo, the student
                         will see its status change
                         back to Pending.</p>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-primary" type="button" id="confirmRetrieveButton"
-                        style="background: #3bacfd;border-color: #3bacfd;">Retrieve</button>
+                    <button class="btn btn-primary" type="button" id="confirmUndoButton"
+                        style="background: #3bacfd;border-color: #3bacfd;">confirm</button>
                     <button class="btn btn-light" type="button" data-bs-dismiss="modal"
                         style="background: #f38181;">cancel</button>
                 </div>
@@ -437,36 +429,71 @@
         let studentlist = [];
         let tbody = document.getElementById('assistantOrders');
 
-        let orderToRetrieveId = null;
+        let orderToUndoId = null;
 
-        const setSelectedOrderToRetrieve = (orderId) => {
-            orderToRetrieveId = orderId;
-            console.log("Setting order ID to retrieve:", orderToRetrieveId);
+        const setSelectedOrderToUndo = (orderId) => {
+            orderToUndoId = orderId;
+            console.log("Setting order ID to undo:", orderToUndoId);
         };
 
+        let inactivityTimer;
+
+        // Start 30-minute session timer
+        function startInactivityTimer() {
+            clearTimeout(inactivityTimer);
+            inactivityTimer = setTimeout(() => {
+                signOut(auth)
+                    .then(() => {
+                        alert("Session expired due to inactivity.");
+                        localStorage.removeItem("loggedInUserId");
+                        window.location.href = "login.html";
+                    })
+                    .catch((error) => {
+                        console.error("Auto-logout failed:", error);
+                    });
+            }, 30 * 60 * 1000); // 30 minutes
+        }
+
+        // Reset session timer on user activity
+        function resetTimerOnActivity() {
+            ["click", "mousemove", "keypress", "scroll"].forEach(event =>
+                window.addEventListener(event, startInactivityTimer)
+            );
+        }
+
+        // Main logic
         onAuthStateChanged(auth, async (user) => {
             if (!user) {
-                console.log("Assistant not logged in");
+                console.warn("Assistant not logged in.");
                 window.location.href = "login.html";
+                return;
             }
 
             try {
-                const uid = user.uid;
-                const userDoc = await getDoc(doc(firestore, "users", uid));
+                startInactivityTimer();
+                resetTimerOnActivity();
 
-                if (!userDoc.exists()) {
-                    console.error("User doc not found");
+                const uid = user.uid;
+                const userDocRef = doc(firestore, "users", uid);
+                const userDocSnap = await getDoc(userDocRef);
+
+                if (!userDocSnap.exists()) {
+                    console.error("User doc not found.");
                     return;
                 }
 
-                const userData = userDoc.data();
+                const userData = userDocSnap.data();
                 const assistantPhone = userData.phoneNumber;
-                console.log(" Assistant Phone:", assistantPhone);
+                console.log("Assistant Phone:", assistantPhone);
 
+                // Show assistant name in UI
+                const nameEl = document.getElementById("loggedUserFName");
+                if (nameEl) nameEl.innerText = userData.firstName || "Assistant";
+
+                // Get student orders from RTDB
                 const snapshot = await get(ref(rtdb, "StudentOrders"));
-
                 if (!snapshot.exists()) {
-                    console.log("No orders found.");
+                    console.log("No student orders found.");
                     return;
                 }
 
@@ -474,22 +501,23 @@
                 const ordersToDisplay = [];
 
                 for (const studentPhone in allOrders) {
-                    const orderList = allOrders[studentPhone];
-                    for (const orderId in orderList) {
-                        const order = orderList[orderId];
-                        order.id = orderId;         // Include order ID
-                        order.phone = studentPhone; // Attach phone for reference
+                    const studentOrderList = allOrders[studentPhone];
+                    for (const orderId in studentOrderList) {
+                        const order = studentOrderList[orderId];
+                        order.id = orderId;
+                        order.phone = studentPhone;
 
+                        // Only show relevant orders
                         if (order.status === "Pending" || order.status === "Accepted") {
                             ordersToDisplay.push(order);
                         }
                     }
                 }
 
-                AddAllRecords(ordersToDisplay); // Use your existing function here
+                AddAllRecords(ordersToDisplay); // Renders to your UI
 
             } catch (error) {
-                console.error(" Error loading assistant orders:", error);
+                console.error("Error loading assistant orders:", error);
             }
         });
 
@@ -507,8 +535,8 @@
                         const ordersByPhone = data[phone];
                         for (const orderId in ordersByPhone) {
                             const order = ordersByPhone[orderId];
-                            order.id = orderId; // store orderId for accept/retrieve use
-                            order.phone = phone; // store phone for accept/retrieve use
+                            order.id = orderId; // store orderId for accept/undo use
+                            order.phone = phone; // store phone for accept/undo use
                             allOrders.push(order);
                         }
                     }
@@ -564,19 +592,19 @@
                 td4.appendChild(acceptButton);
             }
             if (student.status === "Accepted") {
-                let retrieveButton = document.createElement('button');
-                retrieveButton.className = "btn btn-primary";
-                retrieveButton.type = "button";
-                retrieveButton.style = "border-radius: 6px; background: #3bacfd; color: white; margin-top: 10px;";
-                retrieveButton.innerHTML = '<i class="fas fa-handshake"></i> Retrieve';
-                retrieveButton.setAttribute("data-bs-toggle", "modal");
-                retrieveButton.setAttribute("data-bs-target", "#confirmRetrieveModal");
-                retrieveButton.dataset.orderId = student.id;
-                retrieveButton.dataset.studentPhone = student.phone;
-                retrieveButton.onclick = () => {
-                    setSelectedOrderToRetrieve(student.id);
+                let undoButton = document.createElement('button');
+                undoButton.className = "btn btn-primary";
+                undoButton.type = "button";
+                undoButton.style = "border-radius: 6px; background: #3bacfd; color: white; margin-top: 10px;";
+                undoButton.innerHTML = '<i class="fas fa-handshake"></i> Undo';
+                undoButton.setAttribute("data-bs-toggle", "modal");
+                undoButton.setAttribute("data-bs-target", "#confirmUndoModal");
+                undoButton.dataset.orderId = student.id;
+                undoButton.dataset.studentPhone = student.phone;
+                undoButton.onclick = () => {
+                    setSelectedOrderToUndo(student.id);
                 };
-                td4.appendChild(retrieveButton);
+                td4.appendChild(undoButton);
             }
 
             trow.append(td1, td2, td3, td4);
@@ -584,12 +612,13 @@
         };
 
         document.addEventListener('DOMContentLoaded', () => {
-            const confirmRetrieveButton = document.getElementById('confirmRetrieveButton'); // Replace with the actual ID of your modal's confirm button
-            if (confirmRetrieveButton) {
-                confirmRetrieveButton.addEventListener('click', retrieveOrder);
+            const confirmUndoButton = document.getElementById('confirmUndoButton'); // Replace with the actual ID of your modal's confirm button
+            if (confirmUndoButton) {
+                confirmUndoButton.addEventListener('click', undoOrder);
 
-            } else {retrieveModal
-                console.error("Confirm retrieve button not found in the DOM.");
+            } else {
+                undoModal
+                console.error("Confirm undo button not found in the DOM.");
             }
         });
 
@@ -670,13 +699,13 @@
             });
         };
 
-        const retrieveOrder = () => {
-            console.log("retrieveOrder called.");
+        const undoOrder = () => {
+            console.log("undoOrder called.");
             console.log("Current user:", auth.currentUser); // Log auth state
 
-            if (!orderToRetrieveId) {
+            if (!orderToUndoId) {
                 console.error("No order ID selected for retrieval.");
-                alert("No order selected to retrieve.");
+                alert("No order selected to undo.");
                 return;
             }
             const user = auth.currentUser;
@@ -696,34 +725,34 @@
                     let studentPhoneNumber = null;
                     snapshot.forEach((studentPhoneSnapshot) => {
                         const orders = studentPhoneSnapshot.val();
-                        if (orders && orders[orderToRetrieveId]) {
+                        if (orders && orders[orderToUndoId]) {
                             studentPhoneNumber = studentPhoneSnapshot.key;
                         }
                     });
                     if (!studentPhoneNumber) {
-                        console.error("Student phone number not found for order ID:", orderToRetrieveId);
+                        console.error("Student phone number not found for order ID:", orderToUndoId);
                         alert("Error retrieving order.");
                         return;
                     }
 
-                    const orderRef = ref(db, `StudentOrders/${studentPhoneNumber}/${orderToRetrieveId}`);
+                    const orderRef = ref(db, `StudentOrders/${studentPhoneNumber}/${orderToUndoId}`);
                     return update(orderRef, {
                         status: "Pending",
                         assistant: null,
                     });
                 })
                     .then(() => {
-                        alert("Order retrieved successfully!");
+                        alert("Order undo successfully!");
                         window.location.reload();
-                        orderToRetrieveId = null;
-                        const retrieveModal = bootstrap.Modal.getInstance(document.getElementById('confirmRetrieveModal'));
-                        if (retrieveModal) {
-                            retrieveModal.hide();
+                        orderToUndoId = null;
+                        const undoModal = bootstrap.Modal.getInstance(document.getElementById('confirmUndoModal'));
+                        if (undoModal) {
+                            undoModal.hide();
                         }
                     })
                     .catch((error) => {
                         console.error("Error retrieving order:", error);
-                        alert("Failed to retrieve order.");
+                        alert("Failed to undo order.");
                     });
 
             });
@@ -846,19 +875,19 @@
                 console.error("Error: chatInput field not found!");
             }
 
-            const confirmRetrieveButton = document.getElementById('confirmRetrieveButton');
-            if (confirmRetrieveButton) {
-                confirmRetrieveButton.addEventListener('click', retrieveOrder);
+            const confirmUndoButton = document.getElementById('confirmUndoButton');
+            if (confirmUndoButton) {
+                confirmUndoButton.addEventListener('click', undoOrder);
             }
 
         });
 
         tbody.addEventListener('click', (event) => {
-            if (event.target.classList.contains('retrieve-btn')) {
+            if (event.target.classList.contains('undo-btn')) {
                 const orderId = event.target.dataset.orderId;
-                setSelectedOrderToRetrieve(orderId);
-                const retrieveModal = new bootstrap.Modal(document.getElementById('confirmRetrieveModal'));
-                retrieveModal.show();
+                setSelectedOrderToUndo(orderId);
+                const undoModal = new bootstrap.Modal(document.getElementById('confirmUndoModal'));
+                undoModal.show();
             }
         });
 

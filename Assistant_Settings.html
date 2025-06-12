@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Student Settings</title>
+    <title>Assistant Document</title>
     <link rel="stylesheet" href="assets/css/css/sb-admin-2.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css">
@@ -14,6 +14,8 @@
 
 <body id="page-top">
     <div id="wrapper">
+
+        <!--sidebar copy start from here the whole ul class-->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <hr class="sidebar-divider my-0">
@@ -23,9 +25,9 @@
             </div>
 
             <li class="nav-item active">
-                <a class="nav-link" href="Student_Dashboard.html">
+                <a class="nav-link" href="Assistant_Dashboard.html">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Student Dashboard</span></a>
+                    <span>Assistant Dashboard</span></a>
             </li>
 
 
@@ -38,23 +40,16 @@
 
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                <a class="nav-link collapsed" href="Assistant_Orderlist.html" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Order</span>
+                    <span>Order List</span>
                 </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Order List:</h6>
-                        <a class="collapse-item" href="Student_Createorder.html">Create Order</a>
-                        <a class="collapse-item" href="Student_Orderlist.html">Check Order</a>
-                    </div>
-                </div>
             </li>
 
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="Student_Document.html" data-target="#collapseUtilities"
+                <a class="nav-link collapsed" href="Assistant_Document.html" data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Document</span>
@@ -62,7 +57,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="Student_Wallet.html" data-target="#collapseWallet"
+                <a class="nav-link collapsed" href="Assistant_Wallet.html" data-target="#collapseWallet"
                     aria-expanded="true" aria-controls="collapseWallet">
                     <i class="fas fa-fw fa-folder"></i>
                     <span>Wallet</span>
@@ -79,23 +74,23 @@
 
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                    aria-expanded="true" aria-controls="collapsePages">
+                <a class="nav-link collapsed" href="Assistant_Settings.html" data-toggle="collapse"
+                    data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
                     <i class="fas fa-fw fa-wrench "></i>
                     <span>Settings</span>
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Profile: </h6>
-                        <a class="collapse-item" href="Student_Settings.html">Profile Settings</a>
-                        <a class="collapse-item" href="Student_Settings.html">Forgot Password</a>
+                        <a class="collapse-item" href="Assistant_Settings.html">Profile Settings</a>
+                        <a class="collapse-item" href="Assistant_Settings.html">Forgot Password</a>
                     </div>
                 </div>
             </li>
 
 
             <li class="nav-item">
-                <a class="nav-link" href="Student_Support.html">
+                <a class="nav-link" href="Assistant_Support.html">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Help & support</span></a>
             </li>
@@ -110,6 +105,7 @@
 
 
         </ul>
+
         <div class="d-flex flex-column" id="content-wrapper">
             <div id="content">
 
@@ -361,7 +357,10 @@
                 </div>
             </footer>
         </div>
+    
+    </div><a class="scroll-to-top rounded" href="#page-top"><i class="fas fa-angle-up"></i></a>
 
+    <!-- Confirmation Modal -->
         <div class="modal fade" id="updateSettingsConfirmationModal" style="text-align: center;" tabindex="-1"
             role="dialog" aria-labelledby="updateSettingsConfirmationModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -383,8 +382,6 @@
             </div>
         </div>
 
-    </div><a class="scroll-to-top rounded" href="#page-top"><i class="fas fa-angle-up"></i></a>
-    
     <div class="modal fade" role="dialog" tabindex="-1" id="logoutModal" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -409,10 +406,12 @@
     <script src="assets/js/js/Navigationbar.js"></script>
 
     <script type="module">
+
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
-        import { getAuth, updatePassword, onAuthStateChanged, signOut, EmailAuthProvider, reauthenticateWithCredential } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
-        import { getFirestore, getDoc, doc, updateDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore.js"
-        import { getDatabase, ref, set, update } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-database.js";
+        import { getStorage, ref, uploadBytes, getDownloadURL, listAll } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-storage.js";
+        import { getFirestore, collection, addDoc, updateDoc, getDoc, doc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore.js";
+        import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
+
 
         const firebaseConfig = {
             apiKey: "AIzaSyAifkBmMPwQLTqRu8nYFU1dqej2dlX33Bk",
@@ -427,10 +426,10 @@
 
         // Initialize Firebase
         const app = initializeApp(firebaseConfig);
-
-        const auth = getAuth();
-        const db = getFirestore();
-        const rtdb = getDatabase(app);
+        const auth = getAuth(app);
+        const storage = getStorage(app); // Initialize Firebase Storage
+        const db = getFirestore(app); // Initialize Firestore
+        const firestore = getFirestore(app); // Initialize Firestore
 
         let inactivityTimer;
 
@@ -577,7 +576,7 @@
             try {
                 const studentDocRef = doc(db, "users", userId);
                 await updateDoc(studentDocRef, studentDataToUpdate);
-                console.log("Student settings updated successfully!");
+                console.log("Assistant settings updated successfully!");
                 alert("Settings saved!");
                 window.location.reload();
 
@@ -587,7 +586,7 @@
                     const userPhoneLinkRef = ref(rtdb, `UserPhoneLink/${userId}`);
                     await update(userPhoneLinkRef, {
                         phoneNumber: updatedPhoneNumber,
-                        type: 'student'
+                        type: 'assistant',
                     }).then(() => {
                         console.log("UserPhoneLink updated.");
                     }).catch((error) => {

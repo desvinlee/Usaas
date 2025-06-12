@@ -95,7 +95,7 @@
 
 
             <li class="nav-item">
-                <a class="nav-link" href="404.html">
+                <a class="nav-link" href="Student_Support.html">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Help & support</span></a>
             </li>
@@ -207,6 +207,7 @@
                     <div class="d-sm-flex justify-content-between align-items-center mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Order List</h1>
                     </div>
+
                     <div class="row" style="margin-right: 0;">
                         <div class="col">
                             <div class="card shadow mb-4">
@@ -314,30 +315,6 @@
                 </div>
             </div>
 
-
-            <div id="chatModal" class="card position-absolute bottom-0 end-0"
-                style="width: 30rem; margin-right: 60px; display: none;">
-                <div class="card-header bg-primary d-flex justify-content-between align-items-center"
-                    style="cursor: pointer;">
-                    <small class="text-white">Chat box</small>
-                    <button id="closeButton" class="btn btn-danger btn-sm" type="button" onclick="CloseChat()"> X
-                    </button>
-                </div>
-                <div class="card-body" id="chatBox" style="height: 25rem; overflow-y: auto;">
-                    <!-- Messages will be dynamically added here -->
-                </div>
-                <div class="row p-2">
-                    <div class="col">
-                        <input id="chatInput" class="form-control" type="text" placeholder="Type a message">
-                    </div>
-                    <div class="col-auto">
-                        <button id="sendBtn" class="btn btn-primary" type="button" onclick="sendMessage()">
-                            <i class="far fa-paper-plane"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
             <footer class="bg-white sticky-footer">
                 <div class="container-fluid px-4">
                     <div class="text-left my-auto copyright justify-content-between small">
@@ -346,7 +323,31 @@
                 </div>
             </footer>
         </div>
-    </div><a class="scroll-to-top rounded" href="#page-top"><i class="fas fa-angle-up"></i></a>
+    </div>
+
+    <a class="scroll-to-top rounded" href="#page-top"><i class="fas fa-angle-up"></i></a>
+
+    <div id="chatModal" class="card position-absolute bottom-0 end-0"
+        style="width: 30rem; margin-right: 60px; display: none;">
+        <div class="card-header bg-primary d-flex justify-content-between align-items-center" style="cursor: pointer;">
+            <small class="text-white">Chat box</small>
+            <button id="closeButton" class="btn btn-danger btn-sm" type="button" onclick="CloseChat()"> X
+            </button>
+        </div>
+        <div class="card-body" id="chatBox" style="height: 25rem; overflow-y: auto;">
+            <!-- Messages will be dynamically added here -->
+        </div>
+        <div class="row p-2">
+            <div class="col">
+                <input id="chatInput" class="form-control" type="text" placeholder="Type a message">
+            </div>
+            <div class="col-auto">
+                <button id="sendBtn" class="btn btn-primary" type="button" onclick="sendMessage()">
+                    <i class="far fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
 
     <div class="modal fade" role="dialog" tabindex="-1" id="logoutModal" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
@@ -477,11 +478,39 @@
         let studentlist = [];
         let tbody = document.getElementById('studentOrders');
 
+        let inactivityTimer;
+
+        // ⏲️ Auto logout after 30 minutes of inactivity
+        function startInactivityTimer() {
+            clearTimeout(inactivityTimer);
+            inactivityTimer = setTimeout(() => {
+                signOut(auth).then(() => {
+                    alert("Session expired due to inactivity.");
+                    localStorage.removeItem("loggedInUserId");
+                    window.location.href = "login.html"; // or your login route
+                });
+            }, 30 * 60 * 1000); // 30 minutes
+        }
+
+        // 🖱️ Reset timer on user activity
+        function resetTimerOnActivity() {
+            ["mousemove", "keypress", "click", "scroll"].forEach(event => {
+                window.addEventListener(event, startInactivityTimer);
+            });
+        }
+
+        // 🔁 Main Logic
         onAuthStateChanged(auth, async (user) => {
             if (user) {
                 try {
+                    // 🔐 Start inactivity check
+                    startInactivityTimer();
+                    resetTimerOnActivity();
+
                     const uid = user.uid;
-                    const userDoc = await getDoc(doc(firestore, "users", uid));
+                    const userDocRef = doc(firestore, "users", uid);
+                    const userDoc = await getDoc(userDocRef);
+
                     if (!userDoc.exists()) throw new Error("User not found");
 
                     const studentPhone = userDoc.data().phoneNumber;
@@ -490,13 +519,16 @@
 
                     if (snapshot.exists()) {
                         const orders = snapshot.val();
-                        displayStudentOrders(orders, studentPhone);
+                        displayStudentOrders(orders, studentPhone); // your existing function
                     } else {
                         console.log("No orders found for this student.");
                     }
                 } catch (error) {
                     console.error("Error loading student orders:", error);
                 }
+            } else {
+                // 🚪 Not logged in — redirect
+                window.location.href = "login.html";
             }
         });
 

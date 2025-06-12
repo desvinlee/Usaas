@@ -175,6 +175,8 @@
         // ✅ Store phone number globally after login
         let studentPhoneNumber = null;
 
+        const PhoneInp = document.getElementById('phone_number');
+
         // ✅ Load phone number from Firestore
         async function loadPhoneNumber(userId) {
             console.log(`Fetching phone number for user ID: ${userId}`);
@@ -203,6 +205,9 @@
 
         // ✅ Handle deposit
         window.makePayment = async function () {
+
+            const inputPhone = PhoneInp.value.trim();
+
             if (!studentPhoneNumber) {
                 alert("Phone number is missing or not linked to your account!");
                 return;
@@ -212,6 +217,11 @@
 
             if (!depositAmount || depositAmount <= 0) {
                 alert("Please enter a valid deposit amount!");
+                return;
+            }
+
+            if (inputPhone !== studentPhoneNumber) {
+                alert("Phone number does not match your registered number.");
                 return;
             }
 

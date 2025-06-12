@@ -48,8 +48,7 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Order:</h6>
-                        <a class="collapse-item" href="Admin_ViewStudentorder.html">Student Order</a>
-                        <a class="collapse-item" href="Admin_ViewAssistantorder.html">Assistant Order</a>
+                        <a class="collapse-item" href="Admin_ViewOrder.html">View Order</a>
                         <a class="collapse-item" href="Admin_Report.html">Report list</a>
                     </div>
                 </div>
@@ -162,69 +161,62 @@
                             Report
                         </a>
                     </div>
-                    <div class="row">
-                        <div class="col-xl-6">
-                            <div class="card shadow mb-4">
-                                <div class="card-body">
-                                    <a class="nav-link collapsed" href="#" data-toggle="collapse"
-                                        data-target="#collapseLayouts" aria-expanded="true"
-                                        aria-controls="collapseLayouts">International Student&nbsp;</a>
-                                    <a class="nav-link collapsed" href="#" data-toggle="collapse"
-                                        data-target="#collapseLayouts" aria-expanded="true"
-                                        aria-controls="collapseLayouts">Assistant</a>
-                                </div>
-                            </div>
-                        </div>
 
-                        <div class="col-md-6 col-xl-3 offset-xl-0 mb-4">
-                            <div class="card shadow border-left-warning h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row align-items-center no-gutters">
-                                        <div class="col mr-2">
-                                            <div class="text-uppercase text-warning text-xs font-weight-bold mb-1">
-                                                <span>Assistant Pending Order</span>
-                                            </div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><span>$40,000 </span>
-                                            </div>
-                                        </div>
-                                        <div class="col-auto"><i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                                        </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="card shadow mb-4">
+                                <div class="card-body text-left">
+                                    <div class="d-grid gap-3 d-md-flex justify-content-md-left">
+                                        <button id="studentBtn" class="btn btn-primary">Student List</button>
+                                        <button id="assistantBtn" class="btn btn-secondary">Assistant List</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                     <div class="row">
-                        <div class="col-lg-6 col-xl-12 mb-4">
+                        <!-- Student Orders Section -->
+                        <div id="studentOrderSection" class="order-section">
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="text-primary m-0 font-weight-bold">Student Order</h6>
+                                </div>
+                                <div class="card-body">
+                                    <table id="studentOrdersTable" class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Order date</th>
+                                                <th>Student</th>
+                                                <th>Amount</th>
+                                                <th>Assistant</th>
+                                                <th>Approved</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="adminOrders"></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- Assistant Orders Section -->
+                        <div id="assistantOrderSection" class="order-section" style="display:none;">
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
                                     <h6 class="text-primary m-0 font-weight-bold">Assistant Order</h6>
                                 </div>
-                                
                                 <div class="card-body">
-                                    <table id="datatablesSimple">
+                                    <table id="assistantOrdersTable" class="table">
                                         <thead>
                                             <tr>
                                                 <th>Order date</th>
                                                 <th>Assistant Details</th>
                                                 <th>Rating</th>
                                                 <th>Comment</th>
-
                                             </tr>
                                         </thead>
-                                        <tfoot>
-                                            <tr>
-                                                <th>Order date</th>
-                                                <th>Assistant Details</th>
-                                                <th>Rating</th>
-                                                <th>Comment</th>
-
-                                            </tr>
-                                        </tfoot>
-
-                                        <tbody id="ratingsTableBody">
-
-                                        </tbody>
+                                        <tbody id="ratingsTableBody"></tbody>
                                     </table>
                                 </div>
                             </div>
@@ -568,6 +560,163 @@
             }
         });
 
+        let selectedOrder = null;
+        let adminOrdersList = [];
+        const studentTbody = document.getElementById('adminOrders');
+
+        onAuthStateChanged(auth, async (user) => {
+            if (user) {
+                const adminDocRef = doc(firestore, "admin", user.uid); // Changed collection name to "admin"
+                const adminDocSnap = await getDoc(adminDocRef);
+
+                if (adminDocSnap.exists()) {
+                    LoadAdminOrders(); // Safe to call
+                } else {
+                    alert("Access denied: Only admin can view this panel.");
+                    window.location.href = "/login.html"; // Or redirect elsewhere
+                }
+            } else {
+                window.location.href = "/login.html";
+            }
+        });
+
+        const LoadAdminOrders = () => {
+            const dbRef = ref(db, 'StudentOrders');
+
+            onValue(dbRef, (snapshot) => {
+                adminOrdersList = [];
+                snapshot.forEach((studentPhoneSnapshot) => {
+                    const ordersForStudent = studentPhoneSnapshot.val();
+
+
+
+                    if (ordersForStudent) {
+                        Object.keys(ordersForStudent).forEach((orderId) => {
+                            const order = ordersForStudent[orderId];
+                            console.log("Loading order:", orderId, "under student:", studentPhoneSnapshot.key);
+
+                            adminOrdersList.push({ id: orderId, phoneNumberOfStudent: studentPhoneSnapshot.key, ...order });
+                        });
+                    }
+                });
+                DisplayAdminOrders();
+
+            }, (error) => {
+                console.error("Error fetching admin orders:", error);
+            });
+        };
+
+        const DisplayAdminOrders = () => {
+            studentTbody.innerHTML = "";
+            adminOrdersList.forEach(order => {
+                AddSingleAdminOrder(order); // Now receives the individual order object
+            });
+        };
+
+        const ApproveOrder = (orderId, phoneNumber) => {
+            console.log("Trying to access path: StudentOrders/" + phoneNumber + "/" + orderId);
+
+            const orderRef = ref(db, `StudentOrders/${phoneNumber}/${orderId}`);
+
+
+            get(orderRef).then((snapshot) => {
+                const orderData = snapshot.val();
+                console.log("Order data received:", orderData);
+
+                if (orderData && orderData.status === "Completed" && orderData.assistant && orderData.assistant.phone && orderData.price) {
+                    const assistantPhoneNumber = orderData.assistant.phone;
+                    const orderPrice = parseFloat(orderData.price); // Ensure price is a number
+
+                    const WalletRef = ref(db, `StudentWallet/${assistantPhoneNumber}`);
+
+                    get(WalletRef).then((walletSnapshot) => {
+                        const currentBalance = walletSnapshot.val()?.balance || 0;
+                        const newBalance = currentBalance + orderPrice;
+
+                        update(WalletRef, { balance: newBalance })
+                            .then(() => {
+                                console.log(`Payment of RM ${orderPrice.toFixed(2)} released to assistant ${assistantPhoneNumber}. New balance: RM ${newBalance.toFixed(2)}`);
+                                alert(`Payment of RM ${orderPrice.toFixed(2)} released to assistant.`);
+                                // Optionally update the order status to "Payment Released"
+                                update(orderRef, { status: "Payment Released" });
+                            })
+                            .catch((error) => {
+                                console.error("Error updating assistant wallet:", error);
+                                alert("Error releasing payment to assistant.");
+                            });
+
+                    }).catch((error) => {
+                        console.error("Error fetching assistant wallet:", error);
+                        alert("Could not fetch assistant's wallet information.");
+                    });
+                } else {
+                    alert("Order cannot be approved for payment release.");
+                    console.warn("Order not eligible for payment release:", orderData);
+                }
+            }).catch((error) => {
+                console.error("Error fetching order details:", error);
+                alert("Could not fetch order details.");
+            });
+        };
+
+        const AddSingleAdminOrder = (order) => {
+
+
+            // Expecting an individual order object
+            let trow = document.createElement('tr');
+            let td1 = document.createElement('td'); // Time
+            let td2 = document.createElement('td'); // Name + Faculty + Phone + Price
+            let td3 = document.createElement('td'); // Status
+            let td4 = document.createElement('td'); // Assistant Name + Phone
+            let td5 = document.createElement('td'); // Action Button
+
+            td1.style.textAlign = 'left';
+            td2.style.textAlign = 'left';
+            td3.style.textAlign = 'left';
+            td4.style.textAlign = 'left';
+            td5.style.textAlign = 'left';
+
+            td1.innerHTML = order.orderTime || "Unknown";
+
+            td2.innerHTML = `${order.nameofstudent?.firstname || "Unknown"} ${order.nameofstudent?.lastname || "Unknown"}
+        <br>${order.faculty?.facultyname || "Unknown"}
+        <br>RM ${order.price || "Unknown"}
+        <br><strong>${order.phone || "No Phone"}</strong>`; // Use order.phone
+
+            let statusColor;
+            if (order.status === "Accepted") {
+                statusColor = "#0ee535"; // Green
+            } else if (order.status === "Completed") {
+                statusColor = "#95E1D3"; // Light Blue/Green
+            } else if (order.status === "Pending") {
+                statusColor = "#fce38a"; // Yellow
+            } else {
+                statusColor = "#000000"; // Default color (Black) for any other status
+            }
+
+            td3.innerHTML = `<i class="far fa-stop-circle" style="color: ${statusColor}; vertical-align: middle;">
+                    </i> ${order.status || "Pending"}`;
+
+            td4.innerHTML = order.assistant
+                ? `${order.assistant.name} <br> ${order.assistant.phone}`
+                : "Not Assigned";
+
+            td5.innerHTML = ""; // Clear previous buttons
+
+            if (order.status === "Completed") {
+                let approveButton = document.createElement('button');
+                approveButton.className = "btn btn-success";
+                approveButton.type = "button";
+                approveButton.style = "border-radius: 6px; background: #28a745; color: white;";
+                approveButton.innerHTML = "Approve Payment";
+                approveButton.onclick = () => ApproveOrder(order.id, order.phoneNumberOfStudent);
+                td5.appendChild(approveButton);
+            }
+
+            trow.append(td1, td2, td3, td4, td5);
+            studentTbody.appendChild(trow);
+        };
+
 
         let ratingOrdersList = [];
         const tbody = document.getElementById('ratingsTableBody');
@@ -653,7 +802,7 @@
                 ? `${orderWithRating.assistant.name} <br> ${orderWithRating.assistant.phone}`
                 : "Not Assigned";
 
-                td3.innerHTML = `${orderWithRating.rating || "N/A"} <i class="fas fa-star"></i> `;
+            td3.innerHTML = `${orderWithRating.rating || "N/A"} <i class="fas fa-star"></i> `;
 
             td4.innerHTML = orderWithRating.comment || "No comment";
 
@@ -677,6 +826,21 @@
             }
             return null;
         }
+
+
+        document.getElementById("studentBtn").addEventListener("click", () => {
+            document.getElementById("studentOrderSection").style.display = "block";
+            document.getElementById("assistantOrderSection").style.display = "none";
+
+            DisplayAdminOrders(); // Loads student orders
+        });
+
+        document.getElementById("assistantBtn").addEventListener("click", () => {
+            document.getElementById("studentOrderSection").style.display = "none";
+            document.getElementById("assistantOrderSection").style.display = "block";
+
+            DisplayRatingOrders(); // Loads assistant-related data
+        });
 
 
     </script>

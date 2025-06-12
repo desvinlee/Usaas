@@ -94,7 +94,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="404.html">
+                <a class="nav-link" href="Student_Support.html">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Help & support</span></a>
             </li>
@@ -109,6 +109,7 @@
 
 
         </ul>
+
         <div class="d-flex flex-column" id="content-wrapper">
             <div id="content">
                 <!--username display copy from Here-->
@@ -161,6 +162,7 @@
 
                     </ul>
                 </nav>
+
                 <div class="container-fluid">
                     <div class="d-sm-flex justify-content-between align-items-center mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Document</h1>
@@ -191,23 +193,32 @@
                                     <h6 class="text-primary m-0 font-weight-bold">Required Documents</h6>
                                 </div>
                                 <div class="card-body">
-                                    <h4 class="small font-weight-bold">Passport&nbsp;<span
-                                            class="float-right">Completed</span></h4>
-                                    <div class="progress mb-4">
-                                        <div class="bg-success progress-bar" role="progressbar" style="width:100%;"
-                                            aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <h4 class="small font-weight-bold">E-arrival<span class="float-right">Pending</span>
+                                    <h4 class="small font-weight-bold">
+                                        Passport <span class="float-right" id="passportStatus">Checking...</span>
                                     </h4>
                                     <div class="progress mb-4">
-                                        <div class="bg-warning progress-bar" role="progressbar" style="width:100%;"
-                                            aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                        <div class="progress-bar" id="passportBar" role="progressbar"
+                                            style="width:100%;" aria-valuenow="100" aria-valuemin="0"
+                                            aria-valuemax="100"></div>
                                     </div>
-                                    <h4 class="small font-weight-bold">Visa<span class="float-right">Pending</span></h4>
+
+                                    <h4 class="small font-weight-bold">
+                                        E-arrival <span class="float-right" id="earrivalStatus">Checking...</span>
+                                    </h4>
                                     <div class="progress mb-4">
-                                        <div class="progress-bar bg-warning" role="progressbar" style="width:100%;"
+                                        <div class="progress-bar" id="earrivalBar" role="progressbar"
+                                            style="width:100%;" aria-valuenow="100" aria-valuemin="0"
+                                            aria-valuemax="100"></div>
+                                    </div>
+
+                                    <h4 class="small font-weight-bold">
+                                        Visa <span class="float-right" id="visaStatus">Checking...</span>
+                                    </h4>
+                                    <div class="progress mb-4">
+                                        <div class="progress-bar" id="visaBar" role="progressbar" style="width:100%;"
                                             aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
+
                                 </div>
                             </div>
                             <div class="row">
@@ -265,6 +276,7 @@
                         </div>
                     </div>
                 </div>
+
             </div>
             <footer class="bg-white sticky-footer">
                 <div class="container-fluid px-4">
@@ -275,6 +287,28 @@
             </footer>
         </div>
     </div><a class="scroll-to-top rounded" href="#page-top"><i class="fas fa-angle-up"></i></a>
+
+    <!-- Confirmation Modal -->
+    <div class="modal fade" id="confirmUploadModal" tabindex="-1" aria-labelledby="confirmUploadModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content rounded-4 shadow">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmUploadModalLabel">Confirm File Upload</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to upload the selected documents?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="confirmUploadButton" class="btn btn-primary">Yes, Upload</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <div class="modal fade" role="dialog" tabindex="-1" id="logoutModal" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -297,14 +331,14 @@
     <script src="assets/js/vendor/jquery-easing/jquery.easing.min.js"></script>
     <script src="assets/js/js/sb-admin-2.min.js"></script>
     <script src="assets/js/vendor/chart.js/Chart.min.js"></script>
-
     <script src="assets/js/js/Navigationbar.js"></script>
 
     <script type="module">
 
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
-        import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-storage.js";
-        import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore.js";
+        import { getStorage, ref, uploadBytes, getDownloadURL, listAll } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-storage.js";
+        import { getFirestore, collection, addDoc, getDoc, doc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore.js";
+        import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
 
 
         const firebaseConfig = {
@@ -318,88 +352,168 @@
             measurementId: "G-NSW66N1VGP"
         };
 
+        // Initialize Firebase
         const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const storage = getStorage(app); // Initialize Firebase Storage
+        const db = getFirestore(app); // Initialize Firestore
+        const firestore = getFirestore(app); // Initialize Firestore
 
-        const storage = getStorage();
-        const db = getFirestore();
+        const submitButton = document.getElementById('SubmitButton');
+        const confirmButton = document.getElementById('confirmUploadButton');
+        let currentUser = null;
 
-        // JavaScript Functionality
-        document.getElementById('SubmitButton').addEventListener('click', function () {
-            const fileInput = document.getElementById('FileInput');
-            const fileInput2 = document.getElementById('FileInput2');
-            const fileInput3 = document.getElementById('FileInput3');
-
-            // Check if a file is selected
-            if (FileInput.files.length > 0 && fileInput2.files.length > 0 && fileInput3.files.length > 0) {
-                this.textContent = 'Submitted'; // Change button text
-                this.classList.remove('btn-primary'); // Optional: Change button styling
-                this.classList.add('btn-success'); // Optional: Add success styling
-                this.disabled = true; // Optional: Disable the button after submission
-            } else {
-                alert('Please select files from at least one input before submitting!');
-            }
-        });
-
-        //display file function
-        function displayFiles(inputId, listId) {
-            const fileInput = document.getElementById(inputId);
-            const fileList = document.createElement('ul');
-            fileList.id = listId;
-            fileList.className = 'list-group mt-3';
-
-            for (let file of fileInput.files) {
-                const listItem = document.createElement('li');
-                listItem.className = 'list-group-item';
-                listItem.textContent = `${file.name} (${(file.size / 1024).toFixed(2)} KB)`;
-                fileList.appendChild(listItem);
-            }
-
-            // Remove previous file list (if any) and append the new one
-            document.querySelector(`#${listId}`)?.remove();
-            fileInput.parentNode.appendChild(fileList);
-        }
-
-        document.getElementById('FileInput').addEventListener('change', function () {
-            displayFiles('FileInput', 'FileList1');
-        });
-
-        document.getElementById('FileInput2').addEventListener('change', function () {
-            displayFiles('FileInput2', 'FileList2');
-        });
-
-        document.getElementById('FileInput3').addEventListener('change', function () {
-            displayFiles('FileInput3', 'FileList3');
-        });
-
-
-        document.getElementById('fileUploadForm').addEventListener('submit', async (e) => {
+        // Show confirmation modal on Save click
+        submitButton.addEventListener('click', function (e) {
             e.preventDefault();
 
-            //file retrieve to database    
-            const FileInput = document.getElementById('FileInput');
-            const file = FileInput.files[0];
+            const file1 = document.getElementById('FileInput').files[0];
+            const file2 = document.getElementById('FileInput2').files[0];
+            const file3 = document.getElementById('FileInput3').files[0];
 
-            if (file) {
-                const storageRef = ref(storage, `student_files/${file.name}`);
+            if (!file1 && !file2 && !file3) {
+                alert('Please select at least one file before submitting!');
+                return;
+            }
+
+            const confirmModal = new bootstrap.Modal(document.getElementById('confirmUploadModal'));
+            confirmModal.show();
+        });
+
+        // Track current user
+        let inactivityTimer;
+
+        // Auto-logout after 30 minutes of inactivity
+        function startInactivityTimer() {
+            clearTimeout(inactivityTimer);
+            inactivityTimer = setTimeout(() => {
+                signOut(auth).then(() => {
+                    alert("You have been logged out due to 30 minutes of inactivity.");
+                    localStorage.removeItem("loggedInUserId");
+                    window.location.href = "login.html";
+                });
+            }, 30 * 60 * 1000); // 30 minutes
+        }
+
+        // Reset timer on user activity
+        function resetTimerOnActivity() {
+            ["mousemove", "keypress", "click", "scroll"].forEach((event) => {
+                window.addEventListener(event, startInactivityTimer);
+            });
+        }
+
+        // Main logic
+        onAuthStateChanged(auth, async (user) => {
+            const loggedInUserId = localStorage.getItem('loggedInUserId');
+
+            if (user && loggedInUserId) {
                 try {
-                    const snapshot = await uploadBytes(storageRef, file);
-                    const downloadURL = await getDownloadURL(snapshot.ref);
+                    // Start inactivity timer
+                    startInactivityTimer();
+                    resetTimerOnActivity();
 
-                    // Save the file reference in Firestore
-                    await addDoc(collection(db, 'uploaded_files'), {
-                        fileName: file.name,
-                        fileURL: downloadURL,
-                        uploadedAt: new Date(),
-                        status: 'Pending'
-                    });
+                    // Fetch user document from Firestore
+                    const docRef = doc(db, "users", loggedInUserId);
+                    const docSnap = await getDoc(docRef);
 
-                    alert('File uploaded successfully!');
+                    if (docSnap.exists()) {
+                        const userData = docSnap.data();
+                        document.getElementById('loggedUserFName').innerText = userData.firstName;
+                    } else {
+                        console.log("No document found matching ID");
+                    }
+
+                    // Check uploaded student documents in Firebase Storage
+                    const uid = user.uid;
+                    const statusTypes = [
+                        { type: 'passport', labelId: 'passportStatus', barId: 'passportBar' },
+                        { type: 'earrival', labelId: 'earrivalStatus', barId: 'earrivalBar' },
+                        { type: 'visa', labelId: 'visaStatus', barId: 'visaBar' }
+                    ];
+
+                    for (const doc of statusTypes) {
+                        const folderRef = ref(storage, `student_files/${uid}/${doc.type}/`);
+                        try {
+                            const res = await listAll(folderRef);
+                            const fileExists = res.items.length > 0;
+
+                            const label = document.getElementById(doc.labelId);
+                            const bar = document.getElementById(doc.barId);
+
+                            if (fileExists) {
+                                label.innerText = "Completed";
+                                bar.classList.remove("bg-warning");
+                                bar.classList.add("bg-success");
+                            } else {
+                                label.innerText = "Pending";
+                                bar.classList.remove("bg-success");
+                                bar.classList.add("bg-warning");
+                            }
+                        } catch (err) {
+                            console.error(`Error checking storage for ${doc.type}:`, err);
+                        }
+                    }
                 } catch (error) {
-                    console.error('Error uploading file:', error);
-                    alert('Upload failed!');
+                    console.error("Error during onAuthStateChanged logic:", error);
                 }
             } else {
-                alert('Please select a file to upload.');
+                // User not logged in, redirect
+                window.location.href = "login.html";
+            }
+        });
+
+
+        document.getElementById("confirmUploadButton").addEventListener("click", async () => {
+            const passportFile = document.getElementById("FileInput").files[0];
+            const earrivalFile = document.getElementById("FileInput2").files[0];
+            const visaFile = document.getElementById("FileInput3").files[0];
+
+            if (!auth.currentUser) {
+                alert("Please log in first.");
+                return;
+            }
+
+            const uid = auth.currentUser.uid;
+            let uploadSuccess = false;
+
+            try {
+                if (passportFile) {
+                    const passportRef = ref(storage, `student_files/${uid}/passport/${passportFile.name}`);
+                    await uploadBytes(passportRef, passportFile);
+                    console.log("Passport uploaded");
+                    uploadSuccess = true;
+                }
+
+                if (earrivalFile) {
+                    const earrivalRef = ref(storage, `student_files/${uid}/earrival/${earrivalFile.name}`);
+                    await uploadBytes(earrivalRef, earrivalFile);
+                    console.log("E-arrival uploaded");
+                    uploadSuccess = true;
+                }
+
+                if (visaFile) {
+                    const visaRef = ref(storage, `student_files/${uid}/visa/${visaFile.name}`);
+                    await uploadBytes(visaRef, visaFile);
+                    console.log("Visa uploaded");
+                    uploadSuccess = true;
+                }
+
+
+                if (uploadSuccess) {
+                    const studentDocRef = doc(db, "users", uid);
+                    await setDoc(studentDocRef, {
+                        submitTime: serverTimestamp()
+                    }, { merge: true });
+
+                    alert("Files uploaded successfully!");
+                    window.location.reload();
+                } else {
+                    alert("No files uploaded. Please select at least one file.");
+                }
+
+            } catch (error) {
+                console.error("Upload error:", error);
+                alert("Error uploading files. Please try again.");
             }
         });
 

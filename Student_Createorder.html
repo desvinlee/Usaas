@@ -95,7 +95,7 @@
 
 
             <li class="nav-item">
-                <a class="nav-link" href="404.html">
+                <a class="nav-link" href="Student_Support.html">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Help & support</span></a>
             </li>
@@ -480,27 +480,55 @@
         // ✅ Store phone number globally after login
         let studentPhoneNumber = null;
 
-        onAuthStateChanged(auth, async (user) => {
+        let inactivityTimer;
+
+        // ✅ Auto-logout after 30 mins of inactivity
+        function startInactivityTimer() {
+            clearTimeout(inactivityTimer);
+            inactivityTimer = setTimeout(() => {
+                signOut(auth).then(() => {
+                    alert("You have been logged out due to 30 minutes of inactivity.");
+                    localStorage.removeItem("loggedInUserId"); // Clear session
+                    window.location.href = "login.html"; // Redirect to login
+                });
+            }, 30 * 60 * 1000); // 30 mins
+        }
+
+        // ✅ Reset timer on any activity
+        function resetTimerOnActivity() {
+            ["mousemove", "keypress", "click", "scroll"].forEach((event) => {
+                window.addEventListener(event, startInactivityTimer);
+            });
+        }
+
+        // ✅ Auth state + display first name + start timer
+        onAuthStateChanged(auth, (user) => {
             const loggedInUserId = localStorage.getItem('loggedInUserId');
-            if (loggedInUserId && user && user.uid === loggedInUserId) {
-                console.log("User is authenticated:", user);
+
+            if (user && loggedInUserId) {
+                console.log("User logged in:", user);
+
+                // Display first name
                 const docRef = doc(db, "users", loggedInUserId);
-                try {
-                    const docSnap = await getDoc(docRef);
-                    if (docSnap.exists()) {
-                        const userData = docSnap.data();
-                        document.getElementById('loggedUserFName').innerText = userData.firstName;
-                        studentPhoneNumber = userData.phoneNumber; // Load phone number after auth
-                    } else {
-                        console.log("No document found matching id");
-                    }
-                } catch (error) {
-                    console.error("Error fetching user data:", error);
-                    alert("Failed to load user data.");
-                }
+                getDoc(docRef)
+                    .then((docSnap) => {
+                        if (docSnap.exists()) {
+                            const userData = docSnap.data();
+                            document.getElementById('loggedUserFName').innerText = userData.firstName || "User";
+                        } else {
+                            console.log("No document found for this user ID.");
+                        }
+                    })
+                    .catch((error) => {
+                        console.error("Error getting document:", error);
+                    });
+
+                // Start inactivity logic
+                startInactivityTimer();
+                resetTimerOnActivity();
             } else {
-                console.log("User is not authenticated or ID mismatch.");
-                // Optionally redirect to login page
+                console.log("User not authenticated.");
+                window.location.href = "login.html";
             }
         });
 
@@ -552,6 +580,11 @@
             // Check if required fields are filled
             if (!FnameInp.value || !PhoneInp.value || !orderTimeInp.value || !faculty.value) {
                 alert("Please fill in all the required details: First Name, Phone, Date, and Faculty.");
+                return;
+            }
+
+            if (PhoneInp.value.length < 10) {
+                alert("Phone number must be at least 10 digits.");
                 return;
             }
 

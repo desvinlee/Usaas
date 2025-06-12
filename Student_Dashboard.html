@@ -95,7 +95,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="404.html">
+                <a class="nav-link" href="Student_Support.html">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Help & support</span></a>
             </li>
@@ -131,16 +131,16 @@
                         </div>
                     </form>
 
-                    
+
                     <ul class="navbar-nav ml-auto">
 
                         <!--Message Bar-->
                         <li class="nav-item dropdown no-arrow mx-1">
-                            <a id="messagesDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">
+                            <a id="messagesDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <div class="sidebar-heading">Message </div>
                                 <i class="fas fa-envelope fa-fw"></i>
-                                    <span class="badge badge-danger badge-counter">7</span>
+                                <span class="badge badge-danger badge-counter">7</span>
                             </a>
 
                             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -149,8 +149,8 @@
                                     Message Center
                                 </h6>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3"><img class="rounded-circle" 
-                                        src="assets/img/undraw_profile_1.svg" alt="..." />
+                                    <div class="dropdown-list-image mr-3"><img class="rounded-circle"
+                                            src="assets/img/undraw_profile_1.svg" alt="..." />
                                         <div class="status-indicator bg-success"></div>
                                     </div>
                                     <div>
@@ -376,27 +376,57 @@
         const auth = getAuth();
         const db = getFirestore();
 
+        let inactivityTimer;
+
+        // ✅ Auto-logout after 30 mins of inactivity
+        function startInactivityTimer() {
+            clearTimeout(inactivityTimer);
+            inactivityTimer = setTimeout(() => {
+                signOut(auth).then(() => {
+                    alert("You have been logged out due to 30 minutes of inactivity.");
+                    localStorage.removeItem("loggedInUserId"); // Clear session
+                    window.location.href = "login.html"; // Redirect to login
+                });
+            }, 30 * 60 * 1000); // 30 mins
+        }
+
+        // ✅ Reset timer on any activity
+        function resetTimerOnActivity() {
+            ["mousemove", "keypress", "click", "scroll"].forEach((event) => {
+                window.addEventListener(event, startInactivityTimer);
+            });
+        }
+
+        // ✅ Auth state + display first name + start timer
         onAuthStateChanged(auth, (user) => {
             const loggedInUserId = localStorage.getItem('loggedInUserId');
-            if (loggedInUserId) {
-                console.log(user);
+
+            if (user && loggedInUserId) {
+                console.log("User logged in:", user);
+
+                // Display first name
                 const docRef = doc(db, "users", loggedInUserId);
                 getDoc(docRef)
                     .then((docSnap) => {
                         if (docSnap.exists()) {
                             const userData = docSnap.data();
-                            document.getElementById('loggedUserFName').innerText = userData.firstName;
-
-                        }
-                        else {
-                            console.log("no document found matching id")
+                            document.getElementById('loggedUserFName').innerText = userData.firstName || "User";
+                        } else {
+                            console.log("No document found for this user ID.");
                         }
                     })
                     .catch((error) => {
-                        console.log("Error getting document");
-                    })
+                        console.error("Error getting document:", error);
+                    });
+
+                // Start inactivity logic
+                startInactivityTimer();
+                resetTimerOnActivity();
+            } else {
+                console.log("User not authenticated.");
+                window.location.href = "login.html";
             }
-        })
+        });
 
         const logoutButton = document.getElementById('logout');
         const confirmLogoutButton = document.querySelector('#logoutModal .btn-primary[href="login.html"]'); // Select the Logout button in the modal
