@@ -480,7 +480,7 @@
 
         let inactivityTimer;
 
-        // ⏲️ Auto logout after 30 minutes of inactivity
+
         function startInactivityTimer() {
             clearTimeout(inactivityTimer);
             inactivityTimer = setTimeout(() => {
@@ -489,48 +489,59 @@
                     localStorage.removeItem("loggedInUserId");
                     window.location.href = "login.html"; // or your login route
                 });
-            }, 30 * 60 * 1000); // 30 minutes
+            }, 5 * 60 * 1000);
         }
 
-        // 🖱️ Reset timer on user activity
+        //  Reset timer on user activity
         function resetTimerOnActivity() {
             ["mousemove", "keypress", "click", "scroll"].forEach(event => {
                 window.addEventListener(event, startInactivityTimer);
             });
         }
 
-        // 🔁 Main Logic
+        // Main Logic
         onAuthStateChanged(auth, async (user) => {
-            if (user) {
-                try {
-                    // 🔐 Start inactivity check
-                    startInactivityTimer();
-                    resetTimerOnActivity();
-
-                    const uid = user.uid;
-                    const userDocRef = doc(firestore, "users", uid);
-                    const userDoc = await getDoc(userDocRef);
-
-                    if (!userDoc.exists()) throw new Error("User not found");
-
-                    const studentPhone = userDoc.data().phoneNumber;
-                    const ordersRef = ref(db, `StudentOrders/${studentPhone}`);
-                    const snapshot = await get(ordersRef);
-
-                    if (snapshot.exists()) {
-                        const orders = snapshot.val();
-                        displayStudentOrders(orders, studentPhone); // your existing function
-                    } else {
-                        console.log("No orders found for this student.");
-                    }
-                } catch (error) {
-                    console.error("Error loading student orders:", error);
-                }
-            } else {
-                // 🚪 Not logged in — redirect
+            if (!user) {
+                // Not logged in — redirect
                 window.location.href = "login.html";
+                return;
+            }
+
+            try {
+                // Start inactivity check
+                startInactivityTimer();
+                resetTimerOnActivity();
+
+                const uid = user.uid;
+                localStorage.setItem("loggedInUserId", uid); // ✅ store in case needed elsewhere
+
+                const userDocRef = doc(firestore, "users", uid);
+                const userDocSnap = await getDoc(userDocRef);
+
+                if (!userDocSnap.exists()) throw new Error("User not found");
+
+                const userData = userDocSnap.data();
+
+                // ✅ Display student's first name
+                document.getElementById('loggedUserFName').innerText = userData.firstName || "User";
+
+                // ✅ Get phone number & load orders
+                const studentPhone = userData.phoneNumber;
+                const ordersRef = ref(db, `StudentOrders/${studentPhone}`);
+                const snapshot = await get(ordersRef);
+
+                if (snapshot.exists()) {
+                    const orders = snapshot.val();
+                    displayStudentOrders(orders, studentPhone); // ✅ your existing display function
+                } else {
+                    console.log("No orders found for this student.");
+                }
+
+            } catch (error) {
+                console.error("Error loading student orders:", error);
             }
         });
+
 
 
         async function getPhoneNumber(uid) {
@@ -568,7 +579,7 @@
                     console.log("No orders found for this student.");
                 }
             } catch (error) {
-                console.error("❌ Error loading student orders:", error);
+                console.error(" Error loading student orders:", error);
             }
         }
 
@@ -611,9 +622,8 @@
 
             if (student.status === "Pending") {
                 let deleteButton = document.createElement('button');
-                deleteButton.className = "btn btn-danger ms-2"; // Added ms-2 for some left margin
+                deleteButton.className = "btn btn-danger ms-2";
                 deleteButton.innerHTML = '<i class="fas fa-trash-alt"></i> Delete';
-                deleteButton.style = "margin-top: 10px;";
                 deleteButton.setAttribute("data-bs-toggle", "modal");
                 deleteButton.setAttribute("data-bs-target", "#deleteConfirmation");
                 deleteButton.onclick = () => setSelectedOrderToDelete(student.parentPhoneKey, student.id);
@@ -646,7 +656,7 @@
                 let rateButton = document.createElement('button');
                 rateButton.className = "btn btn-sm btn-warning rate-order-btn";
                 rateButton.type = "button";
-                rateButton.style = "border-radius: 6px; background: #ffc107; color: black;"; // Adjust style as needed
+                rateButton.style = "border-radius: 6px; background: #ffc107; color: black;";
                 rateButton.innerHTML = '<i class="fas fa-star"></i> Rate';
                 rateButton.setAttribute("data-bs-toggle", "modal");
                 rateButton.setAttribute("data-bs-target", "#rateOrderModal");
@@ -766,14 +776,14 @@
             let currentOrderIdToRate = null;
 
             // Event listener for the "Rate" button in the order list
-            const orderListTable = document.getElementById('studentOrders'); // Assuming your order list table has this ID
+            const orderListTable = document.getElementById('studentOrders');
             orderListTable?.addEventListener('click', function (event) {
                 if (event.target.classList.contains('rate-order-btn')) {
                     currentOrderIdToRate = event.target.dataset.orderId;
                     ratedOrderIdInput.value = currentOrderIdToRate;
-                    selectedRating = 0; // Reset rating when modal opens
-                    resetStars(); // Reset star visuals 
-                    // submitRating
+                    selectedRating = 0;
+                    resetStars();
+
                     const rateModalInstance = new bootstrap.Modal(document.getElementById('submitRating'));
                     if (rateModalInstance) {
                         rateModalInstance.hide();
@@ -798,7 +808,7 @@
                         rating: selectedRating,
                         details: ratingDetails,
                         timestamp: new Date().toISOString(),
-                        studentId: auth.currentUser?.uid // Assuming you want to track the student
+                        studentId: auth.currentUser?.uid
                     };
                     console.log('Submitting rating for order ID:', currentOrderIdToRate, ratingData);
                     submitRatingToFirebase(currentOrderIdToRate, ratingData)
@@ -807,7 +817,7 @@
                             const rateModalInstance = bootstrap.Modal.getInstance(rateOrderModal);
                             rateModalInstance.hide();
                             window.location.reload();
-                            // Optionally, update the UI to indicate the order has been rated
+
                         })
                         .catch(error => {
                             console.error('Error submitting rating:', error);
@@ -884,11 +894,11 @@
         function loadMessages(chatID) {
             if (!chatID) return;
 
-            const chatRef = ref(db, "chats/" + chatID + "/messages"); // ✅ Correct ref syntax
+            const chatRef = ref(db, "chats/" + chatID + "/messages"); //  Correct ref syntax
 
             onValue(chatRef, (snapshot) => {
                 const messages = snapshot.val();
-                displayMessages(messages); // ✅ Call display function
+                displayMessages(messages); //  Call display function
             });
         }
 
@@ -917,11 +927,11 @@
                     messageElement.className = `${textAlign} mb-2`;
                     messageElement.innerHTML = `<small class="${bgColor} p-3 text-white rounded-1 d-inline-block">${msg.text}</small>`;
 
-                    chatBox.appendChild(messageElement); // ✅ Append correctly
+                    chatBox.appendChild(messageElement); //  Append correctly
                 });
             }
 
-            chatBox.scrollTop = chatBox.scrollHeight; // ✅ Auto-scroll to latest message
+            chatBox.scrollTop = chatBox.scrollHeight; //  Auto-scroll to latest message
         };
 
 
@@ -937,7 +947,7 @@
                 timestamp: Date.now()
             };
 
-            // ✅ Push message to Firebase
+            //  Push message to Firebase
             const chatRef = ref(db, "chats/" + currentChatID + "/messages");
             push(chatRef, newMessage)
                 .then(() => {
@@ -960,7 +970,7 @@
             if (chatInput) {
                 chatInput.addEventListener("keypress", function (event) {
                     if (event.key === "Enter") {
-                        sendMessage(); // ✅ Calls sendMessage when Enter is pressed
+                        sendMessage(); //  Calls sendMessage when Enter is pressed
                     }
                 });
             } else {

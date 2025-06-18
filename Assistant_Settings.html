@@ -433,7 +433,7 @@
 
         let inactivityTimer;
 
-        // ✅ Auto-logout after 30 mins of inactivity
+        //  Auto-logout after 30 mins of inactivity
         function startInactivityTimer() {
             clearTimeout(inactivityTimer);
             inactivityTimer = setTimeout(() => {
@@ -445,14 +445,14 @@
             }, 30 * 60 * 1000); // 30 mins
         }
 
-        // ✅ Reset timer on any activity
+        //  Reset timer on any activity
         function resetTimerOnActivity() {
             ["mousemove", "keypress", "click", "scroll"].forEach((event) => {
                 window.addEventListener(event, startInactivityTimer);
             });
         }
 
-        // ✅ Auth state + display first name + start timer
+        //  Auth state + display first name + start timer
         onAuthStateChanged(auth, (user) => {
             const loggedInUserId = localStorage.getItem('loggedInUserId');
 

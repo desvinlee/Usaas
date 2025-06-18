@@ -172,12 +172,12 @@
         const rtdb = getDatabase(app);
         const auth = getAuth(app);
 
-        // ✅ Store phone number globally after login
+        //  Store phone number globally after login
         let studentPhoneNumber = null;
 
         const PhoneInp = document.getElementById('phone_number');
 
-        // ✅ Load phone number from Firestore
+        //  Load phone number from Firestore
         async function loadPhoneNumber(userId) {
             console.log(`Fetching phone number for user ID: ${userId}`);
             const userDocRef = doc(db, "users", userId);
@@ -197,23 +197,22 @@
             }
         }
 
-        // ✅ Handle cancel payment
+        //  Handle cancel payment
         window.cancelPayment = function () {
             alert("Cancel payment");
             window.location.href = 'student_wallet.html';
         };
 
-        // ✅ Handle deposit
+        //  Handle deposit
         window.makePayment = async function () {
 
             const inputPhone = PhoneInp.value.trim();
+            const depositAmount = parseFloat(document.getElementById('depositAmount').value);
 
             if (!studentPhoneNumber) {
                 alert("Phone number is missing or not linked to your account!");
                 return;
             }
-
-            const depositAmount = parseFloat(document.getElementById('depositAmount').value);
 
             if (!depositAmount || depositAmount <= 0) {
                 alert("Please enter a valid deposit amount!");
@@ -225,7 +224,7 @@
                 return;
             }
 
-            // ✅ Reference using stored phone number (not input)
+            //  Reference using stored phone number (not input)
             const walletRef = ref(rtdb, 'StudentWallet/' + studentPhoneNumber);
 
             try {
@@ -234,22 +233,21 @@
                     const currentBalance = snapshot.val().balance || 0;
                     const newBalance = currentBalance + depositAmount;
 
-                    // ✅ Update the new balance in Firebase
                     await set(walletRef, { balance: newBalance });
                     alert(`Deposit successful! New balance: RM ${newBalance.toFixed(2)}`);
-
-                    // ✅ Redirect to wallet page
                     window.location.href = 'student_wallet.html';
+
                 } else {
                     alert("Wallet data not found. Please try again.");
                 }
+
             } catch (error) {
                 console.error("Error updating balance:", error);
                 alert("Failed to process deposit.");
             }
         };
 
-        // ✅ Listen for auth state change
+        //  Listen for auth state change
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 console.log(`User logged in: ${user.uid}`);
@@ -268,9 +266,9 @@
                 if (docSnap.exists()) {
                     const studentPhoneNumber = docSnap.data().phonenumber;
 
-                    console.log(`Fetching phone number for user ID: ${userId}`); // ✅ Check the user ID
-                    console.log(`Retrieved phone number: ${studentPhoneNumber}`); // ✅ Confirm if phone number is retrieved
-                    console.log("Document data:", docSnap.data()); // ✅ Log the whole document for debugging
+                    console.log(`Fetching phone number for user ID: ${userId}`); //  Check the user ID
+                    console.log(`Retrieved phone number: ${studentPhoneNumber}`); //  Confirm if phone number is retrieved
+                    console.log("Document data:", docSnap.data()); //  Log the whole document for debugging
 
                     if (!studentPhoneNumber) {
                         console.error("Phone number is missing or not linked to user!");

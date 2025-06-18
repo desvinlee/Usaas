@@ -288,7 +288,7 @@
         import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-database.js";
         import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
 
-        // ✅ Firebase Config
+        //  Firebase Config
         const firebaseConfig = {
             apiKey: "AIzaSyAifkBmMPwQLTqRu8nYFU1dqej2dlX33Bk",
             authDomain: "usaas-4230f.firebaseapp.com",
@@ -300,7 +300,7 @@
             measurementId: "G-NSW66N1VGP"
         };
 
-        // ✅ Initialize Firebase
+        //  Initialize Firebase
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
         const rtdb = getDatabase(app);
@@ -309,7 +309,7 @@
 
         let inactivityTimer;
 
-        // ✅ Load wallet balance from Realtime Database
+        //  Load wallet balance from Realtime Database
         function loadWalletBalance(phoneNumber) {
             if (!phoneNumber) {
                 console.error("Phone number is missing!");
@@ -324,7 +324,7 @@
                 const balance = snapshot.val()?.balance || 0;
                 console.log(`Retrieved balance: ${balance}`);
 
-                // ✅ Ensure the element exists before updating
+                //  Ensure the element exists before updating
                 const walletBalanceElem = document.getElementById('wallet_balance');
                 if (walletBalanceElem) {
                     walletBalanceElem.textContent = `RM ${balance.toFixed(2)}`;
@@ -337,7 +337,7 @@
             });
         }
 
-        // ✅ Load phone number from Firestore based on logged-in user ID
+        //  Load phone number from Firestore based on logged-in user ID
         function loadPhoneNumber(userId) {
             console.log(`Fetching phone number for user ID: ${userId}`);
 
@@ -379,7 +379,7 @@
             }, 30 * 60 * 1000); // 30 minutes
         }
 
-        // ⏱️ Reset inactivity timer on user interaction
+        // Reset inactivity timer on user interaction
         function setupActivityListeners() {
             ["click", "mousemove", "keypress", "scroll"].forEach(event =>
                 window.addEventListener(event, startInactivityTimer)

@@ -441,7 +441,7 @@
             // Trigger calculation on input change
             document.getElementById('quantity_input').addEventListener('input', updatePrice);
 
-            // ✅ Trigger calculation on page load (set default value)
+            //  Trigger calculation on page load (set default value)
             updatePrice();
         });
 
@@ -477,12 +477,12 @@
         let submitButton = document.getElementById('submit_button');
         const finalConfirmSubmit = document.getElementById('finalConfirmSubmit');
 
-        // ✅ Store phone number globally after login
+        //  Store phone number globally after login
         let studentPhoneNumber = null;
 
         let inactivityTimer;
 
-        // ✅ Auto-logout after 30 mins of inactivity
+        //  Auto-logout after 30 mins of inactivity
         function startInactivityTimer() {
             clearTimeout(inactivityTimer);
             inactivityTimer = setTimeout(() => {
@@ -491,17 +491,17 @@
                     localStorage.removeItem("loggedInUserId"); // Clear session
                     window.location.href = "login.html"; // Redirect to login
                 });
-            }, 30 * 60 * 1000); // 30 mins
+            }, 5 * 60 * 1000); // 30 mins
         }
 
-        // ✅ Reset timer on any activity
+        //  Reset timer on any activity
         function resetTimerOnActivity() {
             ["mousemove", "keypress", "click", "scroll"].forEach((event) => {
                 window.addEventListener(event, startInactivityTimer);
             });
         }
 
-        // ✅ Auth state + display first name + start timer
+        //  Auth state + display first name + start timer
         onAuthStateChanged(auth, (user) => {
             const loggedInUserId = localStorage.getItem('loggedInUserId');
 
@@ -534,7 +534,7 @@
 
         async function getPhoneNumber(uid) {
             try {
-                const phoneRef = ref(rtdb, `UserPhoneLink/${uid}/phoneNumber`); // ✅ Define it here
+                const phoneRef = ref(rtdb, `UserPhoneLink/${uid}/phoneNumber`); //  Define it here
                 const snapshot = await get(phoneRef);
 
                 if (snapshot.exists()) {
@@ -585,6 +585,13 @@
 
             if (PhoneInp.value.length < 10) {
                 alert("Phone number must be at least 10 digits.");
+                return;
+            }
+
+            const phoneNum = /[^0-9]/; 
+
+            if (phoneNum.test(PhoneInp.value)) {
+                alert("Phone number cannot contain alphabets or special characters. Please enter digits only.");
                 return;
             }
 

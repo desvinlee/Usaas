@@ -14,7 +14,7 @@
 
 <body id="page-top">
     <div id="wrapper">
-        
+
         <!-- Sidebar copy from here-->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
@@ -172,7 +172,8 @@
                                             <div class="text-uppercase text-primary text-xs font-weight-bold mb-1"><span
                                                     style="--bs-success: #95e1d3;--bs-success-rgb: 149,225,211;">Including
                                                     translation &amp; transportation</span></div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><span>Try your First Asssistant Registration</span></div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><span>Try your First
+                                                    Asssistant Registration</span></div>
                                         </div>
                                         <div class="col d-xl-flex justify-content-xl-end align-items-xl-center"
                                             style="text-align: right;"><a
@@ -227,7 +228,7 @@
                             </div>
 
                         </div>
-                        
+
                         <div class="col-lg-6 mb-4">
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
@@ -253,11 +254,15 @@
                                         <h6 class="text-primary m-0 font-weight-bold">Development Approach</h6>
                                     </div>
                                     <div class="card-body">
-                                        <p>USAAS (UTM Student Assistance Application System) is an innovative platform designed to connect students with academic assistants, 
-                                            providing seamless support for their learning needs. With USAAS, students can easily create orders for assistance, track their requests in real time, 
+                                        <p>USAAS (UTM Student Assistance Application System) is an innovative platform
+                                            designed to connect students with academic assistants,
+                                            providing seamless support for their learning needs. With USAAS, students
+                                            can easily create orders for assistance, track their requests in real time,
                                             and manage payments securely through an integrated wallet system. </p>
-                                        <p class="mb-0">Our goal is to enhance the academic experience by ensuring smooth communication, efficient order management, 
-                                            and reliable payment processing, making registration process more accessible and stress-free.</p>
+                                        <p class="mb-0">Our goal is to enhance the academic experience by ensuring
+                                            smooth communication, efficient order management,
+                                            and reliable payment processing, making registration process more accessible
+                                            and stress-free.</p>
                                     </div>
                                 </div>
                             </div>
@@ -277,7 +282,7 @@
         </div>
 
     </div>
-    
+
     <a class="scroll-to-top rounded" href="#page-top"><i class="fas fa-angle-up"></i></a>
 
     <div class="modal fade" role="dialog" tabindex="-1" id="logoutModal" aria-labelledby="exampleModalLabel"
@@ -322,15 +327,34 @@
 
         // Initialize Firebase
         const app = initializeApp(firebaseConfig);
-
         const auth = getAuth();
         const db = getFirestore();
+
+        let inactivityTimer;
+
+
+        function startInactivityTimer() {
+            clearTimeout(inactivityTimer);
+            inactivityTimer = setTimeout(() => {
+                signOut(auth).then(() => {
+                    alert("You have been logged out due to 30 minutes of inactivity.");
+                    localStorage.removeItem("loggedInUserId"); // Clear session
+                    window.location.href = "login.html"; // Redirect to login
+                });
+            }, 30 * 60 * 1000); // 30 mins
+        }
+
+        function resetTimerOnActivity() {
+            ["mousemove", "keypress", "click", "scroll"].forEach((event) => {
+                window.addEventListener(event, startInactivityTimer);
+            });
+        }
 
         onAuthStateChanged(auth, (user) => {
             const loggedInUserId = localStorage.getItem('loggedInUserId');
             if (loggedInUserId) {
                 console.log(user);
-                const docRef = doc(db, "users", loggedInUserId);
+                const docRef = doc(db, "admin", loggedInUserId);
                 getDoc(docRef)
                     .then((docSnap) => {
                         if (docSnap.exists()) {
@@ -345,8 +369,17 @@
                     .catch((error) => {
                         console.log("Error getting document");
                     })
+                    
+                // Start inactivity logic
+                startInactivityTimer();
+                resetTimerOnActivity();
+
+            }else {
+                console.log("User not authenticated.");
+                window.location.href = "login.html";
             }
-        })
+            
+        });
 
         const logoutButton = document.getElementById('logout');
         const confirmLogoutButton = document.querySelector('#logoutModal .btn-primary[href="login.html"]'); // Select the Logout button in the modal
@@ -368,6 +401,7 @@
                     });
             });
         }
+        
     </script>
 </body>
 

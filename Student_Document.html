@@ -383,16 +383,15 @@
         // Track current user
         let inactivityTimer;
 
-        // Auto-logout after 30 minutes of inactivity
         function startInactivityTimer() {
             clearTimeout(inactivityTimer);
             inactivityTimer = setTimeout(() => {
                 signOut(auth).then(() => {
                     alert("You have been logged out due to 30 minutes of inactivity.");
-                    localStorage.removeItem("loggedInUserId");
-                    window.location.href = "login.html";
+                    localStorage.removeItem("loggedInUserId"); 
+                    window.location.href = "login.html"; 
                 });
-            }, 30 * 60 * 1000); // 30 minutes
+            }, 5 * 60 * 1000); // 30 mins
         }
 
         // Reset timer on user activity

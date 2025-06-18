@@ -378,26 +378,25 @@
 
         let inactivityTimer;
 
-        // ✅ Auto-logout after 30 mins of inactivity
         function startInactivityTimer() {
             clearTimeout(inactivityTimer);
             inactivityTimer = setTimeout(() => {
                 signOut(auth).then(() => {
                     alert("You have been logged out due to 30 minutes of inactivity.");
-                    localStorage.removeItem("loggedInUserId"); // Clear session
-                    window.location.href = "login.html"; // Redirect to login
+                    localStorage.removeItem("loggedInUserId"); 
+                    window.location.href = "login.html"; 
                 });
-            }, 30 * 60 * 1000); // 30 mins
+            }, 5 * 60 * 1000); // 30 mins
         }
 
-        // ✅ Reset timer on any activity
+        //  Reset timer on any activity
         function resetTimerOnActivity() {
             ["mousemove", "keypress", "click", "scroll"].forEach((event) => {
                 window.addEventListener(event, startInactivityTimer);
             });
         }
 
-        // ✅ Auth state + display first name + start timer
+        //  Auth state + display first name + start timer
         onAuthStateChanged(auth, (user) => {
             const loggedInUserId = localStorage.getItem('loggedInUserId');
 

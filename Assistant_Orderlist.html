@@ -542,12 +542,12 @@
                     }
 
                     AddAllRecords(allOrders); // render into assistantOrders table
-                    console.log("✅ Assistant order list loaded.");
+                    console.log(" Assistant order list loaded.");
                 } else {
                     console.log("No orders found.");
                 }
             } catch (error) {
-                console.error("❌ Error loading assistant orders:", error);
+                console.error(" Error loading assistant orders:", error);
             }
         };
 
@@ -786,11 +786,11 @@
         function loadMessages(chatID) {
             if (!chatID) return;
 
-            const chatRef = ref(db, "chats/" + chatID + "/messages"); // ✅ Correct ref syntax
+            const chatRef = ref(db, "chats/" + chatID + "/messages"); //  Correct ref syntax
 
             onValue(chatRef, (snapshot) => {
                 const messages = snapshot.val();
-                displayMessages(messages); // ✅ Call display function
+                displayMessages(messages); //  Call display function
             });
         }
 
@@ -803,7 +803,7 @@
                 return;
             }
 
-            chatBox.innerHTML = ""; // ✅ Clear old messages to prevent duplicates
+            chatBox.innerHTML = ""; //  Clear old messages to prevent duplicates
 
             if (messages) {
                 //  Convert Firebase object to sorted array (by timestamp)
@@ -819,11 +819,11 @@
                     messageElement.className = `${textAlign} mb-2`;
                     messageElement.innerHTML = `<small class="${bgColor} p-3 text-white rounded-1 d-inline-block">${msg.text}</small>`;
 
-                    chatBox.appendChild(messageElement); // ✅ Append correctly
+                    chatBox.appendChild(messageElement); //  Append correctly
                 });
             }
 
-            chatBox.scrollTop = chatBox.scrollHeight; // ✅ Auto-scroll to latest message
+            chatBox.scrollTop = chatBox.scrollHeight; //  Auto-scroll to latest message
         };
 
         window.CloseChat = function () {
@@ -845,7 +845,7 @@
                 timestamp: Date.now()
             };
 
-            // ✅ Push message to Firebase
+            //  Push message to Firebase
             const chatRef = ref(db, "chats/" + currentChatID + "/messages");
             push(chatRef, newMessage)
                 .then(() => {
@@ -868,7 +868,7 @@
             if (chatInput) {
                 chatInput.addEventListener("keypress", function (event) {
                     if (event.key === "Enter") {
-                        sendMessage(); // ✅ Calls sendMessage when Enter is pressed
+                        sendMessage(); //  Calls sendMessage when Enter is pressed
                     }
                 });
             } else {

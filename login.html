@@ -19,7 +19,6 @@
 <body>
 
   <body style="background: url(&quot;assets/img/Homepage/background.jpg&quot;) center;">
-
     <div class="container" id="signup" style="display:none;">
       <section class="py-4 py-xl-5">
         <div class="container" style="height:633.422px;">
@@ -74,10 +73,12 @@
                     <div class="row" style="margin-top: 20px;">
                       <div class="col-auto">
                         <h5>Password</h5>
-                        <input id="passwordInputSignup" class="form-control" type="password" placeholder="“8+character” + “1 Upper case”" style="width: 300px;" />
+                        <input id="passwordInputSignup" class="form-control" type="password"
+                          placeholder="“8+character” + “1 Upper case”" style="width: 300px;" />
                       </div>
                       <div class="col d-flex align-items-end">
-                        <i class="fas fa-eye" id="togglePasswordSignup" style="cursor: pointer; font-size: 20px; margin-bottom: 8px;"></i>
+                        <i class="fas fa-eye" id="togglePasswordSignup"
+                          style="cursor: pointer; font-size: 20px; margin-bottom: 8px;"></i>
                       </div>
                     </div>
 
@@ -143,17 +144,20 @@
                     <div class="row" style="margin-top: 20px;">
                       <div class="col-auto">
                         <h5>Password</h5>
-                        <input id="passwordInputLogin" class="form-control" type="password" placeholder="“8+character” + “1 Upper case”" style="width: 300px;" />
+                        <input id="passwordInputLogin" class="form-control" type="password"
+                          placeholder="“8+character” + “1 Upper case”" style="width: 300px;" />
                       </div>
                       <div class="col d-flex align-items-end">
-                        <i class="fas fa-eye" id="togglePasswordLogin" style="cursor: pointer; font-size: 20px; margin-bottom: 8px;"></i>
+                        <i class="fas fa-eye" id="togglePasswordLogin"
+                          style="cursor: pointer; font-size: 20px; margin-bottom: 8px;"></i>
                       </div>
                     </div>
 
 
                     <p class="recover">
-                      <a href="homepage.html">Recover Password</a>
+                      <a href="#" data-bs-toggle="modal" data-bs-target="#recoverPasswordModal">Recover Password</a>
                     </p>
+
 
                     <button class="btn btn-primary" id="submitSignIn"
                       style="margin-top:20px;width:189px;box-shadow:5px 5px 2px rgb(113,112,112);">Sign In</button>
@@ -176,18 +180,49 @@
         </div>
       </section>
     </div>
+
+    <!-- Recover Password Modal -->
+    <div class="modal fade" id="recoverPasswordModal" tabindex="-1" aria-labelledby="recoverPasswordModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content rounded-3">
+          <div class="modal-header">
+            <h5 class="modal-title" id="recoverPasswordModalLabel">Recover Password</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <label for="recoverEmail" class="form-label">Enter your email address:</label>
+            <input type="email" class="form-control" id="recoverEmail" required>
+            <div id="recoverMessage" class="mt-2 text-center"></div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" id="sendResetEmailBtn" class="btn btn-primary">Send Reset Email</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
   </body>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/vendor/jquery/jquery.min.js"></script>
+  <script src="assets/js/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="assets/js/js/sb-admin-2.min.js"></script>
+
 
   <script type="module">
 
     // Import the functions you need from the SDKs you need
-    // ✅ Import Firebase Libraries
+    //  Import Firebase Libraries
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
-    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
+    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification, signOut, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
     import { getFirestore, setDoc, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore.js";
     import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-database.js";
 
-    // ✅ Firebase Config
+    //  Firebase Config
     const firebaseConfig = {
       apiKey: "AIzaSyAifkBmMPwQLTqRu8nYFU1dqej2dlX33Bk",
       authDomain: "usaas-4230f.firebaseapp.com",
@@ -199,13 +234,13 @@
       measurementId: "G-NSW66N1VGP"
     };
 
-    // ✅ Initialize Firebase
+    //  Initialize Firebase
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
     const db = getFirestore(app);
     const rtdb = getDatabase(app);
 
-    // ✅ Show Message Function
+    //  Show Message Function
     function showMessage(message, divId) {
       const messageDiv = document.getElementById(divId);
       messageDiv.style.display = "block";
@@ -231,9 +266,9 @@
           username: "Admin"
         });
 
-        alert("✅ Admin created successfully!");
+        alert(" Admin created successfully!");
       } catch (error) {
-        alert("❌ Error: " + error.message);
+        alert("Error: " + error.message);
         console.error(error);
       }
     };
@@ -265,49 +300,40 @@
         return;
       }
 
-      //include at least one number 
-      /*
-      const numberRegex = /[0-9]/;
-      if (!numberRegex.test(password)) {
-          showMessage("Password must contain at least one number.", "signUpMessage");
-          return;
-      }*/
-
       if (type) {
         const selectedValue = type.value;
         console.log("Selected Assistance Type:", selectedValue);
 
         try {
-          // ✅ Create user in Firebase Auth
+          //  Create user in Firebase Auth
           const userCredential = await createUserWithEmailAndPassword(auth, email, password);
           const user = userCredential.user;
 
-          // ✅ Save to Firestore
+          //  Save to Firestore
           await setDoc(doc(db, "users", user.uid), {
             email: email,
             firstName: firstName,
             phoneNumber: phoneNumber,
-            type: selectedValue // Use the selected value here
+            type: selectedValue
           });
           console.log("User saved to Firestore");
 
-          // ✅ Save to Realtime Database (initialize balance to 0)
+          //  Save to Realtime Database
           await set(ref(rtdb, `StudentWallet/${phoneNumber}`), {
             balance: 0
           });
 
           await set(ref(rtdb, `UserPhoneLink/${user.uid}`), {
-            phoneNumber: phoneNumber, type: selectedValue
+            phoneNumber: phoneNumber,
+            type: selectedValue
           });
 
           console.log("Phone number saved to Realtime Database");
 
-          alert("Account Created Successfully", "signUpMessage");
-
-          // ✅ Redirect after signup
-          setTimeout(() => {
-            window.location.href = "login.html";
-          }, 500);
+          //  Send verification email
+          await sendEmailVerification(user);
+          alert("Verification email sent. Please check your inbox to verify your email.");
+          window.location.href = "login.html";
 
         } catch (error) {
           console.error("Error signing up:", error);
@@ -317,10 +343,10 @@
             showMessage("Failed to create account. Try again.", "signUpMessage");
           }
         }
+
       } else {
         // No option was selected
         alert("Please select whether a local student will assist you.");
-
       }
     });
 
@@ -338,17 +364,26 @@
       }
 
       try {
-        // ✅ Sign in with Firebase Auth
+        //  Sign in with Firebase Auth
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
         const user = userCredential.user;
+        const adminDoc = await getDoc(doc(db, "admin", user.uid));
+
+        //  Check if email is verified
+        if (!user.emailVerified && !adminDoc.exists()) {
+          await signOut(auth); // Prevent access
+          showMessage("Email not verified. Please check your inbox before logging in.", "signInMessage");
+          return;
+        }
+
         alert("Login successful");
 
-        // ✅ Store logged in user ID in localStorage (optional, but can be useful)
+        //  Store logged in user ID in localStorage
         localStorage.setItem("loggedInUserId", user.uid);
 
-        // ✅ Retrieve user data from Firestore to determine the user type
+        //  Retrieve user data from Firestore to determine the user type
         const userDoc = await getDoc(doc(db, "users", user.uid));
-        let redirectURL = null; // Initialize redirectURL
+        let redirectURL = null;
 
         if (userDoc.exists()) {
           const userData = userDoc.data();
@@ -360,11 +395,11 @@
             redirectURL = "Assistant_Dashboard.html";
           } else {
             console.warn("User type not found or unexpected in 'users':", userData);
-            redirectURL = "login.html"; // Default redirect
+            redirectURL = "login.html";
           }
         } else {
-          // Check if admin
-          const adminDoc = await getDoc(doc(db, "admin", user.uid));
+          //  Check if admin
+
           if (adminDoc.exists()) {
             redirectURL = "Admin_Dashboard.html";
             console.log("Admin logged in, redirecting to Admin panel.");
@@ -374,7 +409,7 @@
           }
         }
 
-        // ✅ Redirect if a URL is determined
+        //  Redirect after a short delay
         if (redirectURL) {
           setTimeout(() => {
             window.location.href = redirectURL;
@@ -384,12 +419,13 @@
       } catch (error) {
         console.error("Error logging in:", error);
         if (error.code === "auth/invalid-credential") {
-          alert("Incorrect email or password.", "signInMessage");
+          showMessage("Incorrect email or password.", "signInMessage");
         } else {
-          alert("Login failed: " + error.message, "signInMessage"); // More informative error
+          showMessage("Login failed: " + error.message, "signInMessage");
         }
       }
     });
+
 
     const signUpButton = document.getElementById('signUpButton');
     const signInButton = document.getElementById('signInButton');
@@ -422,6 +458,28 @@
       passwordInputSignup.setAttribute('type', type);
       togglePasswordSignup.classList.toggle('fa-eye-slash');
     });
+
+    document.getElementById("sendResetEmailBtn").addEventListener("click", async () => {
+      const email = document.getElementById("recoverEmail").value.trim();
+      const message = document.getElementById("recoverMessage");
+
+      if (!email) {
+        message.innerText = "Please enter your email.";
+        message.style.color = "red";
+        return;
+      }
+
+      try {
+        await sendPasswordResetEmail(auth, email); adminfirstName
+        message.innerText = "Password reset email sent! Check your inbox.";
+        message.style.color = "green";
+      } catch (error) {
+        console.error("Reset email error:", error);
+        message.innerText = error.message;
+        message.style.color = "red";
+      }
+    });
+
   </script>
 </body>
 

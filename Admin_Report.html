@@ -441,11 +441,28 @@
         const auth = getAuth();
         const db = getFirestore();
 
+        function startInactivityTimer() {
+            clearTimeout(inactivityTimer);
+            inactivityTimer = setTimeout(() => {
+                signOut(auth).then(() => {
+                    alert("You have been logged out due to 30 minutes of inactivity.");
+                    localStorage.removeItem("loggedInUserId"); // Clear session
+                    window.location.href = "login.html"; // Redirect to login
+                });
+            }, 30 * 60 * 1000); // 30 mins
+        }
+
+        function resetTimerOnActivity() {
+            ["mousemove", "keypress", "click", "scroll"].forEach((event) => {
+                window.addEventListener(event, startInactivityTimer);
+            });
+        }
+
         onAuthStateChanged(auth, (user) => {
             const loggedInUserId = localStorage.getItem('loggedInUserId');
             if (loggedInUserId) {
                 console.log(user);
-                const docRef = doc(db, "users", loggedInUserId);
+                const docRef = doc(db, "admin", loggedInUserId);
                 getDoc(docRef)
                     .then((docSnap) => {
                         if (docSnap.exists()) {
@@ -460,8 +477,16 @@
                     .catch((error) => {
                         console.log("Error getting document");
                     })
+
+                // Start inactivity logic
+                startInactivityTimer();
+                resetTimerOnActivity();
+                
+            }else {
+                console.log("User not authenticated.");
+                window.location.href = "login.html";
             }
-        })
+        });
 
         const logoutButton = document.getElementById('logout');
         const confirmLogoutButton = document.querySelector('#logoutModal .btn-primary[href="login.html"]'); // Select the Logout button in the modal
@@ -500,18 +525,19 @@
                         data.firstName || "-",
                         data.phoneNumber || "-",
                         data.type || "-",
-                        data.orderData || "-"
+                        data.orderData || "-",
+                        data.price || "-"
                     ]);
                 });
 
-                // Title
+                // TitleD
                 doc.setFontSize(14);
                 doc.text("User Report", 14, 15);
 
                 // Table with header
                 doc.autoTable({
                     startY: 20,
-                    head: [["Email", "First Name", "Phone Number", "Type", "Order Data"]],
+                    head: [["Email", "First Name", "Phone Number", "Type", "Order Data", "Amount"]],
                     body: tableData,
                     styles: {
                         fontSize: 10,
